@@ -22,22 +22,28 @@ const SectionDivider: React.FC = () => (
 // --- Interactive Trophy Components ---
 const TrophyCard: React.FC<{
   domain: string;
-  icon: React.ReactNode;
+  prizeAmount?: string;
+  bannerLabel?: string;
   onClick: () => void;
-}> = ({ domain, icon, onClick }) => {
+}> = ({ domain, prizeAmount = '₹25,000', bannerLabel = 'PRIZE POOL', onClick }) => {
   return (
-    <div 
-      className="trophy-item"
+    <div
+      className="trophy-card"
       onClick={(e) => {
         e.stopPropagation();
         onClick();
       }}
     >
-      <div className="trophy-visual gold-glow">
-        {icon}
+      <div className="trophy-card-banner">
+        <span className="banner-label">{bannerLabel}</span>
+        <span className="banner-amount">{prizeAmount}</span>
       </div>
-      <h3 className="trophy-label">{domain}</h3>
-      <div className="click-hint">Click for details</div>
+      <div className="trophy-card-glow"></div>
+      <div className="trophy-card-img">
+        <img src="/trophy-gold.png" alt="Trophy" />
+      </div>
+      <h3 className="trophy-card-title">{domain}</h3>
+      <div className="trophy-card-hint">Click for details</div>
     </div>
   );
 };
@@ -47,32 +53,67 @@ const TrophyModal: React.FC<{
   domain: string | null;
   onClose: () => void;
 }> = ({ domain, onClose }) => {
+  useEffect(() => {
+    if (domain) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => { document.body.style.overflow = ''; };
+  }, [domain]);
+
   if (!domain) return null;
+
+  const isExtraAward = domain === "Best Women Team" || domain === "Best Innovation" || domain === "Participation";
 
   return (
     <div className="trophy-modal-overlay" onClick={onClose}>
-      <div className="trophy-modal glass-panel" onClick={(e) => e.stopPropagation()}>
+      <div className="trophy-modal" onClick={(e) => e.stopPropagation()}>
         <button className="trophy-modal-close" onClick={onClose}>✕</button>
-        <h2 className="trophy-modal-title">{domain} Winner</h2>
+        <div className="trophy-modal-icon">🏆</div>
+        <h2 className="trophy-modal-title">{domain} {isExtraAward ? '' : <span>Winner</span>}</h2>
         <div className="trophy-modal-content">
-          <div className="prize-tier">
-            <h4>1st Prize <span className="prize-amt">₹15K</span></h4>
-            <ul>
-              <li><span className="detail-bullet"></span>₹15,000 Cash Prize</li>
-              <li><span className="detail-bullet"></span>IEEE Participation Certificate</li>
-              <li><span className="detail-bullet"></span>Electronic Kit + Subscriptions</li>
-              <li><span className="detail-bullet"></span>Exciting Goodies</li>
-            </ul>
-          </div>
-          <div className="prize-tier">
-            <h4>2nd Prize <span className="prize-amt">₹10K</span></h4>
-            <ul>
-              <li><span className="detail-bullet"></span>₹10,000 Cash Prize</li>
-              <li><span className="detail-bullet"></span>IEEE Participation Certificate</li>
-              <li><span className="detail-bullet"></span>Electronic Kit + Subscriptions</li>
-              <li><span className="detail-bullet"></span>Exciting Goodies</li>
-            </ul>
-          </div>
+          {!isExtraAward ? (
+            <>
+              <div className="prize-tier">
+                <div className="prize-tier-header">
+                  <h4>1st Prize</h4>
+                  <span className="prize-amt">₹15K</span>
+                </div>
+                <ul>
+                  <li><span className="detail-check">✓</span>₹15,000 Cash Prize</li>
+                  <li><span className="detail-check">✓</span>IEEE Participation Certificate</li>
+                  <li><span className="detail-check">✓</span>Electronic Kit + Subscriptions</li>
+                  <li><span className="detail-check">✓</span>Exciting Goodies</li>
+                </ul>
+              </div>
+              <div className="prize-tier">
+                <div className="prize-tier-header">
+                  <h4>2nd Prize</h4>
+                  <span className="prize-amt">₹10K</span>
+                </div>
+                <ul>
+                  <li><span className="detail-check">✓</span>₹10,000 Cash Prize</li>
+                  <li><span className="detail-check">✓</span>IEEE Participation Certificate</li>
+                  <li><span className="detail-check">✓</span>Electronic Kit + Subscriptions</li>
+                  <li><span className="detail-check">✓</span>Exciting Goodies</li>
+                </ul>
+              </div>
+            </>
+          ) : (
+            <div className="prize-tier">
+              <div className="prize-tier-header">
+                <h4>Rewards</h4>
+                <span className="prize-amt">{domain === "Participation" ? "Swags" : "₹5K"}</span>
+              </div>
+              <ul>
+                {domain !== "Participation" && <li><span className="detail-check">✓</span>₹5,000 Cash Prize</li>}
+                <li><span className="detail-check">✓</span>IEEE Certificate</li>
+                {domain === "Best Women Team" && <li><span className="detail-check">✓</span>Exciting Goodies</li>}
+                {domain !== "Best Women Team" && <li><span className="detail-check">✓</span>Exciting Goodies & Swags</li>}
+              </ul>
+            </div>
+          )}
         </div>
       </div>
     </div>
@@ -225,21 +266,9 @@ const App: React.FC = () => {
   }, []);
 
   const trophyDomains = [
-    {
-      id: "embedded",
-      name: "Embedded Systems",
-      icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"></path><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"></path><path d="M4 22h16"></path><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"></path><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"></path><path d="M18 2H6v7a6 6 0 0 0 12 0V2z"></path></svg>
-    },
-    {
-      id: "vlsi",
-      name: "VLSI",
-      icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"></path><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"></path><path d="M4 22h16"></path><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"></path><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"></path><path d="M18 2H6v7a6 6 0 0 0 12 0V2z"></path></svg>
-    },
-    {
-      id: "campus",
-      name: "Campus Innovation",
-      icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"></path><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"></path><path d="M4 22h16"></path><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"></path><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"></path><path d="M18 2H6v7a6 6 0 0 0 12 0V2z"></path></svg>
-    }
+    { id: "embedded", name: "Embedded Systems" },
+    { id: "vlsi", name: "VLSI" },
+    { id: "campus", name: "Campus Innovation" }
   ];
 
   return (
@@ -319,7 +348,6 @@ const App: React.FC = () => {
         <section id="home" className="hero">
           <div className="hero-content" ref={heroContentRef}>
             <div className="hero-badges">
-              <div className="hero-badge">National Level &middot; 24-Hour Hardware Hackathon</div>
               <div className="hero-badge hero-badge-secondary">One of Mysuru&apos;s Biggest Hackathons</div>
             </div>
             <h1 className="hero-title">
@@ -342,49 +370,21 @@ const App: React.FC = () => {
               <div className="logo-glow-bg"></div>
               <img src="/logo.png" alt="Symbiot Logo" className="hero-main-logo" />
 
-              <svg className="hero-traces" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
-                <g className="trace-group">
-                  <path d="M 200 200 L 120 120 L 80 120" />
-                  <circle cx="80" cy="120" r="4" className="node" />
-                </g>
-                <g className="trace-group">
-                  <path d="M 200 200 L 280 120 L 320 120" />
-                  <circle cx="320" cy="120" r="4" className="node" />
-                </g>
-                <g className="trace-group">
-                  <path d="M 200 200 L 280 280 L 320 280" />
-                  <circle cx="320" cy="280" r="4" className="node" />
-                </g>
-                <g className="trace-group">
-                  <path d="M 200 200 L 120 280 L 80 280" />
-                  <circle cx="80" cy="280" r="4" className="node" />
-                </g>
-                <g className="trace-group">
-                  <path d="M 200 200 L 200 320" />
-                  <circle cx="200" cy="320" r="4" className="node" />
-                </g>
-              </svg>
-
               <div className="orbit-elements">
-                <div className="orbit-el orbit-1">
+                <div className="orbit-el orbit-1" onClick={() => { setPsFilter('Embedded Systems'); document.getElementById('problem-statements')?.scrollIntoView({ behavior: 'smooth' }); }}>
                   <span className="hw-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect><rect x="9" y="9" width="6" height="6"></rect><line x1="9" y1="1" x2="9" y2="4"></line><line x1="15" y1="1" x2="15" y2="4"></line><line x1="9" y1="20" x2="9" y2="23"></line><line x1="15" y1="20" x2="15" y2="23"></line><line x1="20" y1="9" x2="23" y2="9"></line><line x1="20" y1="14" x2="23" y2="14"></line><line x1="1" y1="9" x2="4" y2="9"></line><line x1="1" y1="14" x2="4" y2="14"></line></svg></span>
-                  Embedded Systems
+                  <span className="orbit-label">Embedded Systems</span>
+                  <span className="orbit-arrow">→</span>
                 </div>
-                <div className="orbit-el orbit-2">
-                  <span className="hw-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="18" cy="18" r="3"></circle><circle cx="6" cy="6" r="3"></circle><circle cx="18" cy="6" r="3"></circle><circle cx="6" cy="18" r="3"></circle><line x1="18" y1="9" x2="18" y2="15"></line><line x1="9" y1="18" x2="15" y2="18"></line><line x1="9" y1="6" x2="15" y2="6"></line><line x1="6" y1="9" x2="6" y2="15"></line><path d="M12 6v12M6 12h12"></path></svg></span>
-                  IoT
+                <div className="orbit-el orbit-2" onClick={() => { setPsFilter('Campus Innovation'); document.getElementById('problem-statements')?.scrollIntoView({ behavior: 'smooth' }); }}>
+                  <span className="hw-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M9 21h6"></path><path d="M12 21v-4"></path><path d="M16 11c0 3-4 5-4 5s-4-2-4-5a4 4 0 1 1 8 0z"></path></svg></span>
+                  <span className="orbit-label">Campus Innovation</span>
+                  <span className="orbit-arrow">→</span>
                 </div>
-                <div className="orbit-el orbit-3">
-                  <span className="hw-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="3" y="11" width="18" height="10" rx="2" ry="2"></rect><circle cx="12" cy="5" r="2"></circle><path d="M12 7v4M8 11v4M16 11v4"></path></svg></span>
-                  Robotics
-                </div>
-                <div className="orbit-el orbit-4">
-                  <span className="hw-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"></path><circle cx="12" cy="12" r="3"></circle><path d="M12 7V4M12 20v-3M7 12H4M20 12h-3M8.46 8.46L6.34 6.34M17.66 17.66l-2.12-2.12M8.46 15.54l-2.12 2.12M17.66 6.34l-2.12 2.12"></path></svg></span>
-                  Edge AI
-                </div>
-                <div className="orbit-el orbit-5">
+                <div className="orbit-el orbit-3" onClick={() => { setPsFilter('VLSI'); document.getElementById('problem-statements')?.scrollIntoView({ behavior: 'smooth' }); }}>
                   <span className="hw-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="2" y="2" width="20" height="20" rx="2" ry="2"></rect><path d="M7 2v20M17 2v20M2 7h20M2 17h20"></path><rect x="9" y="9" width="6" height="6" fill="currentColor"></rect></svg></span>
-                  VLSI
+                  <span className="orbit-label">VLSI</span>
+                  <span className="orbit-arrow">→</span>
                 </div>
               </div>
             </div>
@@ -439,6 +439,9 @@ const App: React.FC = () => {
               <h3>Beyond Prototypes</h3>
               <p>SYMBIOT pushes teams to go beyond pitch decks and demo-only hacks. The focus is on deployable hardware and software stacks that can be tested, benchmarked, and scaled.</p>
               <p>From embedded systems and robotics to AI-driven platforms, every solution is evaluated for engineering rigor and real-world impact by industry experts.</p>
+              <h3 style={{ marginTop: '1rem' }}>VVCE ECE Department</h3>
+              <p>The Department of Electronics and Communication Engineering at VVCE offers a strong academic pathway through a 4-year BE program and an M.Tech track in VLSI, aligning classroom learning with current industry needs.</p>
+              <p>With a focus on core electronics, communication systems, hands-on laboratory practice, internships, and final-year capstone projects, the department encourages students to build practical, career-ready engineering solutions.</p>
             </div>
 
             <div className="about-cards">
@@ -449,174 +452,10 @@ const App: React.FC = () => {
               </div>
               <div className="glass-panel feature-card">
                 <div className="feature-icon">🏢</div>
-                <h4>Industry Problems</h4>
-                <p style={{ color: 'var(--text-secondary)', marginTop: '0.5rem', fontSize: '0.9rem' }}>Tackle curated challenges designed with partner tech companies.</p>
+                <h4>VVCE ECE Pathway</h4>
+                <p style={{ color: 'var(--text-secondary)', marginTop: '0.5rem', fontSize: '0.9rem' }}>Core ECE foundations, electives, and capstone-driven learning for real-world deployment.</p>
               </div>
             </div>
-          </div>
-        </section>
-
-        <SectionDivider />
-
-        <section id="schedule" className="section">
-          <div className="section-header">
-            <h2 className="section-title">Event <span className="text-gradient">Schedule</span></h2>
-            <p className="section-subtitle">A tightly crafted 24-hour journey from onboarding to final showcase.</p>
-          </div>
-
-          <div className="timeline-container">
-
-            <div className="day-label">
-              <span className="day-dot"></span>
-              <h3>Friday</h3>
-            </div>
-
-            <div className="timeline-row row-1">
-              {/* 1 - Registration */}
-              <div className="timeline-stop">
-                <div className="stop-number">1</div>
-                <div className="stop-icon">📝</div>
-                <div className="stop-content">
-                  <h4>Registration</h4>
-                  <span>8:30 am</span>
-                </div>
-              </div>
-              <div className="timeline-connector"></div>
-
-              {/* 2 - Inauguration */}
-              <div className="timeline-stop">
-                <div className="stop-number">2</div>
-                <div className="stop-icon">⚡</div>
-                <div className="stop-content">
-                  <h4>Inauguration</h4>
-                  <span>9:30 am - 10:30 am</span>
-                </div>
-              </div>
-              <div className="timeline-connector"></div>
-
-              {/* 3 - Design Phase */}
-              <div className="timeline-stop">
-                <div className="stop-number">3</div>
-                <div className="stop-icon">🧠</div>
-                <div className="stop-content">
-                  <h4>Design phase</h4>
-                  <span>11:00 am - 1:00 pm</span>
-                </div>
-              </div>
-              <div className="timeline-connector"></div>
-
-              {/* 4 - Lunch */}
-              <div className="timeline-stop">
-                <div className="stop-number">4</div>
-                <div className="stop-icon">🍽️</div>
-                <div className="stop-content">
-                  <h4>Design Phase Ends & Lunch</h4>
-                  <span>1:00 pm - 2:00 pm</span>
-                </div>
-              </div>
-            </div>
-
-            {/* S-Curve Connector Right */}
-            <div className="s-curve-right"></div>
-
-            <div className="timeline-row row-2 reverse">
-              {/* 5 - High Tea */}
-              <div className="timeline-stop">
-                <div className="stop-number">5</div>
-                <div className="stop-icon">☕</div>
-                <div className="stop-content">
-                  <h4>High tea</h4>
-                  <span>4:30 pm</span>
-                </div>
-              </div>
-              <div className="timeline-connector reverse"></div>
-
-              {/* 6 - Dinner */}
-              <div className="timeline-stop">
-                <div className="stop-number">6</div>
-                <div className="stop-icon">🍲</div>
-                <div className="stop-content">
-                  <h4>Dinner</h4>
-                  <span>7:00 pm - 8:00 pm</span>
-                </div>
-              </div>
-              <div className="timeline-connector reverse"></div>
-
-              {/* 7 - Judgement 1 */}
-              <div className="timeline-stop">
-                <div className="stop-number">7</div>
-                <div className="stop-icon">⚖️</div>
-                <div className="stop-content">
-                  <h4>Phase II Judgement</h4>
-                  <span>8:00 pm</span>
-                </div>
-              </div>
-              <div className="timeline-connector reverse"></div>
-
-              {/* 8 - Mid Night Tea */}
-              <div className="timeline-stop">
-                <div className="stop-number">8</div>
-                <div className="stop-icon">🍵</div>
-                <div className="stop-content">
-                  <h4>High tea</h4>
-                  <span>12:00 am</span>
-                </div>
-              </div>
-            </div>
-
-            {/* S-Curve Connector Left */}
-            <div className="s-curve-left"></div>
-
-            <div className="day-label" style={{ marginTop: '2rem' }}>
-              <span className="day-dot"></span>
-              <h3>Saturday</h3>
-            </div>
-
-            <div className="timeline-row row-3">
-              {/* 9 - Breakfast */}
-              <div className="timeline-stop">
-                <div className="stop-number">9</div>
-                <div className="stop-icon">🥐</div>
-                <div className="stop-content">
-                  <h4>Breakfast</h4>
-                  <span>8:00 am</span>
-                </div>
-              </div>
-              <div className="timeline-connector"></div>
-
-              {/* 10 - Final Judgement */}
-              <div className="timeline-stop">
-                <div className="stop-number">10</div>
-                <div className="stop-icon">🤖</div>
-                <div className="stop-content">
-                  <h4>Final Judgement</h4>
-                  <span>11:00 am - 1:00 pm</span>
-                </div>
-              </div>
-              <div className="timeline-connector"></div>
-
-              {/* 11 - Lunch 2 */}
-              <div className="timeline-stop">
-                <div className="stop-number">11</div>
-                <div className="stop-icon">🍛</div>
-                <div className="stop-content">
-                  <h4>Lunch</h4>
-                  <span>1:00 pm</span>
-                </div>
-              </div>
-              <div className="timeline-connector"></div>
-
-              {/* 12 - Valedictory */}
-              <div className="timeline-stop">
-                <div className="stop-number">12</div>
-                <div className="stop-icon">🏆</div>
-                <div className="stop-content">
-                  <h4>Valedictory & tea</h4>
-                  <span>3:00 pm</span>
-                </div>
-              </div>
-            </div>
-
           </div>
         </section>
 
@@ -638,7 +477,6 @@ const App: React.FC = () => {
                 <TrophyCard
                   key={t.id}
                   domain={t.name}
-                  icon={t.icon}
                   onClick={() => setActiveTrophy(t.name)}
                 />
               ))}
@@ -651,44 +489,23 @@ const App: React.FC = () => {
             />
 
             {/* Additional Awards displayed below the trophies */}
-            <div className="extra-awards-container">
-              <div className="glass-panel extra-award-card">
-                <div className="extra-award-header cyan-glow">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
-                  <h4>Best Women Team</h4>
-                  <span className="extra-award-amount">₹5K</span>
-                </div>
-                <ul className="extra-award-details">
-                  <li><span className="detail-bullet"></span>₹5,000 Cash Prize</li>
-                  <li><span className="detail-bullet"></span>IEEE Certificate</li>
-                  <li><span className="detail-bullet"></span>Exciting Goodies</li>
-                </ul>
-              </div>
-
-              <div className="glass-panel extra-award-card">
-                <div className="extra-award-header cyan-glow">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M9 21h6"></path><path d="M12 21v-4"></path><path d="M16 11c0 3-4 5-4 5s-4-2-4-5a4 4 0 1 1 8 0z"></path></svg>
-                  <h4>Best Innovation</h4>
-                  <span className="extra-award-amount">₹5K</span>
-                </div>
-                <ul className="extra-award-details">
-                  <li><span className="detail-bullet"></span>₹5,000 Cash Prize</li>
-                  <li><span className="detail-bullet"></span>IEEE Certificate</li>
-                  <li><span className="detail-bullet"></span>Exciting Goodies & Swags</li>
-                </ul>
-              </div>
-
-              <div className="glass-panel extra-award-card">
-                <div className="extra-award-header cyan-glow">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 12 20 22 4 22 4 12"></polyline><rect x="2" y="7" width="20" height="5"></rect><line x1="12" y1="22" x2="12" y2="7"></line><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"></path><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"></path></svg>
-                  <h4>Participation</h4>
-                  <span className="extra-award-amount">Swags</span>
-                </div>
-                <ul className="extra-award-details">
-                  <li><span className="detail-bullet"></span>IEEE Certificate</li>
-                  <li><span className="detail-bullet"></span>Exciting Goodies & Swags</li>
-                </ul>
-              </div>
+            <div className="trophy-container" style={{ marginTop: '2rem' }}>
+              <TrophyCard
+                domain="Best Women Team"
+                prizeAmount="₹5000"
+                onClick={() => setActiveTrophy("Best Women Team")}
+              />
+              <TrophyCard
+                domain="Best Innovation"
+                prizeAmount="₹5000"
+                onClick={() => setActiveTrophy("Best Innovation")}
+              />
+              <TrophyCard
+                domain="Participation"
+                prizeAmount="Swags"
+                bannerLabel="REWARDS"
+                onClick={() => setActiveTrophy("Participation")}
+              />
             </div>
           </div>
         </section>
@@ -812,26 +629,26 @@ const App: React.FC = () => {
           </div>
         </section>
 
-
       </main>
 
       <footer id="contact" className="footer-redesigned">
         <div className="footer-main">
           {/* Column 1: Logo */}
-          <div className="footer-col footer-col-logo" style={{ textAlign: 'center', alignItems: 'center' }}>
-            <img src="/symbiot-teal-logo.png" alt="Symbiot Logo" className="footer-main-logo" />
+          <div className="footer-col footer-col-logo">
+            <div className="footer-logo-wrapper">
+              <img src="/symbiot-2026-logo.png" alt="SYMBIOT 2026" className="footer-main-logo" />
+            </div>
           </div>
-
-          <div className="footer-divider"></div>
 
           {/* Column 2: Venue */}
           <div className="footer-col footer-col-venue">
             <h4 className="footer-heading">Venue</h4>
-            <p className="footer-text"><strong>24th - 25th April 2026</strong></p>
-            <p className="footer-text">Vidyavardhaka College Of<br />Engineering 3rd stage,<br />Gokulam, Mysore - 570002</p>
+            <div className="venue-glass-box">
+              <p className="venue-date">24th – 25th April 2026</p>
+              <p className="venue-name">Vidyavardhaka College of Engineering</p>
+              <p className="venue-address">Gokulam 3rd Stage,<br />Mysore – 570002</p>
+            </div>
           </div>
-
-          <div className="footer-divider hidden-mobile"></div>
 
           {/* Column 3: Useful Links */}
           <div className="footer-col footer-col-links">
@@ -839,34 +656,32 @@ const App: React.FC = () => {
             <ul className="footer-link-list">
               <li><a href="https://unstop.com/p/symbiot-2026-vidyavardhaka-college-of-engineering-mysore-1652707" target="_blank" rel="noopener noreferrer">Register Now</a></li>
               <li><a href="#about">About Us</a></li>
-              <li><a href="#terms">Terms & Conditions</a></li>
+              <li><a href="#terms">Terms &amp; Conditions</a></li>
               <li><a href="#faq">FAQ</a></li>
               <li><a href="#contact">Contact Us</a></li>
             </ul>
           </div>
 
-          <div className="footer-divider hidden-mobile"></div>
-
           {/* Column 4: Connect With Us */}
-          <div className="footer-col footer-col-social" style={{ flex: 2 }}>
+          <div className="footer-col footer-col-social">
             <h4 className="footer-heading">Connect With Us</h4>
-            
-            <div className="contact-cards-grid">
-              <div className="contact-card">
-                <div className="contact-avatar">NA</div>
-                <div className="contact-info">
-                  <div className="contact-name">Namratha N S</div>
-                  <div className="contact-email">namrathans202@gmail.com</div>
-                  <div className="contact-phone">+919019755706</div>
-                </div>
-              </div>
 
+            <div className="contact-cards-grid">
               <div className="contact-card">
                 <div className="contact-avatar">GO</div>
                 <div className="contact-info">
                   <div className="contact-name">K Goutam</div>
-                  <div className="contact-email">Kgoutam12504@gmail.com</div>
+                  <div className="contact-email">Kgoutam12504@@gmail.com</div>
                   <div className="contact-phone">+917646903404</div>
+                </div>
+              </div>
+
+              <div className="contact-card">
+                <div className="contact-avatar">NS</div>
+                <div className="contact-info">
+                  <div className="contact-name">Namratha N S</div>
+                  <div className="contact-email">namrathans202@gmail.com</div>
+                  <div className="contact-phone">+919019755706</div>
                 </div>
               </div>
 
@@ -878,44 +693,34 @@ const App: React.FC = () => {
                   <div className="contact-phone">+919036810588</div>
                 </div>
               </div>
-
-              <div className="contact-card">
-                <div className="contact-avatar">DH</div>
-                <div className="contact-info">
-                  <div className="contact-name">Dhanush S</div>
-                  <div className="contact-email">dhanushs193@gmail.com</div>
-                  <div className="contact-phone">+919742615796</div>
-                </div>
-              </div>
             </div>
 
             <div className="contact-general-info">
-              <div className="general-item">
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="16" x="2" y="4" rx="2" /><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" /></svg>
-                <span>symbiot@vvce.ac.in</span>
-              </div>
-              <div className="general-item">
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" /><circle cx="12" cy="10" r="3" /></svg>
-                <span>H Kempegowda Sports complex vvce mysuru</span>
-              </div>
-              <div className="general-item">
-                <a href="https://www.instagram.com/iotcrew.vvce?igsh=MWd3YTEyeTNycnlxYw==" target="_blank" rel="noopener noreferrer" style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', color: 'rgba(255,255,255,0.65)', textDecoration: 'none' }}>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#00f0ff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5" /><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" /><line x1="17.5" x2="17.51" y1="6.5" y2="6.5" /></svg>
-                  <span>IoTCrew</span>
-                </a>
+                <div className="general-item">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="16" x="2" y="4" rx="2" /><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" /></svg>
+                  <span>symbiot@vvce.ac.in</span>
+                </div>
+                <div className="general-item">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" /><circle cx="12" cy="10" r="3" /></svg>
+                  <span>H Kempegowda Sports Complex VVCE Mysore</span>
+                </div>
+                <div className="general-item">
+                  <a href="https://www.instagram.com/iotcrew.vvce?igsh=MWd3YTEyeTNycnlxYw==" target="_blank" rel="noopener noreferrer" style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', color: 'rgba(255,255,255,0.65)', textDecoration: 'none' }}>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#00f0ff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5" /><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" /><line x1="17.5" x2="17.51" y1="6.5" y2="6.5" /></svg>
+                    <span>IoTCrew</span>
+                  </a>
+                </div>
               </div>
             </div>
-
-
           </div>
-        </div>
 
-        <div className="footer-bottom-bar">
-          <p>Copyright © 2026 All rights reserved | Made with <span className="heart">❤️</span> by <strong>IoTCrew</strong></p>
-        </div>
+          <div className="footer-bottom-bar">
+            <p>Copyright © 2026 All rights reserved | Made with <span className="heart">❤️</span> by <strong>IoTCrew</strong></p>
+          </div>
       </footer>
     </>
   );
 };
 
 export default App;
+
