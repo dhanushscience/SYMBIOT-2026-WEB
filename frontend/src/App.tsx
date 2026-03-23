@@ -40,7 +40,7 @@ const TrophyCard: React.FC<{
       </div>
       <div className="trophy-card-glow"></div>
       <div className="trophy-card-img">
-        <img src="/trophy-gold.png" alt="Trophy" />
+        <img src="./trophy-gold.png" alt="Trophy" />
       </div>
       <h3 className="trophy-card-title">{domain}</h3>
       <div className="trophy-card-hint">Click for details</div>
@@ -286,7 +286,7 @@ const App: React.FC = () => {
         <div className="navbar-container">
           <div className="navbar-brand">
             <div className="navbar-logos">
-              <img src="/vvce-logo.png" alt="VVCE Logo" className="navbar-logo vvce" />
+              <img src="./vvce-logo.png" alt="VVCE Logo" className="navbar-logo vvce" />
             </div>
             <div className="brand-text">SYMBIOT</div>
           </div>
@@ -308,8 +308,8 @@ const App: React.FC = () => {
             <a href="#sponsors" className="nav-link">Sponsors</a>
             <a href="#faq" className="nav-link">FAQ</a>
             <a href="#contact" className="nav-link">Contact</a>
-            <img src="/ece-logo.png" alt="ECE Department Logo" className="navbar-logo ece" />
-            <img src="/ieee-logo.webp" alt="IEEE Logo" className="navbar-logo ieee" />
+            <img src="./ece-logo.png" alt="ECE Department Logo" className="navbar-logo ece" />
+            <img src="./ieee-logo.webp" alt="IEEE Logo" className="navbar-logo ieee" />
           </div>
 
           <button className={`mobile-menu-btn ${isMobileMenuOpen ? 'open' : ''}`} onClick={toggleMobileMenu}>
@@ -338,8 +338,8 @@ const App: React.FC = () => {
             <a href="#contact" className="mobile-nav-link" onClick={() => setIsMobileMenuOpen(false)}>Contact</a>
             <a href="https://unstop.com/p/symbiot-2026-vidyavardhaka-college-of-engineering-mysore-1652707" target="_blank" rel="noopener noreferrer" className="btn btn-primary" style={{ marginTop: '1rem' }}>Register</a>
             <div className="mobile-logos-row">
-              <img src="/vvce-logo.png" alt="VVCE Logo" className="mobile-footer-logo" />
-              <img src="/ece-logo.png" alt="ECE Logo" className="mobile-footer-logo" />
+              <img src="./vvce-logo.png" alt="VVCE Logo" className="mobile-footer-logo" />
+              <img src="./ece-logo.png" alt="ECE Logo" className="mobile-footer-logo" />
             </div>
           </div>
         </div>
@@ -369,7 +369,7 @@ const App: React.FC = () => {
           <div className="hero-visual" ref={heroVisualRef}>
             <div className="logo-container">
               <div className="logo-glow-bg"></div>
-              <img src="/logo.png" alt="Symbiot Logo" className="hero-main-logo" />
+              <img src="./logo.png" alt="Symbiot Logo" className="hero-main-logo" />
 
               <div className="orbit-elements">
                 <div className="orbit-el orbit-1" onClick={() => { setPsFilter('Embedded Systems'); document.getElementById('problem-statements')?.scrollIntoView({ behavior: 'smooth' }); }}>
@@ -461,14 +461,14 @@ const App: React.FC = () => {
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '2.5rem', width: '100%', textAlign: 'center' }}>
                   <div className="facilitator" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                     <div style={{ width: '100px', height: '100px', borderRadius: '50%', overflow: 'hidden', border: '2px solid var(--accent-cyan)', marginBottom: '1rem', boxShadow: '0 0 15px var(--glow-cyan)' }}>
-                      <img src="/CM-Patil.jpg" alt="Dr. C M Patil" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                      <img src="./CM-Patil.jpg" alt="Dr. C M Patil" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                     </div>
                     <p style={{ color: 'var(--text-primary)', fontWeight: 'bold', fontSize: '1.1rem', margin: 0 }}>Dr. C M Patil</p>
                     <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', margin: '0.25rem 0 0 0' }}>HOD, ECE Department</p>
                   </div>
                   <div className="facilitator" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                     <div style={{ width: '100px', height: '100px', borderRadius: '50%', overflow: 'hidden', border: '2px solid var(--accent-cyan)', marginBottom: '1rem', boxShadow: '0 0 15px var(--glow-cyan)' }}>
-                      <img src="/geethashree-A.jpg" alt="Dr. Geetha Shree A" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                      <img src="./geethashree-A.jpg" alt="Dr. Geetha Shree A" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                     </div>
                     <p style={{ color: 'var(--text-primary)', fontWeight: 'bold', fontSize: '1.1rem', margin: 0 }}>Dr. Geetha Shree A</p>
                     <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', margin: '0.25rem 0 0 0' }}>SYMBIOT Faculty Coordinator</p>
@@ -544,10 +544,10 @@ const App: React.FC = () => {
               <h3 className="gallery-year-title">SYMBIOT 2025</h3>
               <div className="gallery-grid">
                 {[
-                  "/symbiot-2025-1.jpg",
-                  "/symbiot-2025-2.jpg",
-                  "/symbiot-2025-3.jpg",
-                  "/symbiot-2025-4.jpg"
+                  "./symbiot-2025-1.jpg",
+                  "./symbiot-2025-2.jpg",
+                  "./symbiot-2025-3.jpg",
+                  "./symbiot-2025-4.jpg"
                 ].map((src, idx) => (
                   <div className="gallery-item" key={idx}>
                     <img src={src} alt="Symbiot 2025 Highlight" />
@@ -562,10 +562,10 @@ const App: React.FC = () => {
               <h3 className="gallery-year-title">SYMBIOT 2024</h3>
               <div className="gallery-grid">
                 {[
-                  "/symbiot-2024-1.jpg",
-                  "/symbiot-2024-2.jpg",
-                  "/symbiot-2024-3.jpg",
-                  "/symbiot-2024-4.jpg"
+                  "./symbiot-2024-1.jpg",
+                  "./symbiot-2024-2.jpg",
+                  "./symbiot-2024-3.jpg",
+                  "./symbiot-2024-4.jpg"
                 ].map((src, idx) => (
                   <div className="gallery-item" key={idx}>
                     <img src={src} alt="Symbiot 2024 Highlight" />
@@ -580,10 +580,10 @@ const App: React.FC = () => {
               <h3 className="gallery-year-title">SYMBIOT 2023</h3>
               <div className="gallery-grid">
                 {[
-                  "/symbiot-2023-1.jpg",
-                  "/symbiot-2023-2.jpg",
-                  "/symbiot-2023-3.jpg",
-                  "/symbiot-2023-4.jpg"
+                  "./symbiot-2023-1.jpg",
+                  "./symbiot-2023-2.jpg",
+                  "./symbiot-2023-3.jpg",
+                  "./symbiot-2023-4.jpg"
                 ].map((src, idx) => (
                   <div className="gallery-item" key={idx}>
                     <img src={src} alt="Symbiot 2023 Highlight" />
@@ -606,11 +606,11 @@ const App: React.FC = () => {
             <h3>Powered By</h3>
             <div className="powered-by-logos">
               <div className="powered-logo-wrapper left">
-                <img src="/iotcrew.png" alt="IO T CREW Logo" className="powered-logo" />
+                <img src="./iotcrew.png" alt="IO T CREW Logo" className="powered-logo" />
               </div>
               <div className="powered-divider"></div>
               <div className="powered-logo-wrapper right">
-                <img src="/Unstop-Logo-Blue-Medium.png" alt="Unstop Logo" className="powered-logo unstop" />
+                <img src="./Unstop-Logo-Blue-Medium.png" alt="Unstop Logo" className="powered-logo unstop" />
               </div>
             </div>
           </div>
@@ -618,7 +618,7 @@ const App: React.FC = () => {
           <h3 style={{ fontSize: '2rem', marginBottom: '2.5rem', fontFamily: 'Outfit, sans-serif' }}>Proud Sponsors</h3>
           <div className="sponsors-grid">
             <div className="sponsor-card">
-              <img src="/PravegaSemi-Logo.png" alt="Pravega Semi Logo" className="sponsor-logo" />
+              <img src="./PravegaSemi-Logo.png" alt="Pravega Semi Logo" className="sponsor-logo" />
             </div>
           </div>
         </section>
@@ -663,7 +663,7 @@ const App: React.FC = () => {
           {/* Column 1: Logo */}
           <div className="footer-col footer-col-logo">
             <div className="footer-logo-wrapper">
-              <img src="/symbiot-2026-logo.png" alt="SYMBIOT 2026" className="footer-main-logo" />
+              <img src="./symbiot-2026-logo.png" alt="SYMBIOT 2026" className="footer-main-logo" />
             </div>
           </div>
 
