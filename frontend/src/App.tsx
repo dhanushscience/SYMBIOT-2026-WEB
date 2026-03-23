@@ -280,6 +280,7 @@ const App: React.FC = () => {
       </div>
 
       <CircuitBackground />
+      <div className="bg-soften-layer" aria-hidden="true"></div>
 
       <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
         <div className="navbar-container">
@@ -308,7 +309,7 @@ const App: React.FC = () => {
             <a href="#faq" className="nav-link">FAQ</a>
             <a href="#contact" className="nav-link">Contact</a>
             <img src="/ece-logo.png" alt="ECE Department Logo" className="navbar-logo ece" />
-            <img src="/ieee-logo.png" alt="IEEE Logo" className="navbar-logo ieee" />
+            <img src="/ieee-logo.webp" alt="IEEE Logo" className="navbar-logo ieee" />
           </div>
 
           <button className={`mobile-menu-btn ${isMobileMenuOpen ? 'open' : ''}`} onClick={toggleMobileMenu}>
@@ -344,7 +345,7 @@ const App: React.FC = () => {
         </div>
       </nav>
 
-      <main>
+      <main className="content-layer">
         <section id="home" className="hero">
           <div className="hero-content" ref={heroContentRef}>
             <div className="hero-badges">
@@ -436,10 +437,10 @@ const App: React.FC = () => {
 
           <div className="about-grid">
             <div className="about-content">
-              <h3>Beyond Prototypes</h3>
+              <h3 style={{ color: 'var(--accent-cyan)' }}>Beyond Prototypes</h3>
               <p>SYMBIOT pushes teams to go beyond pitch decks and demo-only hacks. The focus is on deployable hardware and software stacks that can be tested, benchmarked, and scaled.</p>
               <p>From embedded systems and robotics to AI-driven platforms, every solution is evaluated for engineering rigor and real-world impact by industry experts.</p>
-              <h3 style={{ marginTop: '1rem' }}>VVCE ECE Department</h3>
+              <h3 style={{ marginTop: '1rem', color: 'var(--accent-cyan)' }}>VVCE ECE Department</h3>
               <p>The Department of Electronics and Communication Engineering at VVCE offers a strong academic pathway through a 4-year BE program and an M.Tech track in VLSI, aligning classroom learning with current industry needs.</p>
               <p>With a focus on core electronics, communication systems, hands-on laboratory practice, internships, and final-year capstone projects, the department encourages students to build practical, career-ready engineering solutions.</p>
             </div>
@@ -447,13 +448,32 @@ const App: React.FC = () => {
             <div className="about-cards">
               <div className="glass-panel feature-card">
                 <div className="feature-icon">⚙️</div>
-                <h4>Real Hardware</h4>
+                <h4 style={{ color: 'var(--accent-yellow)' }}>Real Hardware</h4>
                 <p style={{ color: 'var(--text-secondary)', marginTop: '0.5rem', fontSize: '0.9rem' }}>Prototype and test on actual robots, sensors, and microcontrollers.</p>
               </div>
               <div className="glass-panel feature-card">
                 <div className="feature-icon">🏢</div>
-                <h4>VVCE ECE Pathway</h4>
+                <h4 style={{ color: 'var(--accent-yellow)' }}>VVCE ECE Pathway</h4>
                 <p style={{ color: 'var(--text-secondary)', marginTop: '0.5rem', fontSize: '0.9rem' }}>Core ECE foundations, electives, and capstone-driven learning for real-world deployment.</p>
+              </div>
+              <div className="glass-panel feature-card facilitators-card" style={{ gridColumn: '1 / -1', padding: '1.5rem', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                <h4 style={{ marginBottom: '1.5rem', textAlign: 'center', width: '100%', color: 'var(--accent-cyan)', fontSize: '1.4rem' }}>Facilitators</h4>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '2.5rem', width: '100%', textAlign: 'center' }}>
+                  <div className="facilitator" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                    <div style={{ width: '100px', height: '100px', borderRadius: '50%', overflow: 'hidden', border: '2px solid var(--accent-cyan)', marginBottom: '1rem', boxShadow: '0 0 15px var(--glow-cyan)' }}>
+                      <img src="/CM-Patil.jpg" alt="Dr. C M Patil" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                    </div>
+                    <p style={{ color: 'var(--text-primary)', fontWeight: 'bold', fontSize: '1.1rem', margin: 0 }}>Dr. C M Patil</p>
+                    <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', margin: '0.25rem 0 0 0' }}>HOD, ECE Department</p>
+                  </div>
+                  <div className="facilitator" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                    <div style={{ width: '100px', height: '100px', borderRadius: '50%', overflow: 'hidden', border: '2px solid var(--accent-cyan)', marginBottom: '1rem', boxShadow: '0 0 15px var(--glow-cyan)' }}>
+                      <img src="/geethashree-A.jpg" alt="Dr. Geetha Shree A" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                    </div>
+                    <p style={{ color: 'var(--text-primary)', fontWeight: 'bold', fontSize: '1.1rem', margin: 0 }}>Dr. Geetha Shree A</p>
+                    <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', margin: '0.25rem 0 0 0' }}>SYMBIOT Faculty Coordinator</p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -582,17 +602,24 @@ const App: React.FC = () => {
             <h2 className="section-title"><span className="text-gradient">Sponsors</span></h2>
           </div>
 
-          <div className="title-sponsor">
-            <h3>Pravega Semi</h3>
+          <div className="powered-by-sponsor">
+            <h3>Powered By</h3>
+            <div className="powered-by-logos">
+              <div className="powered-logo-wrapper left">
+                <img src="/iotcrew.png" alt="IO T CREW Logo" className="powered-logo" />
+              </div>
+              <div className="powered-divider"></div>
+              <div className="powered-logo-wrapper right">
+                <img src="/Unstop-Logo-Blue-Medium.png" alt="Unstop Logo" className="powered-logo unstop" />
+              </div>
+            </div>
           </div>
 
           <h3 style={{ fontSize: '2rem', marginBottom: '2.5rem', fontFamily: 'Outfit, sans-serif' }}>Proud Sponsors</h3>
           <div className="sponsors-grid">
-            {['Vivartan', 'AWS', 'Geeks for Geeks', 'Wolfram', 'Axure', 'Balsamiq', 'DNA', 'Leading Learners', 'Pixel Hut', 'Sidewalk Cafe'].map((sponsor, i) => (
-              <div className="sponsor-card" key={i}>
-                <div className="sponsor-name">{sponsor}</div>
-              </div>
-            ))}
+            <div className="sponsor-card">
+              <img src="/PravegaSemi-Logo.png" alt="Pravega Semi Logo" className="sponsor-logo" />
+            </div>
           </div>
         </section>
 
