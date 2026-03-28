@@ -485,6 +485,35 @@ const App: React.FC = () => {
 
         <SectionDivider />
 
+        <section id="templates" className="section">
+          <div className="section-header">
+            <h2 className="section-title">PPT <span className="text-gradient">Templates</span></h2>
+            <p className="section-subtitle">Download the required presentation template for your domain.</p>
+          </div>
+          
+          <div className="about-cards" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem', maxWidth: '1000px', margin: '0 auto' }}>
+            <div className="glass-panel feature-card" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
+              <div className="feature-icon">🤖</div>
+              <h4 style={{ color: 'var(--accent-yellow)', marginBottom: '1.5rem', fontSize: '1.25rem', fontFamily: 'Outfit, sans-serif' }}>Embedded Systems</h4>
+              <a href={`${import.meta.env.BASE_URL}PPT_template/SYMBIOT_2026_EMBD_PPT.pptx`} download="SYMBIOT_2026_EMBD_PPT.pptx" className="btn btn-secondary">Download</a>
+            </div>
+
+            <div className="glass-panel feature-card" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
+              <div className="feature-icon">💡</div>
+              <h4 style={{ color: 'var(--accent-yellow)', marginBottom: '1.5rem', fontSize: '1.25rem', fontFamily: 'Outfit, sans-serif' }}>Campus Innovation</h4>
+              <a href={`${import.meta.env.BASE_URL}PPT_template/SYMBIOT_2026_CAMPUS_PPT.pptx`} download="SYMBIOT_2026_CAMPUS_PPT.pptx" className="btn btn-secondary">Download</a>
+            </div>
+
+            <div className="glass-panel feature-card" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
+              <div className="feature-icon">🔌</div>
+              <h4 style={{ color: 'var(--accent-yellow)', marginBottom: '1.5rem', fontSize: '1.25rem', fontFamily: 'Outfit, sans-serif' }}>VLSI</h4>
+              <a href="#" onClick={(e) => e.preventDefault()} className="btn btn-secondary" style={{ opacity: 0.5, cursor: 'not-allowed' }}>Coming Soon</a>
+            </div>
+          </div>
+        </section>
+
+        <SectionDivider />
+
         <section id="prizes" className="section bg-alt pattern-grid">
           <div className="section-header">
             <h2 className="section-title">Rewards & <span className="text-gradient">Recognition</span></h2>
