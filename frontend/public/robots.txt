@@ -1,0 +1,6 @@
+# Robots.txt for symbiotvvce.in
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://symbiotvvce.in/sitemap.xml

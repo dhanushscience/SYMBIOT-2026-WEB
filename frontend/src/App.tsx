@@ -344,16 +344,20 @@ const App: React.FC = () => {
       </nav>
 
       <main className="content-layer">
-        <section id="home" className="hero">
+        <section id="home" className="hero" itemScope itemType="https://schema.org/Event">
+          <meta itemProp="name" content="Symbiot 2026 - National Level Hackathon at VVCE Mysore" />
+          <meta itemProp="startDate" content="2026-04-24T08:30:00+05:30" />
+          <meta itemProp="endDate" content="2026-04-25T08:30:00+05:30" />
           <div className="hero-content" ref={heroContentRef}>
             <div className="hero-badges">
               <div className="hero-badge hero-badge-secondary">One of Mysuru&apos;s Biggest Hackathons</div>
             </div>
             <h1 className="hero-title">
+              <span className="sr-only">Symbiot 2026 National Level Hackathon VVCE Mysore — </span>
               Design. Build. <br />
               <span className="text-gradient">Deploy.</span>
             </h1>
-            <p className="hero-desc">
+            <p className="hero-desc" itemProp="description">
               Join 500+ innovators for a 24-hour deep tech build challenge at Vidyavardhaka College of Engineering, Mysuru.
               <br /><br />
               <span className="hero-dates">April 24th - 25th, 2026</span>
@@ -367,7 +371,7 @@ const App: React.FC = () => {
           <div className="hero-visual" ref={heroVisualRef}>
             <div className="logo-container">
               <div className="logo-glow-bg"></div>
-              <img src="./logo.png" alt="Symbiot Logo" className="hero-main-logo" />
+              <img src="./logo.png" alt="Symbiot 2026 Hackathon Logo - VVCE Mysore National Level Hackathon" className="hero-main-logo" itemProp="image" />
 
               <div className="orbit-elements">
                 <div className="orbit-el orbit-1" onClick={() => { setPsFilter('Embedded and IOT'); document.getElementById('problem-statements')?.scrollIntoView({ behavior: 'smooth' }); }}>
@@ -624,7 +628,7 @@ const App: React.FC = () => {
                   "./symbiot-2025-4.jpg"
                 ].map((src, idx) => (
                   <div className="gallery-item" key={idx}>
-                    <img src={src} alt="Symbiot 2025 Highlight" />
+                    <img src={src} alt={`Symbiot 2025 hackathon at VVCE Mysore - highlight ${idx + 1}`} loading="lazy" />
                     <div className="gallery-overlay"><span className="gallery-text">SYMBIOT 2025</span></div>
                   </div>
                 ))}
@@ -642,7 +646,7 @@ const App: React.FC = () => {
                   "./symbiot-2024-4.jpg"
                 ].map((src, idx) => (
                   <div className="gallery-item" key={idx}>
-                    <img src={src} alt="Symbiot 2024 Highlight" />
+                    <img src={src} alt={`Symbiot 2024 hackathon at VVCE Mysore - highlight ${idx + 1}`} loading="lazy" />
                     <div className="gallery-overlay"><span className="gallery-text">SYMBIOT 2024</span></div>
                   </div>
                 ))}
@@ -660,7 +664,7 @@ const App: React.FC = () => {
                   "./symbiot-2023-4.jpg"
                 ].map((src, idx) => (
                   <div className="gallery-item" key={idx}>
-                    <img src={src} alt="Symbiot 2023 Highlight" />
+                    <img src={src} alt={`Symbiot 2023 hackathon at VVCE Mysore - highlight ${idx + 1}`} loading="lazy" />
                     <div className="gallery-overlay"><span className="gallery-text">SYMBIOT 2023</span></div>
                   </div>
                 ))}
@@ -790,6 +794,7 @@ const App: React.FC = () => {
 
           <div className="footer-bottom-bar">
             <p>Copyright © 2026 All rights reserved | Made with <span className="heart">❤️</span> by <strong>IoTCrew</strong></p>
+            <p className="sr-only">Symbiot 2026 is the flagship national-level hackathon organized by the Electronics and Communication Engineering (ECE) Department of Vidyavardhaka College of Engineering (VVCE), Mysuru, Karnataka, India. It is a 24-hour offline hackathon featuring domains like Embedded Systems, IoT, Open Innovation, and Campus Innovation. Students from all engineering colleges across India can participate.</p>
           </div>
       </footer>
     </>
