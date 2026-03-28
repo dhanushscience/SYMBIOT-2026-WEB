@@ -6,3 +6,35 @@ services:
     buildCommand: npm install && npm run build
     staticPublishPath: dist
     autoDeploy: true
+
+    # SPA fallback — all non-file routes serve index.html
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
+
+    # SEO & security headers
+    headers:
+      - path: /*
+        name: X-Robots-Tag
+        value: index, follow
+      - path: /*
+        name: X-Content-Type-Options
+        value: nosniff
+      - path: /*
+        name: X-Frame-Options
+        value: SAMEORIGIN
+      - path: /*
+        name: Referrer-Policy
+        value: strict-origin-when-cross-origin
+      # Cache static assets aggressively (JS, CSS bundles)
+      - path: /assets/*
+        name: Cache-Control
+        value: public, max-age=31536000, immutable
+      # SEO files — revalidate frequently so Google sees updates
+      - path: /sitemap.xml
+        name: Cache-Control
+        value: public, max-age=3600
+      - path: /robots.txt
+        name: Cache-Control
+        value: public, max-age=3600
