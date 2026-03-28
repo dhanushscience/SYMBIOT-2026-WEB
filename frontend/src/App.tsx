@@ -83,7 +83,6 @@ const TrophyModal: React.FC<{
                 <ul>
                   <li><span className="detail-check">✓</span>₹15,000 Cash Prize</li>
                   <li><span className="detail-check">✓</span>IEEE Participation Certificate</li>
-                  <li><span className="detail-check">✓</span>Electronic Kit + Subscriptions</li>
                   <li><span className="detail-check">✓</span>Exciting Goodies</li>
                 </ul>
               </div>
@@ -95,7 +94,6 @@ const TrophyModal: React.FC<{
                 <ul>
                   <li><span className="detail-check">✓</span>₹10,000 Cash Prize</li>
                   <li><span className="detail-check">✓</span>IEEE Participation Certificate</li>
-                  <li><span className="detail-check">✓</span>Electronic Kit + Subscriptions</li>
                   <li><span className="detail-check">✓</span>Exciting Goodies</li>
                 </ul>
               </div>
