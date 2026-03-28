@@ -581,28 +581,28 @@ const App: React.FC = () => {
 
           <h3 style={{ fontSize: '2rem', marginBottom: '2.5rem', fontFamily: 'Outfit, sans-serif' }}>Prize Partners</h3>
           <div className="sponsors-grid">
-            <div className="sponsor-card">
+            <a href="https://pravegasemi.com/" target="_blank" rel="noopener noreferrer" className="sponsor-card">
               <img src="./PravegaSemi-Logo.png" alt="Pravega Semi Logo" className="sponsor-logo" />
-            </div>
-            <div className="sponsor-card" style={{ padding: '0.5rem' }}>
+            </a>
+            <a href="https://wie.ieee.org/" target="_blank" rel="noopener noreferrer" className="sponsor-card" style={{ padding: '0.5rem' }}>
               <img src="./wie.png" alt="WIE" className="sponsor-logo" />
-            </div>
-            <div className="sponsor-card" style={{ padding: '0.75rem' }}>
+            </a>
+            <a href="https://tregoraa.com/?srsltid=AfmBOoqwkVjv00TXp2nV_r4Tg3iAPwxNFGxiobkdkkaZI0o5V4dX-ksq" target="_blank" rel="noopener noreferrer" className="sponsor-card" style={{ padding: '0.75rem' }}>
               <img src="./Tregorra.png" alt="Tregorra" className="sponsor-logo" />
-            </div>
+            </a>
           </div>
 
           <h3 style={{ fontSize: '2rem', marginBottom: '2.5rem', marginTop: '4rem', fontFamily: 'Outfit, sans-serif' }}>Proud Sponsors</h3>
           <div className="sponsors-grid">
-            <div className="sponsor-card">
+            <a href="https://www.geeksforgeeks.org/" target="_blank" rel="noopener noreferrer" className="sponsor-card">
               <img src="./gg.png" alt="Global Geeks" className="sponsor-logo" />
-            </div>
-            <div className="sponsor-card">
+            </a>
+            <a href="https://logycent.com/" target="_blank" rel="noopener noreferrer" className="sponsor-card">
               <img src="./Logycent.png" alt="Logycent" className="sponsor-logo" />
-            </div>
-            <div className="sponsor-card" style={{ padding: '0.5rem' }}>
+            </a>
+            <a href="https://www.instagram.com/pixel_hut/" target="_blank" rel="noopener noreferrer" className="sponsor-card" style={{ padding: '0.5rem' }}>
               <img src="./pixelhut.png" alt="Pixelhut" className="sponsor-logo" />
-            </div>
+            </a>
           </div>
         </section>
 
@@ -737,9 +737,8 @@ const App: React.FC = () => {
             <ul className="footer-link-list">
               <li><a href="https://unstop.com/p/symbiot-2026-vidyavardhaka-college-of-engineering-mysore-1652707" target="_blank" rel="noopener noreferrer">Register Now</a></li>
               <li><a href="#about">About Us</a></li>
-              <li><a href="#terms">Terms &amp; Conditions</a></li>
               <li><a href="#faq">FAQ</a></li>
-              <li><a href="#contact">Contact Us</a></li>
+              <li><a href="mailto:symbiot@vvce.ac.in?subject=[PARTICIPANT]%20Query%20Regarding%20SYMBIOT%202026">Contact Us</a></li>
             </ul>
           </div>
 
@@ -779,16 +778,12 @@ const App: React.FC = () => {
             <div className="contact-general-info">
                 <div className="general-item">
                   <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="16" x="2" y="4" rx="2" /><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" /></svg>
-                  <span>symbiot@vvce.ac.in</span>
+                  <a href="mailto:symbiot@vvce.ac.in?subject=[PARTICIPANT]%20Query%20Regarding%20SYMBIOT%202026" style={{ color: 'rgba(255,255,255,0.65)', textDecoration: 'none' }}>symbiot@vvce.ac.in</a>
                 </div>
                 <div className="general-item">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" /><circle cx="12" cy="10" r="3" /></svg>
-                  <span>H Kempegowda Sports Complex VVCE Mysore</span>
-                </div>
-                <div className="general-item">
-                  <a href="https://www.instagram.com/iotcrew.vvce?igsh=MWd3YTEyeTNycnlxYw==" target="_blank" rel="noopener noreferrer" style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', color: 'rgba(255,255,255,0.65)', textDecoration: 'none' }}>
+                  <a href="https://www.instagram.com/symbiot.2026/" target="_blank" rel="noopener noreferrer" style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', color: 'rgba(255,255,255,0.65)', textDecoration: 'none' }}>
                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#00f0ff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5" /><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" /><line x1="17.5" x2="17.51" y1="6.5" y2="6.5" /></svg>
-                    <span>IoTCrew</span>
+                    <span>SYMBIOT 2026</span>
                   </a>
                 </div>
               </div>
