@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600&display=swap');
+@import url('https://fonts.cdnfonts.com/css/vampire-wars');
+
 * {
   -webkit-tap-highlight-color: transparent !important;
 }
@@ -2924,7 +2927,7 @@ h1, h2, h3, h4, h5, h6 {
 .gallery-year-section,
 .sponsors-grid,
 .faq-container,
-.prizes-section-wrapper,
+.prizes-grid,
 .stats-ribbon,
 .ps-controls,
 .ps-table-wrapper {
@@ -2940,7 +2943,7 @@ h1, h2, h3, h4, h5, h6 {
 .gallery-year-section.in-view,
 .sponsors-grid.in-view,
 .faq-container.in-view,
-.prizes-section-wrapper.in-view,
+.prizes-grid.in-view,
 .stats-ribbon.in-view,
 .ps-controls.in-view,
 .ps-table-wrapper.in-view {

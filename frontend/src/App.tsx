@@ -3,32 +3,6 @@ import './style.css';
 import CircuitBackground from './CircuitBackground';
 import ProblemStatements from './ProblemStatements';
 
-// --- Error Boundary to prevent blank screen on JS errors ---
-class ErrorBoundary extends React.Component<
-  { children: React.ReactNode },
-  { hasError: boolean }
-> {
-  constructor(props: { children: React.ReactNode }) {
-    super(props);
-    this.state = { hasError: false };
-  }
-  static getDerivedStateFromError() {
-    return { hasError: true };
-  }
-  render() {
-    if (this.state.hasError) {
-      return (
-        <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#0a0a0c', color: '#ffffff', flexDirection: 'column', gap: '1rem', padding: '2rem', textAlign: 'center' }}>
-          <h1 style={{ fontFamily: 'Outfit, sans-serif', fontSize: '2rem' }}>SYMBIOT 2026</h1>
-          <p style={{ color: '#e2e8f0' }}>Something went wrong loading the page. Please try refreshing.</p>
-          <button onClick={() => window.location.reload()} style={{ padding: '0.75rem 2rem', background: 'transparent', border: '1.5px solid #00f0ff', color: '#00f0ff', borderRadius: '4px', cursor: 'pointer', fontSize: '1rem' }}>Refresh</button>
-        </div>
-      );
-    }
-    return this.props.children;
-  }
-}
-
 const SectionDivider: React.FC = () => (
   <div className="section-divider">
     <div className="node left"></div>
@@ -273,15 +247,9 @@ const App: React.FC = () => {
 
   // Intersection Observer — reveal sections on scroll
   useEffect(() => {
-    const SELECTOR = '.section-header, .about-content, .about-cards, .countdown-section, .gallery-year-section, .sponsors-grid, .faq-container, .prizes-section-wrapper, .stats-ribbon, .ps-controls, .ps-table-wrapper';
-    const targets = document.querySelectorAll<HTMLElement>(SELECTOR);
-
-    // Fallback: if IntersectionObserver is not supported, show all sections immediately
-    if (!('IntersectionObserver' in window)) {
-      targets.forEach(el => el.classList.add('in-view'));
-      return;
-    }
-
+    const targets = document.querySelectorAll<HTMLElement>(
+      '.section-header, .about-content, .about-cards, .countdown-section, .gallery-year-section, .sponsors-grid, .faq-container, .prizes-section-wrapper, .stats-ribbon, .ps-controls, .ps-table-wrapper'
+    );
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach(entry => {
@@ -294,20 +262,7 @@ const App: React.FC = () => {
       { threshold: 0.07, rootMargin: '0px 0px -50px 0px' }
     );
     targets.forEach(el => observer.observe(el));
-
-    // Safety fallback: reveal all remaining hidden sections after timeout
-    // in case IntersectionObserver doesn't fire (e.g., hidden tab, certain browsers)
-    const FALLBACK_TIMEOUT_MS = 5000;
-    const fallbackTimer = setTimeout(() => {
-      document.querySelectorAll<HTMLElement>(SELECTOR).forEach(el => {
-        el.classList.add('in-view');
-      });
-    }, FALLBACK_TIMEOUT_MS);
-
-    return () => {
-      observer.disconnect();
-      clearTimeout(fallbackTimer);
-    };
+    return () => observer.disconnect();
   }, []);
 
   const trophyDomains = [
@@ -794,11 +749,5 @@ const App: React.FC = () => {
   );
 };
 
-export default function AppWithBoundary() {
-  return (
-    <ErrorBoundary>
-      <App />
-    </ErrorBoundary>
-  );
-}
+export default App;
 
