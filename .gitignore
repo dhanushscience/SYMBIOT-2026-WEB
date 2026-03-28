@@ -1,0 +1,64 @@
+# OS and editor files
+.DS_Store
+Thumbs.db
+desktop.ini
+.idea/
+.vscode/*
+!.vscode/extensions.json
+*.swp
+*.swo
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Environment and local secrets
+.env
+.env.*
+!.env.example
+*.local
+
+# Node / frontend
+node_modules/
+frontend/node_modules/
+dist/
+build/
+coverage/
+.vite/
+*.tsbuildinfo
+
+# Python / backend
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.nox/
+.tox/
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+frontend/.venv/
+backend/.venv/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Archives and temporary files
+*.zip
+*.tar
+*.gz
+*.tmp
+*.temp
