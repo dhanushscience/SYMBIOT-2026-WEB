@@ -2251,7 +2251,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .sponsor-card {
-  background: var(--bg-surface);
+  background: #ffffff;
   border-radius: 16px;
   padding: 2rem;
   display: flex;

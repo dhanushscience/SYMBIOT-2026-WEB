@@ -3,7 +3,8 @@ import React, { useState, useEffect, useMemo } from 'react';
 // --- Problem Statement Data ---
 interface ProblemStatement {
   psid: string;
-  domain: 'VLSI' | 'Embedded Systems' | 'Campus Innovation';
+  domain: 'Open Innovation' | 'Embedded and IOT' | 'Campus Innovation';
+  subdomain?: string;
   title: string;
   department: string;
   category: string;
@@ -14,92 +15,57 @@ interface ProblemStatement {
 const problemStatements: ProblemStatement[] = [
   {
     psid: 'SYM0101',
-    domain: 'VLSI',
-    title: 'Design and demonstrate a fault injection attack on a simplified RISC-V Bootloader RTL that successfully bypasses the firmware signature verification mechanism.',
-    department: 'Electronics & Semiconductor Security',
-    category: 'Hardware Security',
-    theme: 'VLSI Security / Secure Systems',
-    description: `Modern embedded systems rely on secure boot mechanisms to verify firmware authenticity before execution. However, hardware-level vulnerabilities such as fault injection attacks can potentially bypass these protections.
-
-Participants must design and demonstrate a controlled fault injection attack on a simplified RISC-V bootloader RTL implementation. The goal is to identify how faults introduced in the verification logic can bypass firmware signature validation.
-
-Key objectives include:
-• Analyze the boot process and firmware verification flow
-• Identify vulnerable hardware points for fault injection
-• Simulate fault injection scenarios in RTL
-• Demonstrate how signature verification can be bypassed`
+    domain: 'Open Innovation',
+    subdomain: 'VLSI & FPGA',
+    title: 'FPGA-Based Intelligent Traffic Light Controller with Emergency & Pedestrian Priority',
+    department: 'Electronics & Communication Engineering',
+    category: 'Hardware Design',
+    theme: 'Smart Traffic Management / FPGA',
+    description: `Design and implement an FPGA-based smart traffic light controller that dynamically controls traffic signals based on different conditions. The system must support emergency vehicle override and pedestrian crossing requests.`
   },
   {
     psid: 'SYM0102',
-    domain: 'VLSI',
-    title: 'Design a hardware-accelerated intrusion detection module that can analyze incoming packet headers and detect suspicious patterns.',
+    domain: 'Open Innovation',
+    subdomain: 'VLSI & FPGA',
+    title: 'FPGA-Based FIR Filter for Real-Time Signal Processing',
     department: 'Electronics & Communication Engineering',
-    category: 'Hardware / Network Security',
-    theme: 'Cybersecurity Hardware Acceleration',
-    description: `Network security systems often rely on software-based intrusion detection systems which can become performance bottlenecks under high network loads.
-
-This problem requires designing a hardware-based intrusion detection module capable of analyzing network packet headers in real-time.
-
-Participants should create a hardware architecture capable of:
-• Inspecting packet headers at high speed
-• Detecting predefined malicious patterns or anomalies
-• Triggering alerts when suspicious traffic is detected
-• Maintaining high throughput with minimal latency`
+    category: 'Digital Signal Processing',
+    theme: 'Real-Time Processing / FPGA',
+    description: `Design and implement a Finite Impulse Response (FIR) digital filter using FPGA hardware to process real-time input data such as audio or sensor signals. The design should demonstrate filtering capability such as noise reduction or smoothing.`
   },
   {
     psid: 'SYM0103',
-    domain: 'VLSI',
-    title: 'Design a fault-tolerant line buffer module for a simplified medical X-ray image processing pipeline capable of detecting and correcting memory bit-flips caused by SEUs.',
-    department: 'Biomedical Electronics / VLSI Systems',
-    category: 'Hardware Reliability',
-    theme: 'Medical Electronics / Fault-Tolerant Systems',
-    description: `Medical imaging systems require extremely high reliability since even small errors in image processing can lead to incorrect diagnoses.
-
-Participants must design a fault-tolerant line buffer module used in an X-ray image processing pipeline. The system should detect and correct memory bit-flips caused by Single Event Upsets (SEUs), which commonly occur in radiation-sensitive environments.
-
-The design should focus on:
-• Reliable data buffering for image processing
-• Error detection mechanisms
-• Error correction methods for memory corruption
-• Ensuring uninterrupted image processing operations`
+    domain: 'Open Innovation',
+    subdomain: 'VLSI & FPGA',
+    title: 'FPGA-Based Hardware Accelerator for Encryption and Decryption',
+    department: 'Electronics & Communication Engineering',
+    category: 'Hardware Security',
+    theme: 'Hardware Acceleration / Cybersecurity',
+    description: `Design and implement a hardware accelerator on FPGA to perform high-speed data encryption and decryption. The system should demonstrate faster performance compared to software-based execution by using parallel hardware architecture.`
   },
   {
     psid: 'SYM0104',
-    domain: 'VLSI',
-    title: 'Design and implement a hardware accelerator for a convolutional neural network (CNN) layer using Verilog or VHDL.',
-    department: 'Electronics & AI Hardware Systems',
-    category: 'Hardware Acceleration',
-    theme: 'AI Hardware / Edge Computing',
-    description: `Deep learning models are computationally intensive and require significant processing power for real-time applications.
-
-In this problem, participants must design a hardware accelerator for executing CNN convolution operations efficiently using hardware description languages such as Verilog or VHDL.
-
-The system should:
-• Process image data inputs
-• Perform convolution operations using parallel hardware modules
-• Implement multiply-accumulate (MAC) units for efficient computation
-• Improve inference speed compared to software execution`
+    domain: 'Open Innovation',
+    subdomain: 'VLSI & FPGA',
+    title: 'FPGA-Based Pulse Width Modulation (PWM) Controller Design',
+    department: 'Electronics & Communication Engineering',
+    category: 'Power Electronics',
+    theme: 'Motor Control / Hardware',
+    description: `Design and implement a Pulse Width Modulation (PWM) controller using FPGA. The controller should generate PWM signals with configurable duty cycle and frequency, suitable for motor control, LED dimming, or power electronics applications.`
   },
   {
     psid: 'SYM0105',
-    domain: 'VLSI',
-    title: 'Design and implement a low-power FPGA-based hardware accelerator for performing inference on a lightweight neural network model for edge IoT applications.',
-    department: 'Embedded & VLSI Systems',
-    category: 'Hardware / AI Acceleration',
-    theme: 'Edge AI / IoT Intelligence',
-    description: `Edge IoT devices require efficient neural network inference while maintaining low power consumption.
-
-Participants must design a low-power FPGA-based accelerator that can perform inference on lightweight neural network models deployed on edge devices.
-
-The solution should focus on:
-• Energy-efficient hardware design
-• Optimized neural network inference
-• FPGA-based architecture implementation
-• Real-time inference capability for IoT applications`
+    domain: 'Open Innovation',
+    subdomain: 'VLSI & FPGA',
+    title: 'Open-Source Hardware Challenge (Task Assigned Before Hackathon)',
+    department: 'Electronics & Communication Engineering',
+    category: 'Open Source Hardware',
+    theme: 'Open Source / FPGA implementation',
+    description: `A participants should come with open-source.Tasks on FPGA implementation using open source will be assigned to participants before the 24-hour hackathon.`
   },
   {
     psid: 'SYM0006',
-    domain: 'Embedded Systems',
+    domain: 'Embedded and IOT',
     title: 'Design and implement a hardware-assisted system capable of detecting and mitigating Distributed Denial-of-Service (DDoS) attacks targeting cloud-hosted services.',
     department: 'Computer Networks & Embedded Systems',
     category: 'Cybersecurity',
@@ -116,7 +82,7 @@ The system should:
   },
   {
     psid: 'SYM0007',
-    domain: 'Embedded Systems',
+    domain: 'Embedded and IOT',
     title: 'Develop a system that detects sensitive personal information in uploaded documents and alerts users before the data is shared or stored.',
     department: 'Information Security',
     category: 'Software / AI Security',
@@ -167,11 +133,11 @@ The tool should:
   }
 ];
 
-const DOMAINS = ['All', 'VLSI', 'Embedded Systems', 'Campus Innovation'] as const;
+const DOMAINS = ['All', 'Open Innovation', 'Embedded and IOT', 'Campus Innovation'] as const;
 
 const domainBadgeClass: Record<string, string> = {
-  'VLSI': 'ps-badge-vlsi',
-  'Embedded Systems': 'ps-badge-embedded',
+  'Open Innovation': 'ps-badge-vlsi',
+  'Embedded and IOT': 'ps-badge-embedded',
   'Campus Innovation': 'ps-badge-campus',
 };
 
@@ -361,9 +327,16 @@ const ProblemStatements: React.FC<ProblemStatementsProps> = ({ initialFilter }) 
                 <tr key={ps.psid} className="ps-row" onClick={() => openModal(ps)}>
                   <td className="ps-sl">{idx + 1}</td>
                   <td>
-                    <span className={`ps-badge ${domainBadgeClass[ps.domain]}`}>
-                      {ps.domain}
-                    </span>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem', alignItems: 'flex-start' }}>
+                      <span className={`ps-badge ${domainBadgeClass[ps.domain]}`}>
+                        {ps.domain}
+                      </span>
+                      {ps.subdomain && (
+                        <span className="ps-badge" style={{ background: 'rgba(255,255,255,0.1)', color: '#fff', border: '1px solid rgba(255,255,255,0.2)', fontSize: '0.7rem', padding: '0.2rem 0.5rem' }}>
+                          {ps.subdomain}
+                        </span>
+                      )}
+                    </div>
                   </td>
                   <td className="ps-title-cell">{ps.title}</td>
                   <td className="ps-psid">{ps.psid}</td>
@@ -395,9 +368,16 @@ const ProblemStatements: React.FC<ProblemStatementsProps> = ({ initialFilter }) 
           filteredStatements.map((ps) => (
             <div key={ps.psid} className="ps-card" onClick={() => openModal(ps)}>
               <div className="ps-card-header">
-                <span className={`ps-badge ${domainBadgeClass[ps.domain]}`}>
-                  {ps.domain}
-                </span>
+                <div style={{ display: 'flex', gap: '0.4rem', flexWrap: 'wrap' }}>
+                  <span className={`ps-badge ${domainBadgeClass[ps.domain]}`}>
+                    {ps.domain}
+                  </span>
+                  {ps.subdomain && (
+                    <span className="ps-badge" style={{ background: 'rgba(255,255,255,0.1)', color: '#fff', border: '1px solid rgba(255,255,255,0.2)' }}>
+                      {ps.subdomain}
+                    </span>
+                  )}
+                </div>
                 <span className="ps-card-psid">{ps.psid}</span>
               </div>
               <h4 className="ps-card-title">{ps.title}</h4>
@@ -438,6 +418,11 @@ const ProblemStatements: React.FC<ProblemStatementsProps> = ({ initialFilter }) 
                 <span className={`ps-badge ps-badge-lg ${domainBadgeClass[selectedPS.domain]}`}>
                   {selectedPS.domain}
                 </span>
+                {selectedPS.subdomain && (
+                  <span className="ps-badge ps-badge-secondary ps-badge-lg" style={{ marginLeft: '1rem', background: 'rgba(255,255,255,0.1)', color: '#fff', border: '1px solid rgba(255,255,255,0.2)' }}>
+                    {selectedPS.subdomain}
+                  </span>
+                )}
               </div>
 
               {/* Description */}

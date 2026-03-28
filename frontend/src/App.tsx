@@ -266,8 +266,8 @@ const App: React.FC = () => {
   }, []);
 
   const trophyDomains = [
-    { id: "embedded", name: "Embedded Systems" },
-    { id: "vlsi", name: "VLSI" },
+    { id: "embedded", name: "Embedded and IOT" },
+    { id: "vlsi", name: "Open Innovation" },
     { id: "campus", name: "Campus Innovation" }
   ];
 
@@ -299,8 +299,8 @@ const App: React.FC = () => {
                 Problem Statements <span className="nav-dropdown-arrow">▼</span>
               </button>
               <div className="nav-dropdown-menu">
-                <a href="#problem-statements" className="nav-dropdown-item" onClick={() => setPsFilter('VLSI')}>VLSI</a>
-                <a href="#problem-statements" className="nav-dropdown-item" onClick={() => setPsFilter('Embedded Systems')}>Embedded Systems</a>
+                <a href="#problem-statements" className="nav-dropdown-item" onClick={() => setPsFilter('Open Innovation')}>Open Innovation</a>
+                <a href="#problem-statements" className="nav-dropdown-item" onClick={() => setPsFilter('Embedded and IOT')}>Embedded and IOT</a>
                 <a href="#problem-statements" className="nav-dropdown-item" onClick={() => setPsFilter('Campus Innovation')}>Campus Innovation</a>
               </div>
             </div>
@@ -327,8 +327,8 @@ const App: React.FC = () => {
                 Problem Statements <span className="nav-dropdown-arrow" style={{ transform: mobilePsOpen ? 'rotate(180deg)' : 'none' }}>▼</span>
               </button>
               <div className={`mobile-ps-subnav ${mobilePsOpen ? 'open' : ''}`}>
-                <a href="#problem-statements" className="mobile-ps-link" onClick={() => { setPsFilter('VLSI'); setIsMobileMenuOpen(false); }}>VLSI</a>
-                <a href="#problem-statements" className="mobile-ps-link" onClick={() => { setPsFilter('Embedded Systems'); setIsMobileMenuOpen(false); }}>Embedded Systems</a>
+                <a href="#problem-statements" className="mobile-ps-link" onClick={() => { setPsFilter('Open Innovation'); setIsMobileMenuOpen(false); }}>Open Innovation</a>
+                <a href="#problem-statements" className="mobile-ps-link" onClick={() => { setPsFilter('Embedded and IOT'); setIsMobileMenuOpen(false); }}>Embedded and IOT</a>
                 <a href="#problem-statements" className="mobile-ps-link" onClick={() => { setPsFilter('Campus Innovation'); setIsMobileMenuOpen(false); }}>Campus Innovation</a>
               </div>
             </div>
@@ -372,9 +372,9 @@ const App: React.FC = () => {
               <img src="./logo.png" alt="Symbiot Logo" className="hero-main-logo" />
 
               <div className="orbit-elements">
-                <div className="orbit-el orbit-1" onClick={() => { setPsFilter('Embedded Systems'); document.getElementById('problem-statements')?.scrollIntoView({ behavior: 'smooth' }); }}>
+                <div className="orbit-el orbit-1" onClick={() => { setPsFilter('Embedded and IOT'); document.getElementById('problem-statements')?.scrollIntoView({ behavior: 'smooth' }); }}>
                   <span className="hw-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect><rect x="9" y="9" width="6" height="6"></rect><line x1="9" y1="1" x2="9" y2="4"></line><line x1="15" y1="1" x2="15" y2="4"></line><line x1="9" y1="20" x2="9" y2="23"></line><line x1="15" y1="20" x2="15" y2="23"></line><line x1="20" y1="9" x2="23" y2="9"></line><line x1="20" y1="14" x2="23" y2="14"></line><line x1="1" y1="9" x2="4" y2="9"></line><line x1="1" y1="14" x2="4" y2="14"></line></svg></span>
-                  <span className="orbit-label">Embedded Systems</span>
+                  <span className="orbit-label">Embedded and IOT</span>
                   <span className="orbit-arrow">→</span>
                 </div>
                 <div className="orbit-el orbit-2" onClick={() => { setPsFilter('Campus Innovation'); document.getElementById('problem-statements')?.scrollIntoView({ behavior: 'smooth' }); }}>
@@ -382,9 +382,9 @@ const App: React.FC = () => {
                   <span className="orbit-label">Campus Innovation</span>
                   <span className="orbit-arrow">→</span>
                 </div>
-                <div className="orbit-el orbit-3" onClick={() => { setPsFilter('VLSI'); document.getElementById('problem-statements')?.scrollIntoView({ behavior: 'smooth' }); }}>
+                <div className="orbit-el orbit-3" onClick={() => { setPsFilter('Open Innovation'); document.getElementById('problem-statements')?.scrollIntoView({ behavior: 'smooth' }); }}>
                   <span className="hw-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="2" y="2" width="20" height="20" rx="2" ry="2"></rect><path d="M7 2v20M17 2v20M2 7h20M2 17h20"></path><rect x="9" y="9" width="6" height="6" fill="currentColor"></rect></svg></span>
-                  <span className="orbit-label">VLSI</span>
+                  <span className="orbit-label">Open Innovation</span>
                   <span className="orbit-arrow">→</span>
                 </div>
               </div>
@@ -494,7 +494,7 @@ const App: React.FC = () => {
           <div className="about-cards" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem', maxWidth: '1000px', margin: '0 auto' }}>
             <div className="glass-panel feature-card" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
               <div className="feature-icon">🤖</div>
-              <h4 style={{ color: 'var(--accent-yellow)', marginBottom: '1.5rem', fontSize: '1.25rem', fontFamily: 'Outfit, sans-serif' }}>Embedded Systems</h4>
+              <h4 style={{ color: 'var(--accent-yellow)', marginBottom: '1.5rem', fontSize: '1.25rem', fontFamily: 'Outfit, sans-serif' }}>Embedded and IOT</h4>
               <a href={`${import.meta.env.BASE_URL}PPT_template/SYMBIOT_2026_EMBD_PPT.pptx`} download="SYMBIOT_2026_EMBD_PPT.pptx" className="btn btn-secondary">Download</a>
             </div>
 
@@ -506,7 +506,7 @@ const App: React.FC = () => {
 
             <div className="glass-panel feature-card" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
               <div className="feature-icon">🔌</div>
-              <h4 style={{ color: 'var(--accent-yellow)', marginBottom: '1.5rem', fontSize: '1.25rem', fontFamily: 'Outfit, sans-serif' }}>VLSI</h4>
+              <h4 style={{ color: 'var(--accent-yellow)', marginBottom: '1.5rem', fontSize: '1.25rem', fontFamily: 'Outfit, sans-serif' }}>Open Innovation</h4>
               <a href="#" onClick={(e) => e.preventDefault()} className="btn btn-secondary" style={{ opacity: 0.5, cursor: 'not-allowed' }}>Coming Soon</a>
             </div>
           </div>
@@ -555,6 +555,53 @@ const App: React.FC = () => {
                 bannerLabel="REWARDS"
                 onClick={() => setActiveTrophy("Participation")}
               />
+            </div>
+          </div>
+        </section>
+
+        <SectionDivider />
+
+        <section id="sponsors" className="section sponsors-section">
+          <div className="section-header">
+            <h2 className="section-title"><span className="text-gradient">Sponsors</span></h2>
+          </div>
+
+          <div className="powered-by-sponsor">
+            <h3>Powered By</h3>
+            <div className="powered-by-logos">
+              <div className="powered-logo-wrapper left">
+                <img src="./iotcrew.png" alt="IO T CREW Logo" className="powered-logo" />
+              </div>
+              <div className="powered-divider"></div>
+              <div className="powered-logo-wrapper right">
+                <img src="./Unstop-Logo-Blue-Medium.png" alt="Unstop Logo" className="powered-logo unstop" />
+              </div>
+            </div>
+          </div>
+
+          <h3 style={{ fontSize: '2rem', marginBottom: '2.5rem', fontFamily: 'Outfit, sans-serif' }}>Prize Partners</h3>
+          <div className="sponsors-grid">
+            <div className="sponsor-card">
+              <img src="./PravegaSemi-Logo.png" alt="Pravega Semi Logo" className="sponsor-logo" />
+            </div>
+            <div className="sponsor-card" style={{ padding: '0.5rem' }}>
+              <img src="./wie.png" alt="WIE" className="sponsor-logo" />
+            </div>
+            <div className="sponsor-card" style={{ padding: '0.75rem' }}>
+              <img src="./Tregorra.png" alt="Tregorra" className="sponsor-logo" />
+            </div>
+          </div>
+
+          <h3 style={{ fontSize: '2rem', marginBottom: '2.5rem', marginTop: '4rem', fontFamily: 'Outfit, sans-serif' }}>Proud Sponsors</h3>
+          <div className="sponsors-grid">
+            <div className="sponsor-card">
+              <img src="./gg.png" alt="Global Geeks" className="sponsor-logo" />
+            </div>
+            <div className="sponsor-card">
+              <img src="./Logycent.png" alt="Logycent" className="sponsor-logo" />
+            </div>
+            <div className="sponsor-card" style={{ padding: '0.5rem' }}>
+              <img src="./pixelhut.png" alt="Pixelhut" className="sponsor-logo" />
             </div>
           </div>
         </section>
@@ -626,34 +673,6 @@ const App: React.FC = () => {
 
         <SectionDivider />
 
-        <section id="sponsors" className="section sponsors-section">
-          <div className="section-header">
-            <h2 className="section-title"><span className="text-gradient">Sponsors</span></h2>
-          </div>
-
-          <div className="powered-by-sponsor">
-            <h3>Powered By</h3>
-            <div className="powered-by-logos">
-              <div className="powered-logo-wrapper left">
-                <img src="./iotcrew.png" alt="IO T CREW Logo" className="powered-logo" />
-              </div>
-              <div className="powered-divider"></div>
-              <div className="powered-logo-wrapper right">
-                <img src="./Unstop-Logo-Blue-Medium.png" alt="Unstop Logo" className="powered-logo unstop" />
-              </div>
-            </div>
-          </div>
-
-          <h3 style={{ fontSize: '2rem', marginBottom: '2.5rem', fontFamily: 'Outfit, sans-serif' }}>Proud Sponsors</h3>
-          <div className="sponsors-grid">
-            <div className="sponsor-card">
-              <img src="./PravegaSemi-Logo.png" alt="Pravega Semi Logo" className="sponsor-logo" />
-            </div>
-          </div>
-        </section>
-
-        <SectionDivider />
-
         <section id="faq" className="section bg-alt">
           <div className="section-header">
             <h2 className="section-title"><span className="text-gradient">FAQ</span></h2>
@@ -698,11 +717,17 @@ const App: React.FC = () => {
 
           {/* Column 2: Venue */}
           <div className="footer-col footer-col-venue">
-            <h4 className="footer-heading">Venue</h4>
-            <div className="venue-glass-box">
-              <p className="venue-date">24th – 25th April 2026</p>
-              <p className="venue-name">Vidyavardhaka College of Engineering</p>
-              <p className="venue-address">Gokulam 3rd Stage,<br />Mysore – 570002</p>
+            <h4 className="footer-heading">Venue Location</h4>
+            <div className="venue-glass-box" style={{ padding: '0.5rem', display: 'flex', flexDirection: 'column' }}>
+              <iframe 
+                src="https://maps.google.com/maps?q=H+Kempegowda+Indoor+Sports+Complex+VVCE+Mysore&t=&z=15&ie=UTF8&iwloc=&output=embed" 
+                width="100%" 
+                height="150" 
+                style={{ border: 0, borderRadius: '8px' }} 
+                allowFullScreen={true}
+                loading="lazy" 
+                referrerPolicy="no-referrer-when-downgrade"
+              ></iframe>
             </div>
           </div>
 
