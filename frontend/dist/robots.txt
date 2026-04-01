@@ -1,0 +1,29 @@
+# Robots.txt for symbiotvvce.in — Symbiot 2026 National Level Hackathon at VVCE Mysore
+# Website: https://symbiotvvce.in/
+
+# Allow all search engine crawlers
+User-agent: *
+Allow: /
+Allow: /sitemap.xml
+Allow: /symbiot-2026-logo.png
+Allow: /logo.png
+
+# Block unnecessary assets from being indexed
+Disallow: /assets/
+Disallow: /PPT_template/
+
+# Specific crawler permissions
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# Sitemap location
+Sitemap: https://symbiotvvce.in/sitemap.xml
+
+# Host
+Host: https://symbiotvvce.in

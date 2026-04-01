@@ -281,7 +281,7 @@ const App: React.FC = () => {
       <CircuitBackground />
       <div className="bg-soften-layer" aria-hidden="true"></div>
 
-      <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
+      <nav className={`navbar ${scrolled ? 'scrolled' : ''}`} aria-label="Main Navigation - Symbiot 2026 Hackathon">
         <div className="navbar-container">
           <div className="navbar-brand">
             <div className="navbar-logos">
@@ -346,17 +346,23 @@ const App: React.FC = () => {
         </div>
       </nav>
 
-      <main className="content-layer">
-        <section id="home" className="hero">
+      <main className="content-layer" role="main">
+        <section id="home" className="hero" itemScope itemType="https://schema.org/Event" aria-label="Symbiot 2026 Hero - National Level Hackathon at VVCE Mysore">
+          <meta itemProp="name" content="Symbiot 2026 - National Level 24-Hour Hackathon at VVCE Mysore" />
+          <meta itemProp="startDate" content="2026-04-24T08:30:00+05:30" />
+          <meta itemProp="endDate" content="2026-04-25T08:30:00+05:30" />
+          <meta itemProp="eventStatus" content="https://schema.org/EventScheduled" />
+          <meta itemProp="eventAttendanceMode" content="https://schema.org/OfflineEventAttendanceMode" />
           <div className="hero-content" ref={heroContentRef}>
             <div className="hero-badges">
               <div className="hero-badge hero-badge-secondary">One of Mysuru&apos;s Biggest Hackathons</div>
             </div>
             <h1 className="hero-title">
+              <span className="sr-only">Symbiot 2026 — National Level 24-Hour Hackathon at Vidyavardhaka College of Engineering (VVCE), Mysuru, Karnataka. Organized by ECE Department &amp; IoTCrew. Featuring Embedded Systems, IoT, Open Innovation &amp; Campus Innovation domains. April 24-25, 2026. </span>
               Design. Build. <br />
               <span className="text-gradient">Deploy.</span>
             </h1>
-            <p className="hero-desc">
+            <p className="hero-desc" itemProp="description">
               Join 500+ innovators for a 24-hour deep tech build challenge at Vidyavardhaka College of Engineering, Mysuru.
               <br /><br />
               <span className="hero-dates">April 24th - 25th, 2026</span>
@@ -370,7 +376,7 @@ const App: React.FC = () => {
           <div className="hero-visual" ref={heroVisualRef}>
             <div className="logo-container">
               <div className="logo-glow-bg"></div>
-              <img src="./logo.png" alt="Symbiot Logo" className="hero-main-logo" />
+              <img src="./logo.png" alt="Symbiot 2026 Hackathon Logo - VVCE Mysore National Level Hackathon" className="hero-main-logo" itemProp="image" />
 
               <div className="orbit-elements">
                 <div className="orbit-el orbit-1" onClick={() => { setPsFilter('Embedded and IOT'); document.getElementById('problem-statements')?.scrollIntoView({ behavior: 'smooth' }); }}>
@@ -430,10 +436,11 @@ const App: React.FC = () => {
 
         <SectionDivider />
 
-        <section id="about" className="section">
+        <section id="about" className="section" aria-label="About Symbiot 2026 Hackathon at VVCE Mysore">
           <div className="section-header">
             <h2 className="section-title">About <span className="text-gradient">SYMBIOT</span></h2>
             <p className="section-subtitle">Pushing the boundaries of what is possible in a 24-hour hackathon through rigorous engineering and real-world applicability.</p>
+            <p className="sr-only">Symbiot 2026 is the flagship national-level 24-hour hackathon organized by the ECE Department of Vidyavardhaka College of Engineering (VVCE), Mysuru, Karnataka, India. Symbiot has been successfully conducted since 2023, making it one of Mysuru's most established hackathon events. Powered by IoTCrew and hosted on Unstop platform.</p>
           </div>
 
           <div className="about-grid">
@@ -521,10 +528,11 @@ const App: React.FC = () => {
 
         <SectionDivider />
 
-        <section id="prizes" className="section bg-alt pattern-grid">
+        <section id="prizes" className="section bg-alt pattern-grid" aria-label="Symbiot 2026 Prizes and Awards">
           <div className="section-header">
             <h2 className="section-title">Rewards & <span className="text-gradient">Recognition</span></h2>
             <p className="section-subtitle">Celebrate engineering excellence with prestigious titles and exciting rewards.</p>
+            <p className="sr-only">Symbiot 2026 hackathon prizes: Total prize pool of over ₹85,000. Each domain (Embedded &amp; IoT, Open Innovation, Campus Innovation) has prizes of ₹15,000 for 1st place and ₹10,000 for 2nd place. Additional awards include Best Women Team (₹5,000), Best Innovation (₹5,000), and participation swags with IEEE certificates for all participants at VVCE Mysore.</p>
           </div>
 
           <div className="prizes-section-wrapper">
@@ -573,9 +581,10 @@ const App: React.FC = () => {
 
         <SectionDivider />
 
-        <section id="sponsors" className="section sponsors-section">
+        <section id="sponsors" className="section sponsors-section" aria-label="Symbiot 2026 Sponsors and Partners">
           <div className="section-header">
             <h2 className="section-title"><span className="text-gradient">Sponsors</span></h2>
+            <p className="sr-only">Symbiot 2026 hackathon at VVCE Mysore is supported by leading industry partners. Powered by IoTCrew and Unstop. Prize Partners include Pravega Semiconductors, IEEE WIE, and Tregorra. Proud sponsors include GeeksForGeeks, Logycent, and Pixelhut.</p>
           </div>
 
           <div className="powered-by-sponsor">
@@ -638,7 +647,7 @@ const App: React.FC = () => {
                   "./symbiot-2025-4.jpg"
                 ].map((src, idx) => (
                   <div className="gallery-item" key={idx}>
-                    <img src={src} alt="Symbiot 2025 Highlight" />
+                    <img src={src} alt={`Symbiot 2025 hackathon at VVCE Mysore - highlight ${idx + 1}`} loading="lazy" />
                     <div className="gallery-overlay"><span className="gallery-text">SYMBIOT 2025</span></div>
                   </div>
                 ))}
@@ -656,7 +665,7 @@ const App: React.FC = () => {
                   "./symbiot-2024-4.jpg"
                 ].map((src, idx) => (
                   <div className="gallery-item" key={idx}>
-                    <img src={src} alt="Symbiot 2024 Highlight" />
+                    <img src={src} alt={`Symbiot 2024 hackathon at VVCE Mysore - highlight ${idx + 1}`} loading="lazy" />
                     <div className="gallery-overlay"><span className="gallery-text">SYMBIOT 2024</span></div>
                   </div>
                 ))}
@@ -674,7 +683,7 @@ const App: React.FC = () => {
                   "./symbiot-2023-4.jpg"
                 ].map((src, idx) => (
                   <div className="gallery-item" key={idx}>
-                    <img src={src} alt="Symbiot 2023 Highlight" />
+                    <img src={src} alt={`Symbiot 2023 hackathon at VVCE Mysore - highlight ${idx + 1}`} loading="lazy" />
                     <div className="gallery-overlay"><span className="gallery-text">SYMBIOT 2023</span></div>
                   </div>
                 ))}
@@ -685,10 +694,11 @@ const App: React.FC = () => {
 
         <SectionDivider />
 
-        <section id="faq" className="section bg-alt">
+        <section id="faq" className="section bg-alt" aria-label="Frequently Asked Questions about Symbiot 2026 Hackathon">
           <div className="section-header">
             <h2 className="section-title"><span className="text-gradient">FAQ</span></h2>
             <p className="section-subtitle">Everything you need to know about SYMBIOT 2026</p>
+            <p className="sr-only">Frequently Asked Questions about Symbiot 2026 national-level hackathon at Vidyavardhaka College of Engineering (VVCE), Mysuru. Learn about eligibility, team structure, prizes, dates, venue, registration process, and more.</p>
           </div>
           <div className="faq-container">
             {[
@@ -718,7 +728,7 @@ const App: React.FC = () => {
 
       </main>
 
-      <footer id="contact" className="footer-redesigned">
+      <footer id="contact" className="footer-redesigned" aria-label="Symbiot 2026 Contact Information and Links">
         <div className="footer-main">
           {/* Column 1: Logo */}
           <div className="footer-col footer-col-logo">
@@ -804,6 +814,7 @@ const App: React.FC = () => {
 
           <div className="footer-bottom-bar">
             <p>Copyright © 2026 All rights reserved | Made with <span className="heart">❤️</span> by <strong>IoTCrew</strong></p>
+            <p className="sr-only">Symbiot 2026 is the flagship national-level hackathon organized by the Electronics and Communication Engineering (ECE) Department of Vidyavardhaka College of Engineering (VVCE), Mysuru, Karnataka, India. It is a 24-hour offline hackathon held on April 24-25, 2026, featuring three competition domains: Embedded Systems &amp; IoT, Open Innovation, and Campus Innovation. Total prize pool exceeds ₹85,000 with IEEE certificates for all participants. Engineering students from colleges across India can register on Unstop. The event is powered by IoTCrew. Visit symbiotvvce.in for more details. Symbiot 2026 VVCE hackathon registration, Symbiot hackathon Mysore, national level hackathon India 2026, VVCE ECE department hackathon.</p>
           </div>
       </footer>
     </>

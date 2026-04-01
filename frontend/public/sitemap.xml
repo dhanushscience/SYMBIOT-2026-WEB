@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <!-- Homepage -->
+  <url>
+    <loc>https://symbiotvvce.in/</loc>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://symbiotvvce.in/symbiot-2026-logo.png</image:loc>
+      <image:title>Symbiot 2026 Logo - National Level Hackathon VVCE Mysore</image:title>
+      <image:caption>Official logo of Symbiot 2026 hackathon at Vidyavardhaka College of Engineering</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://symbiotvvce.in/logo.png</image:loc>
+      <image:title>Symbiot 2026 Main Logo</image:title>
+      <image:caption>Symbiot 2026 hackathon hero logo</image:caption>
+    </image:image>
+  </url>
+
+  <!-- About Section -->
+  <url>
+    <loc>https://symbiotvvce.in/#about</loc>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Problem Statements -->
+  <url>
+    <loc>https://symbiotvvce.in/#problem-statements</loc>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Prizes -->
+  <url>
+    <loc>https://symbiotvvce.in/#prizes</loc>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Sponsors -->
+  <url>
+    <loc>https://symbiotvvce.in/#sponsors</loc>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Gallery -->
+  <url>
+    <loc>https://symbiotvvce.in/#gallery</loc>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <image:image>
+      <image:loc>https://symbiotvvce.in/symbiot-2025-1.jpg</image:loc>
+      <image:title>Symbiot 2025 Hackathon Highlights</image:title>
+      <image:caption>Highlights from Symbiot 2025 hackathon at VVCE Mysore</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://symbiotvvce.in/symbiot-2024-1.jpg</image:loc>
+      <image:title>Symbiot 2024 Hackathon Highlights</image:title>
+      <image:caption>Highlights from Symbiot 2024 hackathon at VVCE Mysore</image:caption>
+    </image:image>
+  </url>
+
+  <!-- FAQ -->
+  <url>
+    <loc>https://symbiotvvce.in/#faq</loc>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Contact -->
+  <url>
+    <loc>https://symbiotvvce.in/#contact</loc>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+</urlset>
