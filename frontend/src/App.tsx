@@ -601,7 +601,7 @@ const App: React.FC = () => {
             <div className="glass-panel feature-card" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
               <div className="feature-icon">🔌</div>
               <h4 style={{ color: 'var(--accent-yellow)', marginBottom: '1.5rem', fontSize: '1.25rem', fontFamily: 'Outfit, sans-serif' }}>VLSI</h4>
-              <a href="#" onClick={(e) => e.preventDefault()} className="btn btn-secondary" style={{ opacity: 0.5, cursor: 'not-allowed' }}>Coming Soon</a>
+              <a href={`${import.meta.env.BASE_URL}PPT_template/SYMBIOT_2026_VLSI_PPT.pptx`} download="SYMBIOT_2026_VLSI_PPT.pptx" className="btn btn-secondary">Download</a>
             </div>
 
             <div className="glass-panel feature-card" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
@@ -613,7 +613,7 @@ const App: React.FC = () => {
             <div className="glass-panel feature-card" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
               <div className="feature-icon">🌐</div>
               <h4 style={{ color: 'var(--accent-yellow)', marginBottom: '1.5rem', fontSize: '1.25rem', fontFamily: 'Outfit, sans-serif' }}>Open Innovation</h4>
-              <a href="#" onClick={(e) => e.preventDefault()} className="btn btn-secondary" style={{ opacity: 0.5, cursor: 'not-allowed' }}>Coming Soon</a>
+              <a href={`${import.meta.env.BASE_URL}PPT_template/SYMBIOT_2026_OPEN_PPT.pptx`} download="SYMBIOT_2026_OPEN_PPT.pptx" className="btn btn-secondary">Download</a>
             </div>
           </div>
         </section>
