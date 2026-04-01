@@ -428,8 +428,10 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Trophy container layout */
 .trophy-container {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: stretch;
   gap: 2rem;
   max-width: 900px;
   margin: 0 auto 2.5rem;
@@ -448,6 +450,8 @@ h1, h2, h3, h4, h5, h6 {
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   overflow: hidden;
+  flex: 1 1 250px;
+  max-width: 280px;
 }
 
 /* Background glow layer */
@@ -728,7 +732,6 @@ h1, h2, h3, h4, h5, h6 {
 /* Prizes responsive */
 @media (max-width: 768px) {
   .trophy-container {
-    grid-template-columns: 1fr;
     gap: 1.25rem;
     max-width: 340px;
   }
@@ -749,14 +752,7 @@ h1, h2, h3, h4, h5, h6 {
 
 @media (min-width: 769px) and (max-width: 1024px) {
   .trophy-container {
-    grid-template-columns: repeat(2, 1fr);
     max-width: 600px;
-  }
-
-  .trophy-container > :nth-child(3) {
-    grid-column: 1 / -1;
-    max-width: 280px;
-    margin: 0 auto;
   }
 }
 
@@ -4395,5 +4391,114 @@ h1, h2, h3, h4, h5, h6 {
 
   .stat-value {
     font-size: 1.8rem;
+  }
+}
+
+
+/* -----------------------------------------------
+   RECOMMENDER ENGINE STYLES
+   ----------------------------------------------- */
+.recommender-container {
+  background: linear-gradient(135deg, rgba(16, 24, 46, 0.8) 0%, rgba(10, 16, 32, 0.9) 100%);
+  border: 1px solid rgba(0, 240, 255, 0.2);
+  border-radius: 20px;
+  padding: 3rem 2rem;
+  max-width: 1000px;
+  margin: 4rem auto 3rem;
+  text-align: center;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5), inset 0 0 20px rgba(0, 240, 255, 0.05);
+}
+
+.recommender-title {
+  font-size: 2rem;
+  color: #fff;
+  margin-bottom: 0.5rem;
+  font-family: 'Outfit', sans-serif;
+  text-shadow: 0 0 10px rgba(0, 240, 255, 0.3);
+}
+
+.recommender-subtitle {
+  color: var(--text-secondary);
+  margin-bottom: 2.5rem;
+  font-size: 1.05rem;
+}
+
+.recommender-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.recommender-select {
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #fff;
+  padding: 0.85rem 1.5rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: 'Outfit', sans-serif;
+  min-width: 280px;
+  outline: none;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2300f0ff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 1em;
+}
+
+.recommender-select:hover, .recommender-select:focus {
+  border-color: var(--accent-cyan);
+  box-shadow: 0 0 10px rgba(0, 240, 255, 0.2);
+}
+
+.recommender-select option {
+  background: #0f172a;
+  color: #fff;
+  padding: 0.5rem;
+}
+
+.recommender-btn {
+  min-width: 200px;
+}
+
+.recommender-results {
+  margin-top: 3.5rem;
+  padding-top: 3rem;
+  border-top: 1px dashed rgba(255, 255, 255, 0.15);
+}
+
+.recommender-results-title {
+  color: var(--accent-yellow);
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.recommended-card-glow {
+  border: 1.5px solid var(--accent-cyan) !important;
+  box-shadow: 0 0 20px rgba(0, 240, 255, 0.2), inset 0 0 10px rgba(0, 240, 255, 0.05) !important;
+  transform: translateY(-5px);
+  text-align: left;
+}
+
+.recommended-card-glow:hover {
+  box-shadow: 0 10px 30px rgba(0, 240, 255, 0.4), inset 0 0 15px rgba(0, 240, 255, 0.1) !important;
+  transform: translateY(-10px);
+}
+
+@media (max-width: 768px) {
+  .recommender-select {
+    width: 100%;
+    min-width: unset;
+  }
+  .recommender-btn {
+    width: 100%;
   }
 }

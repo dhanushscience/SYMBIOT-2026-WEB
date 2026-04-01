@@ -78,10 +78,10 @@ const TrophyModal: React.FC<{
               <div className="prize-tier">
                 <div className="prize-tier-header">
                   <h4>1st Prize</h4>
-                  <span className="prize-amt">₹15K</span>
+                  <span className="prize-amt">{domain === 'Open Innovation' || domain === 'VLSI' ? '₹10K' : '₹15K'}</span>
                 </div>
                 <ul>
-                  <li><span className="detail-check">✓</span>₹15,000 Cash Prize</li>
+                  <li><span className="detail-check">✓</span>{domain === 'Open Innovation' || domain === 'VLSI' ? '₹10,000' : '₹15,000'} Cash Prize</li>
                   <li><span className="detail-check">✓</span>IEEE Participation Certificate</li>
                   <li><span className="detail-check">✓</span>Exciting Goodies</li>
                 </ul>
@@ -89,10 +89,10 @@ const TrophyModal: React.FC<{
               <div className="prize-tier">
                 <div className="prize-tier-header">
                   <h4>2nd Prize</h4>
-                  <span className="prize-amt">₹10K</span>
+                  <span className="prize-amt">{domain === 'Open Innovation' || domain === 'VLSI' ? '₹2.5K' : '₹10K'}</span>
                 </div>
                 <ul>
-                  <li><span className="detail-check">✓</span>₹10,000 Cash Prize</li>
+                  <li><span className="detail-check">✓</span>{domain === 'Open Innovation' || domain === 'VLSI' ? '₹2,500' : '₹10,000'} Cash Prize</li>
                   <li><span className="detail-check">✓</span>IEEE Participation Certificate</li>
                   <li><span className="detail-check">✓</span>Exciting Goodies</li>
                 </ul>
@@ -264,9 +264,10 @@ const App: React.FC = () => {
   }, []);
 
   const trophyDomains = [
-    { id: "embedded", name: "Embedded and IOT" },
-    { id: "vlsi", name: "Open Innovation" },
-    { id: "campus", name: "Campus Innovation" }
+    { id: "embedded", name: "Embedded and IOT", prize: "₹25,000" },
+    { id: "campus", name: "Campus Innovation", prize: "₹25,000" },
+    { id: "vlsi", name: "VLSI", prize: "₹12,500" },
+    { id: "open", name: "Open Innovation", prize: "₹12,500" }
   ];
 
   return (
@@ -298,6 +299,7 @@ const App: React.FC = () => {
               </button>
               <div className="nav-dropdown-menu">
                 <a href="#problem-statements" className="nav-dropdown-item" onClick={() => setPsFilter('Open Innovation')}>Open Innovation</a>
+                <a href="#problem-statements" className="nav-dropdown-item" onClick={() => setPsFilter('VLSI')}>VLSI</a>
                 <a href="#problem-statements" className="nav-dropdown-item" onClick={() => setPsFilter('Embedded and IOT')}>Embedded and IOT</a>
                 <a href="#problem-statements" className="nav-dropdown-item" onClick={() => setPsFilter('Campus Innovation')}>Campus Innovation</a>
               </div>
@@ -326,6 +328,7 @@ const App: React.FC = () => {
               </button>
               <div className={`mobile-ps-subnav ${mobilePsOpen ? 'open' : ''}`}>
                 <a href="#problem-statements" className="mobile-ps-link" onClick={() => { setPsFilter('Open Innovation'); setIsMobileMenuOpen(false); }}>Open Innovation</a>
+                <a href="#problem-statements" className="mobile-ps-link" onClick={() => { setPsFilter('VLSI'); setIsMobileMenuOpen(false); }}>VLSI</a>
                 <a href="#problem-statements" className="mobile-ps-link" onClick={() => { setPsFilter('Embedded and IOT'); setIsMobileMenuOpen(false); }}>Embedded and IOT</a>
                 <a href="#problem-statements" className="mobile-ps-link" onClick={() => { setPsFilter('Campus Innovation'); setIsMobileMenuOpen(false); }}>Campus Innovation</a>
               </div>
@@ -489,11 +492,17 @@ const App: React.FC = () => {
             <p className="section-subtitle">Download the required presentation template for your domain.</p>
           </div>
           
-          <div className="about-cards" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem', maxWidth: '1000px', margin: '0 auto' }}>
+          <div className="about-cards" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '1.5rem', maxWidth: '1200px', margin: '0 auto' }}>
             <div className="glass-panel feature-card" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
               <div className="feature-icon">🤖</div>
               <h4 style={{ color: 'var(--accent-yellow)', marginBottom: '1.5rem', fontSize: '1.25rem', fontFamily: 'Outfit, sans-serif' }}>Embedded and IOT</h4>
               <a href={`${import.meta.env.BASE_URL}PPT_template/SYMBIOT_2026_EMBD_PPT.pptx`} download="SYMBIOT_2026_EMBD_PPT.pptx" className="btn btn-secondary">Download</a>
+            </div>
+
+            <div className="glass-panel feature-card" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
+              <div className="feature-icon">🔌</div>
+              <h4 style={{ color: 'var(--accent-yellow)', marginBottom: '1.5rem', fontSize: '1.25rem', fontFamily: 'Outfit, sans-serif' }}>VLSI</h4>
+              <a href="#" onClick={(e) => e.preventDefault()} className="btn btn-secondary" style={{ opacity: 0.5, cursor: 'not-allowed' }}>Coming Soon</a>
             </div>
 
             <div className="glass-panel feature-card" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
@@ -503,7 +512,7 @@ const App: React.FC = () => {
             </div>
 
             <div className="glass-panel feature-card" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
-              <div className="feature-icon">🔌</div>
+              <div className="feature-icon">🌐</div>
               <h4 style={{ color: 'var(--accent-yellow)', marginBottom: '1.5rem', fontSize: '1.25rem', fontFamily: 'Outfit, sans-serif' }}>Open Innovation</h4>
               <a href="#" onClick={(e) => e.preventDefault()} className="btn btn-secondary" style={{ opacity: 0.5, cursor: 'not-allowed' }}>Coming Soon</a>
             </div>
@@ -524,6 +533,7 @@ const App: React.FC = () => {
                 <TrophyCard
                   key={t.id}
                   domain={t.name}
+                  prizeAmount={t.prize}
                   onClick={() => setActiveTrophy(t.name)}
                 />
               ))}
@@ -547,6 +557,10 @@ const App: React.FC = () => {
                 prizeAmount="₹5000"
                 onClick={() => setActiveTrophy("Best Innovation")}
               />
+            </div>
+
+            {/* Participation Reward */}
+            <div className="trophy-container" style={{ marginTop: '2rem' }}>
               <TrophyCard
                 domain="Participation"
                 prizeAmount="Swags"

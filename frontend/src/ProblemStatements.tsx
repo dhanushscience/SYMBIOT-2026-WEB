@@ -3,7 +3,7 @@ import React, { useState, useEffect, useMemo } from 'react';
 // --- Problem Statement Data ---
 interface ProblemStatement {
   psid: string;
-  domain: 'Open Innovation' | 'Embedded and IOT' | 'Campus Innovation';
+  domain: 'Open Innovation' | 'Embedded and IOT' | 'Campus Innovation' | 'VLSI';
   subdomain?: string;
   title: string;
   department: string;
@@ -15,7 +15,7 @@ interface ProblemStatement {
 const problemStatements: ProblemStatement[] = [
   {
     psid: 'SYM0101',
-    domain: 'Open Innovation',
+    domain: 'VLSI',
     subdomain: 'VLSI & FPGA',
     title: 'FPGA-Based Intelligent Traffic Light Controller with Emergency & Pedestrian Priority',
     department: 'Electronics & Communication Engineering',
@@ -25,7 +25,7 @@ const problemStatements: ProblemStatement[] = [
   },
   {
     psid: 'SYM0102',
-    domain: 'Open Innovation',
+    domain: 'VLSI',
     subdomain: 'VLSI & FPGA',
     title: 'FPGA-Based FIR Filter for Real-Time Signal Processing',
     department: 'Electronics & Communication Engineering',
@@ -35,7 +35,7 @@ const problemStatements: ProblemStatement[] = [
   },
   {
     psid: 'SYM0103',
-    domain: 'Open Innovation',
+    domain: 'VLSI',
     subdomain: 'VLSI & FPGA',
     title: 'FPGA-Based Hardware Accelerator for Encryption and Decryption',
     department: 'Electronics & Communication Engineering',
@@ -45,7 +45,7 @@ const problemStatements: ProblemStatement[] = [
   },
   {
     psid: 'SYM0104',
-    domain: 'Open Innovation',
+    domain: 'VLSI',
     subdomain: 'VLSI & FPGA',
     title: 'FPGA-Based Pulse Width Modulation (PWM) Controller Design',
     department: 'Electronics & Communication Engineering',
@@ -55,7 +55,7 @@ const problemStatements: ProblemStatement[] = [
   },
   {
     psid: 'SYM0105',
-    domain: 'Open Innovation',
+    domain: 'VLSI',
     subdomain: 'VLSI & FPGA',
     title: 'Open-Source Hardware Challenge (Task Assigned Before Hackathon)',
     department: 'Electronics & Communication Engineering',
@@ -133,10 +133,11 @@ The tool should:
   }
 ];
 
-const DOMAINS = ['All', 'Open Innovation', 'Embedded and IOT', 'Campus Innovation'] as const;
+const DOMAINS = ['All', 'Embedded and IOT', 'VLSI', 'Campus Innovation', 'Open Innovation'] as const;
 
 const domainBadgeClass: Record<string, string> = {
   'Open Innovation': 'ps-badge-vlsi',
+  'VLSI': 'ps-badge-vlsi',
   'Embedded and IOT': 'ps-badge-embedded',
   'Campus Innovation': 'ps-badge-campus',
 };
@@ -196,10 +197,83 @@ function renderDescription(text: string) {
   return elements;
 }
 
+const branches = [
+  "Select Branch",
+  "ECE",
+  "CSE / ISE",
+  "EEE",
+  "Mechanical",
+  "Civil",
+  "Other"
+];
+
+const interests = [
+  "Select Interest",
+  "Hardware Mapping / VLSI",
+  "Software & Web Dev",
+  "Cybersecurity & Networks",
+  "IoT & Embedded",
+  "Open Source & General Innovation"
+];
+
 const ProblemStatements: React.FC<ProblemStatementsProps> = ({ initialFilter }) => {
   const [activeFilter, setActiveFilter] = useState('All');
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedPS, setSelectedPS] = useState<ProblemStatement | null>(null);
+
+  // Recommendations state
+  const [userBranch, setUserBranch] = useState(branches[0]);
+  const [userInterest, setUserInterest] = useState(interests[0]);
+  const [recommendedResults, setRecommendedResults] = useState<ProblemStatement[]>([]);
+  const [isSearching, setIsSearching] = useState(false);
+  const [hasSearched, setHasSearched] = useState(false);
+
+  const handleRecommend = () => {
+    if (userBranch === "Select Branch" || userInterest === "Select Interest") {
+      setHasSearched(false);
+      setRecommendedResults([]);
+      return;
+    }
+
+    setIsSearching(true);
+    setHasSearched(false);
+
+    let scoredList = problemStatements.map(ps => {
+      let score = 0;
+      const t = `${ps.title} ${ps.description} ${ps.category} ${ps.department} ${ps.theme} ${ps.domain}`.toLowerCase();
+      
+      const bStr = userBranch.toLowerCase();
+      const iStr = userInterest.toLowerCase();
+
+      // Branch scoring
+      if (bStr === "ece" && (t.includes("electronic") || t.includes("vlsi") || t.includes("hardware") || t.includes("embedded"))) score += 3;
+      if (bStr.includes("cse") && (t.includes("software") || t.includes("cybersecurity") || t.includes("network") || t.includes("cloud"))) score += 3;
+      if (bStr === "eee" && (t.includes("power") || t.includes("motor") || t.includes("hardware"))) score += 2;
+      
+      // Interest scoring
+      if (iStr.includes("hardware") && (t.includes("hardware") || t.includes("fpga") || t.includes("vlsi"))) score += 5;
+      if (iStr.includes("software") && (t.includes("software") || t.includes("tool"))) score += 5;
+      if (iStr.includes("cyber") && (t.includes("security") || t.includes("ddos") || t.includes("vulnerabil"))) score += 5;
+      if (iStr.includes("iot") && (t.includes("iot") || t.includes("embedded") || t.includes("sensor"))) score += 5;
+      if (iStr.includes("open") && t.includes("open-source")) score += 5;
+
+      // Bonus if highly relevant
+      if (t.includes(bStr)) score += 1;
+      
+      return { ps, score };
+    });
+
+    scoredList.sort((a, b) => b.score - a.score);
+    
+    // Top 3 positive score matches
+    const topMatches = scoredList.filter(item => item.score > 0).slice(0, 3).map(i => i.ps);
+    
+    setTimeout(() => {
+        setRecommendedResults(topMatches.length > 0 ? topMatches : problemStatements.slice(0, 3));
+        setIsSearching(false);
+        setHasSearched(true);
+    }, 600);
+  };
 
   // Apply initial filter from navbar dropdown
   useEffect(() => {
@@ -260,7 +334,10 @@ const ProblemStatements: React.FC<ProblemStatementsProps> = ({ initialFilter }) 
         </p>
       </div>
 
+
+
       {/* Sticky Filters & Search */}
+
       <div className="ps-controls-sticky">
         <div className="ps-controls">
           <div className="ps-filters">
@@ -396,6 +473,77 @@ const ProblemStatements: React.FC<ProblemStatementsProps> = ({ initialFilter }) 
         )}
       </div>
 
+      {/* Recommender Section */}
+      <div className="recommender-container">
+        <h3 className="recommender-title">Didn't find a match? Find Your Perfect Problem Statement</h3>
+        <p className="recommender-subtitle">Tell us your domain and interests, and we'll suggest the best matches for your team.</p>
+        
+        <div className="recommender-form">
+          <select 
+            className="recommender-select" 
+            value={userBranch} 
+            onChange={(e) => setUserBranch(e.target.value)}
+          >
+            {branches.map(b => <option key={b} value={b}>{b}</option>)}
+          </select>
+
+          <select 
+            className="recommender-select" 
+            value={userInterest} 
+            onChange={(e) => setUserInterest(e.target.value)}
+          >
+            {interests.map(i => <option key={i} value={i}>{i}</option>)}
+          </select>
+
+          <button className={`btn ${isSearching ? 'btn-secondary' : 'btn-primary'} recommender-btn`} onClick={handleRecommend} disabled={isSearching}>
+            {isSearching ? 'Analyzing...' : 'Find Match'}
+          </button>
+        </div>
+
+        {hasSearched && recommendedResults.length > 0 && (
+          <div className="recommender-results fade-in">
+            <h4 className="recommender-results-title">🔥 Top Recommended For You</h4>
+            <div className="ps-cards-mobile" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1.5rem', marginTop: '1.5rem' }}>
+              {recommendedResults.map((ps) => (
+                <div key={'rec-'+ps.psid} className="ps-card recommended-card-glow" onClick={() => openModal(ps)}>
+                  <div className="ps-card-header">
+                    <div style={{ display: 'flex', gap: '0.4rem', flexWrap: 'wrap' }}>
+                      <span className={`ps-badge ${domainBadgeClass[ps.domain]}`}>
+                        {ps.domain}
+                      </span>
+                      {ps.subdomain && (
+                        <span className="ps-badge" style={{ background: 'rgba(255,255,255,0.1)', color: '#fff', border: '1px solid rgba(255,255,255,0.2)' }}>
+                          {ps.subdomain}
+                        </span>
+                      )}
+                    </div>
+                    <span className="ps-card-psid">{ps.psid}</span>
+                  </div>
+                  <h4 className="ps-card-title">{ps.title}</h4>
+                  <div className="ps-card-footer">
+                    <span className="ps-card-view">View Details</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="18" height="18">
+                      <path d="M5 12h14M12 5l7 7-7 7" />
+                    </svg>
+                  </div>
+                </div>
+              ))}
+            </div>
+            
+            <div style={{ textAlign: 'center', marginTop: '2rem' }}>
+              <button 
+                className="btn btn-secondary" 
+                onClick={() => {
+                  setHasSearched(false);
+                  document.getElementById('problem-statements')?.scrollIntoView({ behavior: 'smooth' });
+                }}
+              >
+                View All Statements ↓
+              </button>
+            </div>
+          </div>
+        )}
+      </div>
       {/* Modal — SIH-style structured detail view */}
       {selectedPS && (
         <div className="ps-modal-overlay" onClick={closeModal}>
