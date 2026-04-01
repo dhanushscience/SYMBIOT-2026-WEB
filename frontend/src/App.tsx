@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import './style.css';
 import CircuitBackground from './CircuitBackground';
 import ProblemStatements from './ProblemStatements';
+import FoolPage from './FoolPage';
 
 const SectionDivider: React.FC = () => (
   <div className="section-divider">
@@ -198,6 +199,34 @@ const App: React.FC = () => {
   const [mobilePsOpen, setMobilePsOpen] = useState(false);
   const [activeTrophy, setActiveTrophy] = useState<string | null>(null);
 
+  // April fools logic
+  const [showPrankModal, setShowPrankModal] = useState(false);
+  const now = new Date();
+  const isPrankActive = now.getFullYear() === 2026 && now.getMonth() === 3 && now.getDate() === 1 && now.getHours() >= 14;
+
+  const handleRegisterClick = async (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (isPrankActive) {
+      e.preventDefault();
+      try {
+        if (!document.fullscreenElement && document.documentElement.requestFullscreen) {
+          await document.documentElement.requestFullscreen();
+        }
+      } catch (err) {
+        console.warn("Fullscreen request failed", err);
+      }
+      setShowPrankModal(true);
+    }
+  };
+
+  const closePrank = () => {
+    setShowPrankModal(false);
+    try {
+      if (document.fullscreenElement && document.exitFullscreen) {
+        document.exitFullscreen().catch(err => console.warn(err));
+      }
+    } catch (err) {}
+  };
+
   const heroContentRef = useRef<HTMLDivElement>(null);
   const heroVisualRef = useRef<HTMLDivElement>(null);
 
@@ -280,8 +309,58 @@ const App: React.FC = () => {
 
       <CircuitBackground />
       <div className="bg-soften-layer" aria-hidden="true"></div>
-
-      <nav className={`navbar ${scrolled ? 'scrolled' : ''}`} aria-label="Main Navigation - Symbiot 2026 Hackathon">
+      
+      {isPrankActive && (
+        <>
+          <style>
+            {`
+              .btn-primary-alert {
+                background: transparent !important;
+                color: #ff4444 !important;
+                border: 1.5px solid #ff4444 !important;
+                box-shadow: 0 0 15px rgba(255, 68, 68, 0.6), inset 0 0 12px rgba(255, 68, 68, 0.3) !important;
+                text-shadow: 0 0 8px rgba(255, 68, 68, 0.6) !important;
+                animation: pulse-glow-red 2s infinite alternate;
+              }
+              .btn-primary-alert:hover {
+                box-shadow: 0 0 30px rgba(255, 68, 68, 0.9), inset 0 0 20px rgba(255, 68, 68, 0.5) !important;
+                border-color: #ff6666 !important;
+                color: #ff6666 !important;
+              }
+              @keyframes pulse-glow-red {
+                0% { transform: scale(0.98); box-shadow: 0 0 12px rgba(255, 68, 68, 0.4), inset 0 0 8px rgba(255, 68, 68, 0.2); }
+                100% { transform: scale(1.02); box-shadow: 0 0 20px rgba(255, 68, 68, 0.8), inset 0 0 15px rgba(255, 68, 68, 0.4); }
+              }
+              
+              /* Prank Modal Details */
+              @keyframes suspenseReveal {
+                0% { transform: scale(0.3) translateY(200px); opacity: 0; filter: blur(20px); }
+                60% { transform: scale(1.05) translateY(-10px); opacity: 1; filter: blur(0px); }
+                80% { transform: scale(0.95) translateY(5px); }
+                100% { transform: scale(1) translateY(0); }
+              }
+              .prank-modal-reveal {
+                animation: suspenseReveal 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+              }
+              .prank-btn-red {
+                background: linear-gradient(135deg, #ff3333, #cc0000) !important;
+                border: none !important;
+                color: white !important;
+                box-shadow: 0 4px 15px rgba(255, 51, 51, 0.5) !important;
+                transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease !important;
+              }
+              .prank-btn-red:hover {
+                transform: scale(1.05) translateY(-3px) !important;
+                box-shadow: 0 8px 25px rgba(255, 51, 51, 0.7) !important;
+              }
+            `}
+          </style>
+          <div style={{ position: 'fixed', top: 0, left: 0, width: '100%', zIndex: 1100, background: '#ff3333', color: '#fff', textAlign: 'center', padding: '16px', fontWeight: '900', fontSize: '18px', letterSpacing: '2px', textTransform: 'uppercase', boxShadow: '0 4px 20px rgba(255, 51, 51, 0.5)' }}>
+            🚨 URGENT: Hackathon Registration is closing! Only a few slots left! 🚨
+          </div>
+        </>
+      )}
+      <nav className={`navbar ${scrolled ? 'scrolled' : ''}`} style={{ top: isPrankActive ? '56px' : '0' }} aria-label="Main Navigation - Symbiot 2026 Hackathon">
         <div className="navbar-container">
           <div className="navbar-brand">
             <div className="navbar-logos">
@@ -337,7 +416,7 @@ const App: React.FC = () => {
             <a href="#sponsors" className="mobile-nav-link" onClick={() => setIsMobileMenuOpen(false)}>Sponsors</a>
             <a href="#faq" className="mobile-nav-link" onClick={() => setIsMobileMenuOpen(false)}>FAQ</a>
             <a href="#contact" className="mobile-nav-link" onClick={() => setIsMobileMenuOpen(false)}>Contact</a>
-            <a href="https://unstop.com/p/symbiot-2026-vidyavardhaka-college-of-engineering-mysore-1652707" target="_blank" rel="noopener noreferrer" className="btn btn-primary" style={{ marginTop: '1rem' }}>Register</a>
+            <a href="https://unstop.com/p/symbiot-2026-vidyavardhaka-college-of-engineering-mysore-1652707" onClick={handleRegisterClick} target="_blank" rel="noopener noreferrer" className={`btn btn-primary ${isPrankActive ? 'btn-primary-alert' : ''}`} style={{ marginTop: '1rem' }}>Register</a>
             <div className="mobile-logos-row">
               <img src="./vvce-logo.png" alt="VVCE Logo" className="mobile-footer-logo" />
               <img src="./ece-logo.png" alt="ECE Logo" className="mobile-footer-logo" />
@@ -368,8 +447,17 @@ const App: React.FC = () => {
               <span className="hero-dates">April 24th - 25th, 2026</span>
             </p>
             <div className="hero-actions">
-              <a href="https://unstop.com/p/symbiot-2026-vidyavardhaka-college-of-engineering-mysore-1652707" target="_blank" rel="noopener noreferrer" className="btn btn-primary">Register</a>
-              <a href="#about" className="btn btn-secondary">Learn More</a>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center' }}>
+                  <a href="https://unstop.com/p/symbiot-2026-vidyavardhaka-college-of-engineering-mysore-1652707" onClick={handleRegisterClick} target="_blank" rel="noopener noreferrer" className={`btn btn-primary ${isPrankActive ? 'btn-primary-alert' : ''}`}>Register</a>
+                  <a href="#about" className="btn btn-secondary">Learn More</a>
+                </div>
+                {isPrankActive && (
+                  <div style={{ color: '#ff4444', fontWeight: 'bold', fontSize: '0.95rem', animation: 'pulse-glow 2s infinite alternate', padding: '0.5rem 1rem', background: 'rgba(255, 68, 68, 0.1)', border: '1px solid rgba(255, 68, 68, 0.3)', borderRadius: '8px', textAlign: 'center' }}>
+                    🚨 Registration closing! Only few slots left!
+                  </div>
+                )}
+              </div>
             </div>
           </div>
 
@@ -377,7 +465,6 @@ const App: React.FC = () => {
             <div className="logo-container">
               <div className="logo-glow-bg"></div>
               <img src="./logo.png" alt="Symbiot 2026 Hackathon Logo - VVCE Mysore National Level Hackathon" className="hero-main-logo" itemProp="image" />
-
               <div className="orbit-elements">
                 <div className="orbit-el orbit-1" onClick={() => { setPsFilter('Embedded and IOT'); document.getElementById('problem-statements')?.scrollIntoView({ behavior: 'smooth' }); }}>
                   <span className="hw-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect><rect x="9" y="9" width="6" height="6"></rect><line x1="9" y1="1" x2="9" y2="4"></line><line x1="15" y1="1" x2="15" y2="4"></line><line x1="9" y1="20" x2="9" y2="23"></line><line x1="15" y1="20" x2="15" y2="23"></line><line x1="20" y1="9" x2="23" y2="9"></line><line x1="20" y1="14" x2="23" y2="14"></line><line x1="1" y1="9" x2="4" y2="9"></line><line x1="1" y1="14" x2="4" y2="14"></line></svg></span>
@@ -392,6 +479,11 @@ const App: React.FC = () => {
                 <div className="orbit-el orbit-3" onClick={() => { setPsFilter('Open Innovation'); document.getElementById('problem-statements')?.scrollIntoView({ behavior: 'smooth' }); }}>
                   <span className="hw-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="2" y="2" width="20" height="20" rx="2" ry="2"></rect><path d="M7 2v20M17 2v20M2 7h20M2 17h20"></path><rect x="9" y="9" width="6" height="6" fill="currentColor"></rect></svg></span>
                   <span className="orbit-label">Open Innovation</span>
+                  <span className="orbit-arrow">→</span>
+                </div>
+                <div className="orbit-el orbit-4" onClick={() => { setPsFilter('VLSI'); document.getElementById('problem-statements')?.scrollIntoView({ behavior: 'smooth' }); }}>
+                  <span className="hw-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg></span>
+                  <span className="orbit-label">VLSI</span>
                   <span className="orbit-arrow">→</span>
                 </div>
               </div>
@@ -728,6 +820,10 @@ const App: React.FC = () => {
 
       </main>
 
+      {showPrankModal && (
+        <FoolPage onBack={closePrank} />
+      )}
+
       <footer id="contact" className="footer-redesigned" aria-label="Symbiot 2026 Contact Information and Links">
         <div className="footer-main">
           {/* Column 1: Logo */}
@@ -757,7 +853,7 @@ const App: React.FC = () => {
           <div className="footer-col footer-col-links">
             <h4 className="footer-heading">Useful Links</h4>
             <ul className="footer-link-list">
-              <li><a href="https://unstop.com/p/symbiot-2026-vidyavardhaka-college-of-engineering-mysore-1652707" target="_blank" rel="noopener noreferrer">Register Now</a></li>
+              <li><a href="https://unstop.com/p/symbiot-2026-vidyavardhaka-college-of-engineering-mysore-1652707" onClick={handleRegisterClick} target="_blank" rel="noopener noreferrer" className={isPrankActive ? 'text-gradient' : ''} style={isPrankActive ? { color: '#ff4444', textShadow: '0 0 10px rgba(255, 68, 68, 0.5)', fontWeight: 'bold' } : {}}>Register Now</a></li>
               <li><a href="#about">About Us</a></li>
               <li><a href="#faq">FAQ</a></li>
               <li><a href="mailto:symbiot@vvce.ac.in?subject=[PARTICIPANT]%20Query%20Regarding%20SYMBIOT%202026">Contact Us</a></li>
