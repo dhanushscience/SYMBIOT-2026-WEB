@@ -367,6 +367,26 @@ const ProblemStatements: React.FC<ProblemStatementsProps> = ({ initialFilter }) 
         </div>
       </div>
 
+      {activeFilter === 'Open Innovation' ? (
+        <div className="open-innovation-view" style={{ textAlign: 'center', padding: '4rem 2rem', background: 'rgba(255, 255, 255, 0.05)', borderRadius: '16px', margin: '2rem 0', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1.5rem', border: '1px solid rgba(0, 240, 255, 0.3)', boxShadow: '0 0 30px rgba(0, 240, 255, 0.1)' }}>
+          <h3 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.8rem)', margin: 0, background: 'linear-gradient(90deg, #fff, #00f0ff)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', fontWeight: '800', lineHeight: '1.2' }}>
+            No limits. Just innovation.<br/>This is where you shine. 🚀
+          </h3>
+          <p style={{ fontSize: '1.15rem', maxWidth: '800px', margin: '0', color: '#e2e8f0', lineHeight: '1.6' }}>
+            Build anything you want — AI, apps, web platforms, embedded systems, hardware innovations, or hybrid solutions.
+          </p>
+          <p style={{ fontSize: '1.15rem', maxWidth: '800px', margin: '0', color: '#e2e8f0', lineHeight: '1.6' }}>
+            Bring your own problem statement or pick one and go all in.
+          </p>
+          <p style={{ fontSize: '1.15rem', maxWidth: '800px', margin: '0', color: '#e2e8f0', lineHeight: '1.6' }}>
+            Whether it's code, circuits, or a fusion of both, if it’s innovative, it belongs here.
+          </p>
+          <a href={`${import.meta.env.BASE_URL}PPT_template/SYMBIOT_2026_OPEN_PPT.pptx`} download="SYMBIOT_2026_OPEN_PPT.pptx" className="btn btn-primary" style={{ marginTop: '1.5rem', fontSize: '1.1rem', padding: '1rem 2.5rem', background: 'linear-gradient(135deg, #00f0ff, #007bb5)', border: 'none', boxShadow: '0 4px 15px rgba(0,240,255,0.4)', color: '#fff' }}>
+            Download Open Innovation PPT
+          </a>
+        </div>
+      ) : (
+      <>
       {/* Results count */}
       <div className="ps-results-count">
         Showing <span>{filteredStatements.length}</span> of <span>{problemStatements.length}</span> problem statements
@@ -472,6 +492,8 @@ const ProblemStatements: React.FC<ProblemStatementsProps> = ({ initialFilter }) 
           ))
         )}
       </div>
+      </>
+      )}
 
       {/* Recommender Section */}
       <div className="recommender-container">
@@ -530,7 +552,15 @@ const ProblemStatements: React.FC<ProblemStatementsProps> = ({ initialFilter }) 
               ))}
             </div>
             
-            <div style={{ textAlign: 'center', marginTop: '2rem' }}>
+            <div style={{ textAlign: 'center', marginTop: '2rem', display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+              <a 
+                href={`${import.meta.env.BASE_URL}PPT_template/SYMBIOT_2026_OPEN_PPT.pptx`} 
+                download="SYMBIOT_2026_OPEN_PPT.pptx" 
+                className="btn btn-primary"
+                style={{ background: 'linear-gradient(135deg, #00f0ff, #007bb5)', border: 'none', color: '#fff', boxShadow: '0 4px 15px rgba(0,240,255,0.3)' }}
+              >
+                Make Your Own Problem Statement
+              </a>
               <button 
                 className="btn btn-secondary" 
                 onClick={() => {
