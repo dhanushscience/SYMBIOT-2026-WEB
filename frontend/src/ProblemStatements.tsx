@@ -332,6 +332,9 @@ const ProblemStatements: React.FC<ProblemStatementsProps> = ({ initialFilter }) 
         <p className="section-subtitle">
           Tackle curated challenges designed to impact the real world.
         </p>
+        <p className="section-subtitle" style={{ color: '#00f0ff', marginTop: '0.5rem', fontWeight: 'bold', fontSize: '1rem' }}>
+          * More problem statements will be added today!
+        </p>
       </div>
 
 
