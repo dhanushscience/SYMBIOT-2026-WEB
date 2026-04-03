@@ -499,7 +499,7 @@ const App: React.FC = () => {
             <div className="eligibility-banner">
               <div className="eligibility-text">
                 Open to <span className="highlight-bright">B.Tech & M.Tech</span> Students Nationwide<br className="mobile-break" />
-                Experience SYMBIOT’s First-Ever Dedicated <span className="highlight-gradient"><strong style={{fontWeight: 900}}>VLSI</strong> Track</span>
+                Experience SYMBIOT’s First-Ever Dedicated <span className="highlight-gradient"><strong style={{ fontWeight: 900 }}>VLSI</strong> Track</span>
               </div>
             </div>
 
@@ -602,9 +602,6 @@ const App: React.FC = () => {
               <h3 style={{ color: 'var(--accent-cyan)' }}>Beyond Prototypes</h3>
               <p>SYMBIOT pushes teams to go beyond pitch decks and demo-only hacks. The focus is on deployable hardware and software stacks that can be tested, benchmarked, and scaled.</p>
               <p>From embedded systems and robotics to AI-driven platforms, every solution is evaluated for engineering rigor and real-world impact by industry experts.</p>
-              <h3 style={{ marginTop: '1rem', color: 'var(--accent-cyan)' }}>VVCE ECE Department</h3>
-              <p>The Department of Electronics and Communication Engineering at VVCE offers a strong academic pathway through a 4-year BE program and an M.Tech track in VLSI, aligning classroom learning with current industry needs.</p>
-              <p>With a focus on core electronics, communication systems, hands-on laboratory practice, internships, and final-year capstone projects, the department encourages students to build practical, career-ready engineering solutions.</p>
             </div>
 
             <div className="about-cards">
@@ -617,25 +614,6 @@ const App: React.FC = () => {
                 <div className="feature-icon">🏢</div>
                 <h4 style={{ color: 'var(--accent-yellow)' }}>VVCE ECE Pathway</h4>
                 <p style={{ color: 'var(--text-secondary)', marginTop: '0.5rem', fontSize: '0.9rem' }}>Core ECE foundations, electives, and capstone-driven learning for real-world deployment.</p>
-              </div>
-              <div className="glass-panel feature-card facilitators-card" style={{ gridColumn: '1 / -1', padding: '1.5rem', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                <h4 style={{ marginBottom: '1.5rem', textAlign: 'center', width: '100%', color: 'var(--accent-cyan)', fontSize: '1.4rem' }}>Facilitators</h4>
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '2.5rem', width: '100%', textAlign: 'center' }}>
-                  <div className="facilitator" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                    <div style={{ width: '100px', height: '100px', borderRadius: '50%', overflow: 'hidden', border: '2px solid var(--accent-cyan)', marginBottom: '1rem', boxShadow: '0 0 15px var(--glow-cyan)' }}>
-                      <img src="./CM-Patil.jpg" alt="Dr. C M Patil" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-                    </div>
-                    <p style={{ color: 'var(--text-primary)', fontWeight: 'bold', fontSize: '1.1rem', margin: 0 }}>Dr. C M Patil</p>
-                    <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', margin: '0.25rem 0 0 0' }}>HOD, ECE Department</p>
-                  </div>
-                  <div className="facilitator" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                    <div style={{ width: '100px', height: '100px', borderRadius: '50%', overflow: 'hidden', border: '2px solid var(--accent-cyan)', marginBottom: '1rem', boxShadow: '0 0 15px var(--glow-cyan)' }}>
-                      <img src="./geethashree-A.jpg" alt="Dr. Geetha Shree A" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-                    </div>
-                    <p style={{ color: 'var(--text-primary)', fontWeight: 'bold', fontSize: '1.1rem', margin: 0 }}>Dr. Geetha Shree A</p>
-                    <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', margin: '0.25rem 0 0 0' }}>SYMBIOT Faculty Coordinator</p>
-                  </div>
-                </div>
               </div>
             </div>
           </div>
@@ -865,6 +843,99 @@ const App: React.FC = () => {
 
         <SectionDivider />
 
+        <section id="department" className="section" aria-label="About VVCE and ECE Department">
+          <div className="section-header">
+            <h2 className="section-title">About <span className="text-gradient">Institution</span></h2>
+          </div>
+
+          <div className="institution-cards-row" style={{ display: 'flex', flexWrap: 'wrap', gap: '2rem', justifyContent: 'center', maxWidth: '1200px', margin: '0 auto', marginBottom: '3rem', padding: '0 1rem' }}>
+
+            <div className="glass-panel institution-card" style={{ flex: '1 1 400px', padding: '2.5rem', display: 'flex', flexDirection: 'column', gap: '1rem', border: '1px solid rgba(0, 240, 255, 0.2)' }}>
+
+              <div className="institution-card-header" style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', marginBottom: '0.5rem' }}>
+                <div className="institution-logo-box" style={{ flexShrink: 0, width: '70px', height: '70px', border: '1px solid var(--accent-cyan)', borderRadius: '16px', display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundColor: 'rgba(0, 240, 255, 0.05)' }}>
+                  <img src="./vvce-logo.png" alt="VVCE Logo" style={{ width: '80%', height: '80%', objectFit: 'contain' }} onError={(e) => { e.currentTarget.style.display = 'none'; e.currentTarget.parentElement!.innerHTML = '<span style="color: var(--accent-cyan); font-weight: 800; font-size: 1.1rem;">VVCE</span>'; }} />
+                </div>
+                <div style={{ display: 'flex', flexDirection: 'column' }}>
+                  <span style={{ color: 'var(--accent-cyan)', fontSize: '0.75rem', fontWeight: '800', letterSpacing: '1.5px', textTransform: 'uppercase', marginBottom: '0.3rem' }}>EST. 1997 • MYSURU</span>
+                  <h3 className="institution-card-title" style={{ color: '#ffffff', fontSize: '1.5rem', margin: '0', lineHeight: '1.2' }}>Vidyavardhaka College<br />of Engineering</h3>
+                </div>
+              </div>
+
+              <div style={{ height: '1px', width: '50px', background: 'rgba(255, 255, 255, 0.2)', marginBottom: '0.5rem' }}></div>
+
+              <p style={{ color: '#cbd5e1', lineHeight: '1.6', fontSize: '1.05rem', margin: 0 }}>
+                An autonomous institute affiliated with Visvesvaraya Technological University (VTU), Belagavi, approved by AICTE & UGC, New Delhi. Accredited by NAAC with an “A” grade and seven UG programs accredited by NBA. With 3200+ students, nine PhD research centers, and a passionate faculty team dedicated to world-class education.
+                Vidyavardhaka College of Engineering (VVCE) is known for conducting outstanding hackathons that go beyond ideas focusing on engineering discipline, system-level thinking, and real-world applicability.
+              </p>
+              <p style={{ color: '#cbd5e1', lineHeight: '1.6', fontSize: '1.05rem', margin: 0 }}>
+                Each event reflects the institution’s commitment to building capable engineers, not just competitors.
+              </p>
+
+              <div className="institution-tags" style={{ display: 'flex', flexWrap: 'wrap', gap: '0.8rem', marginTop: 'auto', paddingTop: '1.5rem' }}>
+                <span style={{ fontSize: '0.65rem', padding: '0.4rem 0.8rem', border: '1px solid rgba(0, 240, 255, 0.4)', borderRadius: '20px', color: 'var(--accent-cyan)', fontWeight: 'bold' }}>NBA ACCREDITED</span>
+                <span style={{ fontSize: '0.65rem', padding: '0.4rem 0.8rem', border: '1px solid rgba(0, 240, 255, 0.4)', borderRadius: '20px', color: 'var(--accent-cyan)', fontWeight: 'bold' }}>NAAC 'A' GRADE</span>
+                <span style={{ fontSize: '0.65rem', padding: '0.4rem 0.8rem', border: '1px solid rgba(0, 240, 255, 0.4)', borderRadius: '20px', color: 'var(--accent-cyan)', fontWeight: 'bold' }}>VTU AFFILIATED</span>
+                <span style={{ fontSize: '0.65rem', padding: '0.4rem 0.8rem', border: '1px solid rgba(0, 240, 255, 0.4)', borderRadius: '20px', color: 'var(--accent-cyan)', fontWeight: 'bold' }}>AICTE APPROVED</span>
+              </div>
+            </div>
+
+            <div className="glass-panel institution-card" style={{ flex: '1 1 400px', padding: '2.5rem', display: 'flex', flexDirection: 'column', gap: '1rem', border: '1px solid rgba(0, 240, 255, 0.2)' }}>
+
+              <div className="institution-card-header" style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', marginBottom: '0.5rem' }}>
+                <div className="institution-logo-box" style={{ flexShrink: 0, width: '70px', height: '70px', border: '1px solid var(--accent-cyan)', borderRadius: '16px', display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundColor: 'rgba(0, 240, 255, 0.05)' }}>
+                  <img src="./ece-logo.png" alt="ECE Logo" style={{ width: '80%', height: '80%', objectFit: 'contain' }} onError={(e) => { e.currentTarget.style.display = 'none'; e.currentTarget.parentElement!.innerHTML = '<span style="color: var(--accent-cyan); font-weight: 800; font-size: 1.1rem;">ECE</span>'; }} />
+                </div>
+                <div style={{ display: 'flex', flexDirection: 'column' }}>
+                  <span style={{ color: 'var(--accent-cyan)', fontSize: '0.75rem', fontWeight: '800', letterSpacing: '1.5px', textTransform: 'uppercase', marginBottom: '0.3rem' }}>DEPT. OF</span>
+                  <h3 className="institution-card-title" style={{ color: '#ffffff', fontSize: '1.5rem', margin: '0', lineHeight: '1.2' }}>Electronics &<br />Communication Engineering</h3>
+                </div>
+              </div>
+
+              <div style={{ height: '1px', width: '50px', background: 'rgba(255, 255, 255, 0.2)', marginBottom: '0.5rem' }}></div>
+
+              <p style={{ color: '#cbd5e1', lineHeight: '1.6', fontSize: '1.05rem', margin: 0 }}>
+                The Department of Electronics and Communication Engineering (ECE) at Vidyavardhaka College of Engineering, Mysuru, is dedicated to providing quality education in electronics and modern communication technologies. The department offers undergraduate and postgraduate programs, including a B.E. in ECE and an M.Tech. in VLSI, equipping students with both fundamental knowledge and advanced technical skills.
+              </p>
+              <p style={{ color: '#cbd5e1', lineHeight: '1.6', fontSize: '1.05rem', margin: 0 }}>
+                With a strong focus on practical learning and innovation, the department prepares students to excel in diverse technology-driven industries and contribute to societal development.
+              </p>
+
+              <div className="institution-tags" style={{ display: 'flex', flexWrap: 'wrap', gap: '0.8rem', marginTop: 'auto', paddingTop: '1.5rem' }}>
+                <span style={{ fontSize: '0.65rem', padding: '0.4rem 0.8rem', border: '1px solid rgba(0, 240, 255, 0.4)', borderRadius: '20px', color: 'var(--accent-cyan)', fontWeight: 'bold' }}>CUTTING-EDGE CURRICULUM</span>
+                <span style={{ fontSize: '0.65rem', padding: '0.4rem 0.8rem', border: '1px solid rgba(0, 240, 255, 0.4)', borderRadius: '20px', color: 'var(--accent-cyan)', fontWeight: 'bold' }}>RESEARCH FOCUSED</span>
+                <span style={{ fontSize: '0.65rem', padding: '0.4rem 0.8rem', border: '1px solid rgba(0, 240, 255, 0.4)', borderRadius: '20px', color: 'var(--accent-cyan)', fontWeight: 'bold' }}>INDUSTRY READY</span>
+                <span style={{ fontSize: '0.65rem', padding: '0.4rem 0.8rem', border: '1px solid rgba(0, 240, 255, 0.4)', borderRadius: '20px', color: 'var(--accent-cyan)', fontWeight: 'bold' }}>INNOVATION HUB</span>
+              </div>
+            </div>
+
+          </div>
+
+          <div className="institution-facilitators-row" style={{ display: 'flex', justifyContent: 'center', width: '100%', maxWidth: '1200px', margin: '0 auto', padding: '0 1rem' }}>
+            <div className="glass-panel facilitators-card institution-facilitators" style={{ padding: '2.5rem', display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%', maxWidth: '800px', border: '1px solid rgba(0, 240, 255, 0.2)' }}>
+              <h4 style={{ marginBottom: '2.5rem', textAlign: 'center', width: '100%', color: 'var(--accent-cyan)', fontSize: '1.8rem', letterSpacing: '1px' }}>Facilitators</h4>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '3rem', width: '100%', textAlign: 'center' }}>
+                <div className="facilitator" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                  <div style={{ width: '130px', height: '130px', borderRadius: '50%', overflow: 'hidden', border: '3px solid var(--accent-cyan)', marginBottom: '1.2rem', boxShadow: '0 0 20px var(--glow-cyan)' }}>
+                    <img src="./CM-Patil.jpg" alt="Dr. C M Patil" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                  </div>
+                  <p style={{ color: 'var(--text-primary)', fontWeight: 'bold', fontSize: '1.3rem', margin: 0 }}>Dr. C M Patil</p>
+                  <p style={{ color: 'var(--text-secondary)', fontSize: '1.05rem', margin: '0.4rem 0 0 0' }}>HOD, ECE Department</p>
+                </div>
+                <div className="facilitator" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                  <div style={{ width: '130px', height: '130px', borderRadius: '50%', overflow: 'hidden', border: '3px solid var(--accent-cyan)', marginBottom: '1.2rem', boxShadow: '0 0 20px var(--glow-cyan)' }}>
+                    <img src="./geethashree-A.jpg" alt="Dr. Geetha Shree A" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                  </div>
+                  <p style={{ color: 'var(--text-primary)', fontWeight: 'bold', fontSize: '1.3rem', margin: 0 }}>Dr. Geetha Shree A</p>
+                  <p style={{ color: 'var(--text-secondary)', fontSize: '1.05rem', margin: '0.4rem 0 0 0' }}>SYMBIOT Faculty Coordinator</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <SectionDivider />
+
         <section id="faq" className="section bg-alt" aria-label="Frequently Asked Questions about Symbiot 2026 Hackathon">
           <div className="section-header">
             <h2 className="section-title"><span className="text-gradient">FAQ</span></h2>
@@ -896,6 +967,7 @@ const App: React.FC = () => {
             ))}
           </div>
         </section>
+
 
       </main>
 
@@ -1003,7 +1075,7 @@ const App: React.FC = () => {
       {scrolled && (
         <button className="scroll-to-top" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} aria-label="Scroll to top">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M18 15l-6-6-6 6"/>
+            <path d="M18 15l-6-6-6 6" />
           </svg>
         </button>
       )}

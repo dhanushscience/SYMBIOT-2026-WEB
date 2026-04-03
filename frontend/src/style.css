@@ -4739,3 +4739,104 @@ h1, h2, h3, h4, h5, h6 {
     height: 44px;
   }
 }
+
+/* -------------------------------- */
+/* ABOUT INSTITUTION – MOBILE       */
+/* -------------------------------- */
+
+@media (max-width: 768px) {
+  .institution-cards-row {
+    gap: 1.2rem !important;
+    padding: 0 0.5rem !important;
+    margin-bottom: 1.5rem !important;
+  }
+
+  .institution-card {
+    flex: 1 1 100% !important;
+    padding: 1.5rem !important;
+    gap: 0.7rem !important;
+  }
+
+  .institution-card-header {
+    gap: 1rem !important;
+  }
+
+  .institution-logo-box {
+    width: 55px !important;
+    height: 55px !important;
+    border-radius: 12px !important;
+  }
+
+  .institution-card-title {
+    font-size: 1.2rem !important;
+  }
+
+  .institution-card p {
+    font-size: 0.95rem !important;
+    line-height: 1.5 !important;
+  }
+
+  .institution-tags {
+    gap: 0.5rem !important;
+    padding-top: 1rem !important;
+  }
+
+  .institution-tags span {
+    font-size: 0.6rem !important;
+    padding: 0.3rem 0.6rem !important;
+  }
+
+  .institution-facilitators-row {
+    padding: 0 0.5rem !important;
+  }
+
+  .institution-facilitators {
+    padding: 1.5rem !important;
+  }
+
+  .institution-facilitators h4 {
+    font-size: 1.4rem !important;
+    margin-bottom: 1.5rem !important;
+  }
+
+  .institution-facilitators .facilitator div:first-child {
+    width: 100px !important;
+    height: 100px !important;
+  }
+
+  .institution-facilitators .facilitator p:first-of-type {
+    font-size: 1.1rem !important;
+  }
+
+  .institution-facilitators .facilitator p:last-of-type {
+    font-size: 0.9rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .institution-card {
+    padding: 1.2rem !important;
+  }
+
+  .institution-logo-box {
+    width: 48px !important;
+    height: 48px !important;
+  }
+
+  .institution-card-title {
+    font-size: 1.05rem !important;
+  }
+
+  .institution-card p {
+    font-size: 0.9rem !important;
+  }
+
+  .institution-facilitators {
+    padding: 1.2rem !important;
+  }
+
+  .institution-facilitators .facilitator div:first-child {
+    width: 85px !important;
+    height: 85px !important;
+  }
+}
