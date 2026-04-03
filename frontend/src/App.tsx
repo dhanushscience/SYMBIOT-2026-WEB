@@ -731,48 +731,48 @@ const App: React.FC = () => {
           <h3 style={{ fontSize: '2rem', marginBottom: '2.5rem', fontFamily: 'Outfit, sans-serif' }}>Prize Partners</h3>
           <div className="sponsors-grid">
             <a href="https://pravegasemi.com/" target="_blank" rel="noopener noreferrer" className="sponsor-card">
-              <img src="./PravegaSemi-Logo.png" alt="Pravega Semi Logo" className="sponsor-logo" />
+              <img src="./PravegaSemi-Logo.png" alt="Pravega Semi Logo" className="sponsor-logo logo-wide" />
             </a>
             <div className="sponsor-card">
-              <img src="./WIE Bengaluru section.png" alt="WIE Bangalore" className="sponsor-logo" />
+              <img src="./WIE Bengaluru section.png" alt="WIE Bangalore" className="sponsor-logo logo-compact" />
             </div>
             <a href="https://tregoraa.com/?srsltid=AfmBOoqwkVjv00TXp2nV_r4Tg3iAPwxNFGxiobkdkkaZI0o5V4dX-ksq" target="_blank" rel="noopener noreferrer" className="sponsor-card">
-              <img src="./Tregorra.png" alt="Tregorra" className="sponsor-logo" />
+              <img src="./Tregorra.png" alt="Tregorra" className="sponsor-logo logo-compact" />
             </a>
           </div>
 
           <h3 style={{ fontSize: '2rem', marginBottom: '2.5rem', marginTop: '4rem', fontFamily: 'Outfit, sans-serif' }}>Proud Sponsors</h3>
           <div className="sponsors-grid-2x2">
             <a href="https://www.geeksforgeeks.org/" target="_blank" rel="noopener noreferrer" className="sponsor-card">
-              <img src="./gg.png" alt="Global Geeks" className="sponsor-logo" />
+              <img src="./gg.png" alt="Global Geeks" className="sponsor-logo logo-compact" />
             </a>
             <a href="https://logycent.com/" target="_blank" rel="noopener noreferrer" className="sponsor-card">
-              <img src="./Logycent.png" alt="Logycent" className="sponsor-logo" />
+              <img src="./Logycent.png" alt="Logycent" className="sponsor-logo logo-wide" />
             </a>
             <a href="https://www.instagram.com/pixel_hut/" target="_blank" rel="noopener noreferrer" className="sponsor-card">
-              <img src="./pixelhut.png" alt="Pixelhut" className="sponsor-logo" />
+              <img src="./pixelhut.png" alt="Pixelhut" className="sponsor-logo logo-wide" />
             </a>
             <div className="sponsor-card">
-              <img src="./vivartan.png" alt="Vivartan" className="sponsor-logo" />
+              <img src="./vivartan.png" alt="Vivartan" className="sponsor-logo logo-wide" />
             </div>
           </div>
 
           <h3 style={{ fontSize: '2rem', marginBottom: '2.5rem', marginTop: '4rem', fontFamily: 'Outfit, sans-serif' }}>Technical Sponsors</h3>
           <div className="sponsors-grid">
             <div className="sponsor-card">
-              <img src="./ieee-mb-blue.png" alt="IEEE Kite" className="sponsor-logo" />
+              <img src="./ieee-mb-blue.png" alt="IEEE Kite" className="sponsor-logo logo-wide" />
             </div>
             <div className="sponsor-card">
-              <img src="./IEEE-banglore-Section-Blue-300x75-2.png" alt="IEEE Bangalore Section" className="sponsor-logo" />
+              <img src="./IEEE-banglore-Section-Blue-300x75-2.png" alt="IEEE Bangalore Section" className="sponsor-logo logo-wide" />
             </div>
             <div className="sponsor-card">
-              <img src="./IEEE mysore subsection white.png" alt="IEEE Mysore Subsection" className="sponsor-logo" />
+              <img src="./IEEE mysore subsection white.png" alt="IEEE Mysore Subsection" className="sponsor-logo logo-wide" />
             </div>
             <div className="sponsor-card">
-              <img src="./CAS-WHITE-BG.jpg" alt="CAS Bangalore" className="sponsor-logo" />
+              <img src="./CAS-WHITE-BG.jpg" alt="CAS Bangalore" className="sponsor-logo logo-compact" />
             </div>
             <div className="sponsor-card">
-              <img src="./RAS.png" alt="RAS Bangalore" className="sponsor-logo" />
+              <img src="./RAS.png" alt="RAS Bangalore" className="sponsor-logo logo-compact" />
             </div>
           </div>
         </section>
