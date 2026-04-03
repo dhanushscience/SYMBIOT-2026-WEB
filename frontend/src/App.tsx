@@ -49,7 +49,6 @@ const TrophyCard: React.FC<{
   );
 };
 
-// --- Trophy Modal Component ---
 const TrophyModal: React.FC<{
   domain: string | null;
   onClose: () => void;
@@ -65,51 +64,99 @@ const TrophyModal: React.FC<{
 
   if (!domain) return null;
 
-  const isExtraAward = domain === "Best Women Team" || domain === "Best Innovation" || domain === "Participation";
-
   return (
     <div className="trophy-modal-overlay" onClick={onClose}>
       <div className="trophy-modal" onClick={(e) => e.stopPropagation()}>
         <button className="trophy-modal-close" onClick={onClose}>✕</button>
         <div className="trophy-modal-icon">🏆</div>
-        <h2 className="trophy-modal-title">{domain} {isExtraAward ? '' : <span>Winner</span>}</h2>
+        <h2 className="trophy-modal-title">{domain}</h2>
         <div className="trophy-modal-content">
-          {!isExtraAward ? (
+          {(domain === 'Embedded & IoT' || domain === 'Software Domain') && (
             <>
               <div className="prize-tier">
                 <div className="prize-tier-header">
-                  <h4>1st Prize</h4>
-                  <span className="prize-amt">{domain === 'Open Innovation' || domain === 'VLSI' ? '₹10K' : '₹15K'}</span>
+                  <h4>Winner</h4>
+                  <span className="prize-amt">₹15K</span>
                 </div>
                 <ul>
-                  <li><span className="detail-check">✓</span>{domain === 'Open Innovation' || domain === 'VLSI' ? '₹10,000' : '₹15,000'} Cash Prize</li>
+                  <li><span className="detail-check">✓</span>₹15,000 Cash Prize</li>
                   <li><span className="detail-check">✓</span>IEEE Participation Certificate</li>
                   <li><span className="detail-check">✓</span>Exciting Goodies</li>
                 </ul>
               </div>
               <div className="prize-tier">
                 <div className="prize-tier-header">
-                  <h4>2nd Prize</h4>
-                  <span className="prize-amt">{domain === 'Open Innovation' || domain === 'VLSI' ? '₹2.5K' : '₹10K'}</span>
+                  <h4>Runner-Up</h4>
+                  <span className="prize-amt">₹10K</span>
                 </div>
                 <ul>
-                  <li><span className="detail-check">✓</span>{domain === 'Open Innovation' || domain === 'VLSI' ? '₹2,500' : '₹10,000'} Cash Prize</li>
+                  <li><span className="detail-check">✓</span>₹10,000 Cash Prize</li>
+                  <li><span className="detail-check">✓</span>IEEE Participation Certificate</li>
+                  <li><span className="detail-check">✓</span>Exciting Goodies</li>
+                </ul>
+              </div>
+              <div className="prize-tier">
+                <div className="prize-tier-header">
+                  <h4>Best Innovation</h4>
+                  <span className="prize-amt">₹5K</span>
+                </div>
+                <ul>
+                  <li><span className="detail-check">✓</span>₹5,000 Cash Prize</li>
+                  <li><span className="detail-check">✓</span>IEEE Participation Certificate</li>
+                  <li><span className="detail-check">✓</span>Exciting Goodies</li>
+                </ul>
+              </div>
+              <div className="prize-tier">
+                <div className="prize-tier-header">
+                  <h4>Best Women's Team</h4>
+                  <span className="prize-amt">₹5K</span>
+                </div>
+                <ul>
+                  <li><span className="detail-check">✓</span>₹5,000 Cash Prize</li>
                   <li><span className="detail-check">✓</span>IEEE Participation Certificate</li>
                   <li><span className="detail-check">✓</span>Exciting Goodies</li>
                 </ul>
               </div>
             </>
-          ) : (
+          )}
+
+          {domain === 'VLSI' && (
+            <div className="prize-tier">
+              <div className="prize-tier-header">
+                <h4>Winner</h4>
+                <span className="prize-amt">₹15K</span>
+              </div>
+              <ul>
+                <li><span className="detail-check">✓</span>₹15,000 Cash Prize</li>
+                <li><span className="detail-check">✓</span>IEEE Participation Certificate</li>
+                <li><span className="detail-check">✓</span>Exciting Goodies</li>
+              </ul>
+            </div>
+          )}
+
+          {domain === 'Campus Innovation' && (
+            <div className="prize-tier">
+              <div className="prize-tier-header">
+                <h4>Winner</h4>
+                <span className="prize-amt">₹10K</span>
+              </div>
+              <ul>
+                <li><span className="detail-check">✓</span>₹10,000 Cash Prize</li>
+                <li><span className="detail-check">✓</span>IEEE Participation Certificate</li>
+                <li><span className="detail-check">✓</span>Exciting Goodies</li>
+              </ul>
+            </div>
+          )}
+
+          {domain === 'Participation' && (
             <div className="prize-tier">
               <div className="prize-tier-header">
                 <h4>Rewards</h4>
-                <span className="prize-amt">{domain === "Participation" ? "Swags" : "₹5K"}</span>
+                <span className="prize-amt">Swags</span>
               </div>
               <ul>
-                {domain !== "Participation" && <li><span className="detail-check">✓</span>₹5,000 Cash Prize</li>}
                 <li><span className="detail-check">✓</span>IEEE Certificate</li>
-                {domain === "Best Women Team" && <li><span className="detail-check">✓</span>Exciting Goodies</li>}
-                {domain !== "Best Women Team" && <li><span className="detail-check">✓</span>Exciting Goodies & Swags</li>}
+                <li><span className="detail-check">✓</span>Exciting Goodies & Swags</li>
               </ul>
             </div>
           )}
@@ -293,10 +340,10 @@ const App: React.FC = () => {
   }, []);
 
   const trophyDomains = [
-    { id: "embedded", name: "Embedded and IOT", prize: "₹25,000" },
-    { id: "campus", name: "Campus Innovation", prize: "₹25,000" },
-    { id: "vlsi", name: "VLSI", prize: "₹12,500" },
-    { id: "open", name: "Open Innovation", prize: "₹12,500" }
+    { id: "embedded", name: "Embedded & IoT", prize: "₹35,000" },
+    { id: "software", name: "Software Domain", prize: "₹35,000" },
+    { id: "vlsi", name: "VLSI", prize: "₹15,000" },
+    { id: "campus", name: "Campus Innovation", prize: "₹10,000" }
   ];
 
   return (
@@ -645,19 +692,7 @@ const App: React.FC = () => {
               onClose={() => setActiveTrophy(null)}
             />
 
-            {/* Additional Awards displayed below the trophies */}
-            <div className="trophy-container" style={{ marginTop: '2rem' }}>
-              <TrophyCard
-                domain="Best Women Team"
-                prizeAmount="₹5000"
-                onClick={() => setActiveTrophy("Best Women Team")}
-              />
-              <TrophyCard
-                domain="Best Innovation"
-                prizeAmount="₹5000"
-                onClick={() => setActiveTrophy("Best Innovation")}
-              />
-            </div>
+            {/* Additional Awards have been merged into Embedded & IoT and Software Domain */}
 
             {/* Participation Reward */}
             <div className="trophy-container" style={{ marginTop: '2rem' }}>
@@ -716,6 +751,28 @@ const App: React.FC = () => {
             <a href="https://www.instagram.com/pixel_hut/" target="_blank" rel="noopener noreferrer" className="sponsor-card" style={{ padding: '0.5rem' }}>
               <img src="./pixelhut.png" alt="Pixelhut" className="sponsor-logo" />
             </a>
+          </div>
+
+          <h3 style={{ fontSize: '2rem', marginBottom: '2.5rem', marginTop: '4rem', fontFamily: 'Outfit, sans-serif' }}>Technical Sponsors</h3>
+          <div className="sponsors-grid">
+            <div className="sponsor-card" style={{ padding: '0.5rem' }}>
+              <img src="./WIE Bengaluru section.png" alt="WIE Bengaluru Section" className="sponsor-logo" />
+            </div>
+            <div className="sponsor-card" style={{ padding: '0.5rem' }}>
+              <img src="./IEEE-banglore-Section-Blue-300x75-2.png" alt="IEEE Bangalore Section" className="sponsor-logo" />
+            </div>
+            <div className="sponsor-card" style={{ padding: '0.5rem' }}>
+              <img src="./IEEE mysore subsection white.png" alt="IEEE Mysore Subsection" className="sponsor-logo" />
+            </div>
+            <div className="sponsor-card" style={{ padding: '0.5rem' }}>
+              <img src="./ieee-mb-blue.png" alt="IEEE Blue" className="sponsor-logo" />
+            </div>
+            <div className="sponsor-card" style={{ padding: '0.5rem' }}>
+              <img src="./RAS.png" alt="RAS" className="sponsor-logo" />
+            </div>
+            <div className="sponsor-card" style={{ padding: '0.5rem' }}>
+              <img src="./CAS-WHITE-BG.jpg" alt="CAS" className="sponsor-logo" />
+            </div>
           </div>
         </section>
 
