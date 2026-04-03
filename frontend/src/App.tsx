@@ -271,7 +271,7 @@ const App: React.FC = () => {
       if (document.fullscreenElement && document.exitFullscreen) {
         document.exitFullscreen().catch(err => console.warn(err));
       }
-    } catch (err) {}
+    } catch (err) { }
   };
 
   const heroContentRef = useRef<HTMLDivElement>(null);
@@ -356,7 +356,7 @@ const App: React.FC = () => {
 
       <CircuitBackground />
       <div className="bg-soften-layer" aria-hidden="true"></div>
-      
+
       {isPrankActive && (
         <>
           <style>
@@ -427,6 +427,7 @@ const App: React.FC = () => {
                 <a href="#problem-statements" className="nav-dropdown-item" onClick={() => setPsFilter('Open Innovation')}>Open Innovation</a>
                 <a href="#problem-statements" className="nav-dropdown-item" onClick={() => setPsFilter('VLSI')}>VLSI</a>
                 <a href="#problem-statements" className="nav-dropdown-item" onClick={() => setPsFilter('Embedded and IOT')}>Embedded and IOT</a>
+                <a href="#problem-statements" className="nav-dropdown-item" onClick={() => setPsFilter('Software Domain')}>Software Domain</a>
                 <a href="#problem-statements" className="nav-dropdown-item" onClick={() => setPsFilter('Campus Innovation')}>Campus Innovation</a>
               </div>
             </div>
@@ -456,6 +457,7 @@ const App: React.FC = () => {
                 <a href="#problem-statements" className="mobile-ps-link" onClick={() => { setPsFilter('Open Innovation'); setIsMobileMenuOpen(false); }}>Open Innovation</a>
                 <a href="#problem-statements" className="mobile-ps-link" onClick={() => { setPsFilter('VLSI'); setIsMobileMenuOpen(false); }}>VLSI</a>
                 <a href="#problem-statements" className="mobile-ps-link" onClick={() => { setPsFilter('Embedded and IOT'); setIsMobileMenuOpen(false); }}>Embedded and IOT</a>
+                <a href="#problem-statements" className="mobile-ps-link" onClick={() => { setPsFilter('Software Domain'); setIsMobileMenuOpen(false); }}>Software Domain</a>
                 <a href="#problem-statements" className="mobile-ps-link" onClick={() => { setPsFilter('Campus Innovation'); setIsMobileMenuOpen(false); }}>Campus Innovation</a>
               </div>
             </div>
@@ -493,7 +495,7 @@ const App: React.FC = () => {
               <br /><br />
               <span className="hero-dates">April 24th - 25th, 2026</span>
             </p>
-            
+
             <div className="eligibility-banner">
               <div className="eligibility-text">
                 Open to <span className="highlight-bright">B.Tech & M.Tech</span> Students Nationwide<br className="mobile-break" />
@@ -645,27 +647,33 @@ const App: React.FC = () => {
             <h2 className="section-title">PPT <span className="text-gradient">Templates</span></h2>
             <p className="section-subtitle">Download the required presentation template for your domain.</p>
           </div>
-          
-          <div className="about-cards" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '1.5rem', maxWidth: '1200px', margin: '0 auto' }}>
-            <div className="glass-panel feature-card" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
+
+          <div className="about-cards" style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '1.5rem', maxWidth: '1000px', margin: '0 auto' }}>
+            <div className="glass-panel feature-card" style={{ flex: '1 1 250px', maxWidth: '300px', display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
               <div className="feature-icon">🤖</div>
               <h4 style={{ color: 'var(--accent-yellow)', marginBottom: '1.5rem', fontSize: '1.25rem', fontFamily: 'Outfit, sans-serif' }}>Embedded and IOT</h4>
               <a href={`${import.meta.env.BASE_URL}PPT_template/SYMBIOT_2026_EMBD_PPT.pptx`} download="SYMBIOT_2026_EMBD_PPT.pptx" className="btn btn-secondary">Download</a>
             </div>
 
-            <div className="glass-panel feature-card" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
+            <div className="glass-panel feature-card" style={{ flex: '1 1 250px', maxWidth: '300px', display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
+              <div className="feature-icon">💻</div>
+              <h4 style={{ color: 'var(--accent-yellow)', marginBottom: '1.5rem', fontSize: '1.25rem', fontFamily: 'Outfit, sans-serif' }}>Software Domain</h4>
+              <a href="#" className="btn btn-secondary" onClick={(e) => { e.preventDefault(); alert("Template coming soon!"); }}>Download</a>
+            </div>
+
+            <div className="glass-panel feature-card" style={{ flex: '1 1 250px', maxWidth: '300px', display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
               <div className="feature-icon">🔌</div>
               <h4 style={{ color: 'var(--accent-yellow)', marginBottom: '1.5rem', fontSize: '1.25rem', fontFamily: 'Outfit, sans-serif' }}>VLSI</h4>
               <a href={`${import.meta.env.BASE_URL}PPT_template/SYMBIOT_2026_VLSI_PPT.pptx`} download="SYMBIOT_2026_VLSI_PPT.pptx" className="btn btn-secondary">Download</a>
             </div>
 
-            <div className="glass-panel feature-card" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
+            <div className="glass-panel feature-card" style={{ flex: '1 1 250px', maxWidth: '300px', display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
               <div className="feature-icon">💡</div>
               <h4 style={{ color: 'var(--accent-yellow)', marginBottom: '1.5rem', fontSize: '1.25rem', fontFamily: 'Outfit, sans-serif' }}>Campus Innovation</h4>
               <a href={`${import.meta.env.BASE_URL}PPT_template/SYMBIOT_2026_CAMPUS_PPT.pptx`} download="SYMBIOT_2026_CAMPUS_PPT.pptx" className="btn btn-secondary">Download</a>
             </div>
 
-            <div className="glass-panel feature-card" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
+            <div className="glass-panel feature-card" style={{ flex: '1 1 250px', maxWidth: '300px', display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
               <div className="feature-icon">🌐</div>
               <h4 style={{ color: 'var(--accent-yellow)', marginBottom: '1.5rem', fontSize: '1.25rem', fontFamily: 'Outfit, sans-serif' }}>Open Innovation</h4>
               <a href={`${import.meta.env.BASE_URL}PPT_template/SYMBIOT_2026_OPEN_PPT.pptx`} download="SYMBIOT_2026_OPEN_PPT.pptx" className="btn btn-secondary">Download</a>
@@ -749,22 +757,6 @@ const App: React.FC = () => {
             </a>
           </div>
 
-          <h3 style={{ fontSize: '2rem', marginBottom: '2.5rem', marginTop: '4rem', fontFamily: 'Outfit, sans-serif' }}>Proud Sponsors</h3>
-          <div className="sponsors-grid-2x2">
-            <a href="https://www.geeksforgeeks.org/" target="_blank" rel="noopener noreferrer" className="sponsor-card">
-              <img src="./gg.png" alt="Global Geeks" className="sponsor-logo logo-compact" />
-            </a>
-            <a href="https://logycent.com/" target="_blank" rel="noopener noreferrer" className="sponsor-card">
-              <img src="./Logycent.png" alt="Logycent" className="sponsor-logo logo-wide" />
-            </a>
-            <a href="https://www.instagram.com/pixel_hut/" target="_blank" rel="noopener noreferrer" className="sponsor-card">
-              <img src="./pixelhut.png" alt="Pixelhut" className="sponsor-logo logo-wide" />
-            </a>
-            <div className="sponsor-card">
-              <img src="./vivartan.png" alt="Vivartan" className="sponsor-logo logo-wide" />
-            </div>
-          </div>
-
           <h3 style={{ fontSize: '2rem', marginBottom: '2.5rem', marginTop: '4rem', fontFamily: 'Outfit, sans-serif' }}>Technical Sponsors</h3>
           <div className="sponsors-grid">
             <div className="sponsor-card">
@@ -780,7 +772,23 @@ const App: React.FC = () => {
               <img src="./CAS-WHITE-BG.jpg" alt="CAS Bangalore" className="sponsor-logo logo-compact" />
             </div>
             <div className="sponsor-card">
-              <img src="./RAS.png" alt="RAS Bangalore" className="sponsor-logo logo-compact" />
+              <img src="./RAS-bangalore.jpg" alt="RAS Bangalore" className="sponsor-logo logo-compact" style={{ borderRadius: '8px' }} />
+            </div>
+          </div>
+
+          <h3 style={{ fontSize: '2rem', marginBottom: '2.5rem', marginTop: '4rem', fontFamily: 'Outfit, sans-serif' }}>Proud Sponsors</h3>
+          <div className="sponsors-grid-2x2">
+            <a href="https://www.geeksforgeeks.org/" target="_blank" rel="noopener noreferrer" className="sponsor-card">
+              <img src="./gg.png" alt="Global Geeks" className="sponsor-logo logo-compact" />
+            </a>
+            <a href="https://logycent.com/" target="_blank" rel="noopener noreferrer" className="sponsor-card">
+              <img src="./Logycent.png" alt="Logycent" className="sponsor-logo logo-wide" />
+            </a>
+            <a href="https://www.instagram.com/pixel_hut/" target="_blank" rel="noopener noreferrer" className="sponsor-card">
+              <img src="./pixelhut.png" alt="Pixelhut" className="sponsor-logo logo-wide" style={{ transform: 'scale(1.5)' }} />
+            </a>
+            <div className="sponsor-card">
+              <img src="./vivartan.png" alt="Vivartan" className="sponsor-logo logo-wide" />
             </div>
           </div>
         </section>
@@ -903,13 +911,13 @@ const App: React.FC = () => {
           <div className="footer-col footer-col-venue">
             <h4 className="footer-heading">Venue Location</h4>
             <div className="venue-glass-box" style={{ padding: '0.5rem', display: 'flex', flexDirection: 'column' }}>
-              <iframe 
-                src="https://maps.google.com/maps?q=H+Kempegowda+Indoor+Sports+Complex+VVCE+Mysore&t=&z=15&ie=UTF8&iwloc=&output=embed" 
-                width="100%" 
-                height="150" 
-                style={{ border: 0, borderRadius: '8px' }} 
+              <iframe
+                src="https://maps.google.com/maps?q=H+Kempegowda+Indoor+Sports+Complex+VVCE+Mysore&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                width="100%"
+                height="150"
+                style={{ border: 0, borderRadius: '8px' }}
                 allowFullScreen={true}
-                loading="lazy" 
+                loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
               ></iframe>
             </div>
@@ -960,24 +968,24 @@ const App: React.FC = () => {
             </div>
 
             <div className="contact-general-info">
-                <div className="general-item">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="16" x="2" y="4" rx="2" /><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" /></svg>
-                  <a href="mailto:symbiot@vvce.ac.in?subject=[PARTICIPANT]%20Query%20Regarding%20SYMBIOT%202026" style={{ color: 'rgba(255,255,255,0.65)', textDecoration: 'none' }}>symbiot@vvce.ac.in</a>
-                </div>
-                <div className="general-item">
-                  <a href="https://www.instagram.com/symbiot.2026/" target="_blank" rel="noopener noreferrer" style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', color: 'rgba(255,255,255,0.65)', textDecoration: 'none' }}>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#00f0ff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5" /><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" /><line x1="17.5" x2="17.51" y1="6.5" y2="6.5" /></svg>
-                    <span>SYMBIOT 2026</span>
-                  </a>
-                </div>
+              <div className="general-item">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="16" x="2" y="4" rx="2" /><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" /></svg>
+                <a href="mailto:symbiot@vvce.ac.in?subject=[PARTICIPANT]%20Query%20Regarding%20SYMBIOT%202026" style={{ color: 'rgba(255,255,255,0.65)', textDecoration: 'none' }}>symbiot@vvce.ac.in</a>
+              </div>
+              <div className="general-item">
+                <a href="https://www.instagram.com/symbiot.2026/" target="_blank" rel="noopener noreferrer" style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', color: 'rgba(255,255,255,0.65)', textDecoration: 'none' }}>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#00f0ff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5" /><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" /><line x1="17.5" x2="17.51" y1="6.5" y2="6.5" /></svg>
+                  <span>SYMBIOT 2026</span>
+                </a>
               </div>
             </div>
           </div>
+        </div>
 
-          <div className="footer-bottom-bar">
-            <p>Copyright © 2026 All rights reserved | Made with <span className="heart">❤️</span> by <strong>IoTCrew</strong></p>
-            <p className="sr-only">Symbiot 2026 is the flagship national-level hackathon organized by the Electronics and Communication Engineering (ECE) Department of Vidyavardhaka College of Engineering (VVCE), Mysuru, Karnataka, India. It is a 24-hour offline hackathon held on April 24-25, 2026, featuring three competition domains: Embedded Systems &amp; IoT, Open Innovation, and Campus Innovation. Total prize pool exceeds ₹85,000 with IEEE certificates for all participants. Engineering students from colleges across India can register on Unstop. The event is powered by IoTCrew. Visit symbiotvvce.in for more details. Symbiot 2026 VVCE hackathon registration, Symbiot hackathon Mysore, national level hackathon India 2026, VVCE ECE department hackathon.</p>
-          </div>
+        <div className="footer-bottom-bar">
+          <p>Copyright © 2026 All rights reserved | Made with <span className="heart">❤️</span> by <strong>IoTCrew</strong></p>
+          <p className="sr-only">Symbiot 2026 is the flagship national-level hackathon organized by the Electronics and Communication Engineering (ECE) Department of Vidyavardhaka College of Engineering (VVCE), Mysuru, Karnataka, India. It is a 24-hour offline hackathon held on April 24-25, 2026, featuring three competition domains: Embedded Systems &amp; IoT, Open Innovation, and Campus Innovation. Total prize pool exceeds ₹85,000 with IEEE certificates for all participants. Engineering students from colleges across India can register on Unstop. The event is powered by IoTCrew. Visit symbiotvvce.in for more details. Symbiot 2026 VVCE hackathon registration, Symbiot hackathon Mysore, national level hackathon India 2026, VVCE ECE department hackathon.</p>
+        </div>
       </footer>
 
       {/* Modal for Prize Details popping up in center */}

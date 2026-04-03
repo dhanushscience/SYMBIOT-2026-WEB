@@ -3,7 +3,7 @@ import React, { useState, useEffect, useMemo } from 'react';
 // --- Problem Statement Data ---
 interface ProblemStatement {
   psid: string;
-  domain: 'Open Innovation' | 'Embedded and IOT' | 'Campus Innovation' | 'VLSI';
+  domain: 'Open Innovation' | 'Embedded and IOT' | 'Software Domain' | 'Campus Innovation' | 'VLSI';
   subdomain?: string;
   title: string;
   department: string;
@@ -133,12 +133,13 @@ The tool should:
   }
 ];
 
-const DOMAINS = ['All', 'Embedded and IOT', 'VLSI', 'Campus Innovation', 'Open Innovation'] as const;
+const DOMAINS = ['All', 'Embedded and IOT', 'Software Domain', 'VLSI', 'Campus Innovation', 'Open Innovation'] as const;
 
 const domainBadgeClass: Record<string, string> = {
   'Open Innovation': 'ps-badge-vlsi',
   'VLSI': 'ps-badge-vlsi',
   'Embedded and IOT': 'ps-badge-embedded',
+  'Software Domain': 'ps-badge-campus',
   'Campus Innovation': 'ps-badge-campus',
 };
 
@@ -387,6 +388,17 @@ const ProblemStatements: React.FC<ProblemStatementsProps> = ({ initialFilter }) 
           <a href={`${import.meta.env.BASE_URL}PPT_template/SYMBIOT_2026_OPEN_PPT.pptx`} download="SYMBIOT_2026_OPEN_PPT.pptx" className="btn btn-primary" style={{ marginTop: '1.5rem', fontSize: '1.1rem', padding: '1rem 2.5rem', background: 'linear-gradient(135deg, #00f0ff, #007bb5)', border: 'none', boxShadow: '0 4px 15px rgba(0,240,255,0.4)', color: '#fff' }}>
             Download Open Innovation PPT
           </a>
+        </div>
+      ) : activeFilter === 'Software Domain' ? (
+        <div className="software-domain-view" style={{ textAlign: 'center', padding: '4rem 2rem', background: 'rgba(255, 255, 255, 0.05)', borderRadius: '16px', margin: '2rem 0', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1.5rem', border: '1px solid rgba(0, 240, 255, 0.3)', boxShadow: '0 0 30px rgba(0, 240, 255, 0.1)' }}>
+          <h3 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.8rem)', margin: 0, background: 'linear-gradient(90deg, #fff, #00f0ff)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', fontWeight: '800', lineHeight: '1.2' }}>
+            Software Domain<br/>Problem Statements
+          </h3>
+          <div style={{ marginTop: '1rem', padding: '1.5rem 3rem', background: 'rgba(0, 240, 255, 0.05)', border: '1px solid rgba(0, 240, 255, 0.2)', borderRadius: '12px' }}>
+            <p style={{ fontSize: '1.25rem', margin: '0', color: '#e2e8f0', lineHeight: '1.6', fontWeight: '500', letterSpacing: '1px' }}>
+              Coming soon. Stay Tuned...
+            </p>
+          </div>
         </div>
       ) : (
       <>
