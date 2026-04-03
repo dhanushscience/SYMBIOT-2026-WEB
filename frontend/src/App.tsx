@@ -684,18 +684,6 @@ const App: React.FC = () => {
                   onClick={() => setActiveTrophy(t.name)}
                 />
               ))}
-            </div>
-
-            {/* Modal for Prize Details popping up in center */}
-            <TrophyModal
-              domain={activeTrophy}
-              onClose={() => setActiveTrophy(null)}
-            />
-
-            {/* Additional Awards have been merged into Embedded & IoT and Software Domain */}
-
-            {/* Participation Reward */}
-            <div className="trophy-container" style={{ marginTop: '2rem' }}>
               <TrophyCard
                 domain="Participation"
                 prizeAmount="Swags"
@@ -703,6 +691,12 @@ const App: React.FC = () => {
                 onClick={() => setActiveTrophy("Participation")}
               />
             </div>
+
+            {/* Modal for Prize Details popping up in center */}
+            <TrophyModal
+              domain={activeTrophy}
+              onClose={() => setActiveTrophy(null)}
+            />
           </div>
         </section>
 
