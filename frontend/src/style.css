@@ -2298,6 +2298,7 @@ h1, h2, h3, h4, h5, h6 {
 @media (max-width: 600px) {
   .sponsors-grid-2x2 {
     grid-template-columns: 1fr;
+    justify-items: center;
   }
 }
 
@@ -2320,6 +2321,7 @@ h1, h2, h3, h4, h5, h6 {
   .sponsor-card {
     width: 100%;
     max-width: 300px;
+    margin: 0 auto;
   }
 }
 
