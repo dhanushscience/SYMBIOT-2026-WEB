@@ -674,9 +674,22 @@ const App: React.FC = () => {
             <p className="sr-only">Symbiot 2026 hackathon prizes: Total prize pool of over ₹85,000. Each domain (Embedded &amp; IoT, Open Innovation, Campus Innovation) has prizes of ₹15,000 for 1st place and ₹10,000 for 2nd place. Additional awards include Best Women Team (₹5,000), Best Innovation (₹5,000), and participation swags with IEEE certificates for all participants at VVCE Mysore.</p>
           </div>
 
-          <div className="prizes-section-wrapper">
-            <div className="trophy-container">
-              {trophyDomains.map((t) => (
+          <div className="prizes-section-wrapper" style={{ display: 'flex', flexDirection: 'column', gap: '2rem', alignItems: 'center', paddingBottom: '3rem' }}>
+            {/* First Row: 3 Cards */}
+            <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '2rem', width: '100%', maxWidth: '900px' }}>
+              {trophyDomains.slice(0, 3).map((t) => (
+                <TrophyCard
+                  key={t.id}
+                  domain={t.name}
+                  prizeAmount={t.prize}
+                  onClick={() => setActiveTrophy(t.name)}
+                />
+              ))}
+            </div>
+
+            {/* Second Row: 2 Cards */}
+            <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '2rem', width: '100%', maxWidth: '900px' }}>
+              {trophyDomains.slice(3).map((t) => (
                 <TrophyCard
                   key={t.id}
                   domain={t.name}
@@ -691,12 +704,6 @@ const App: React.FC = () => {
                 onClick={() => setActiveTrophy("Participation")}
               />
             </div>
-
-            {/* Modal for Prize Details popping up in center */}
-            <TrophyModal
-              domain={activeTrophy}
-              onClose={() => setActiveTrophy(null)}
-            />
           </div>
         </section>
 
@@ -726,9 +733,9 @@ const App: React.FC = () => {
             <a href="https://pravegasemi.com/" target="_blank" rel="noopener noreferrer" className="sponsor-card">
               <img src="./PravegaSemi-Logo.png" alt="Pravega Semi Logo" className="sponsor-logo" />
             </a>
-            <a href="https://wie.ieee.org/" target="_blank" rel="noopener noreferrer" className="sponsor-card" style={{ padding: '0.5rem' }}>
-              <img src="./wie.png" alt="WIE" className="sponsor-logo" />
-            </a>
+            <div className="sponsor-card" style={{ padding: '0.5rem' }}>
+              <img src="./WIE Bengaluru section.png" alt="WIE Bangalore" className="sponsor-logo" style={{ maxWidth: '95%', maxHeight: '95%' }} />
+            </div>
             <a href="https://tregoraa.com/?srsltid=AfmBOoqwkVjv00TXp2nV_r4Tg3iAPwxNFGxiobkdkkaZI0o5V4dX-ksq" target="_blank" rel="noopener noreferrer" className="sponsor-card" style={{ padding: '0.75rem' }}>
               <img src="./Tregorra.png" alt="Tregorra" className="sponsor-logo" />
             </a>
@@ -745,27 +752,34 @@ const App: React.FC = () => {
             <a href="https://www.instagram.com/pixel_hut/" target="_blank" rel="noopener noreferrer" className="sponsor-card" style={{ padding: '0.5rem' }}>
               <img src="./pixelhut.png" alt="Pixelhut" className="sponsor-logo" />
             </a>
+            <div className="sponsor-card" style={{ padding: '0.5rem' }}>
+              <img src="./vivartan.png" alt="Vivartan" className="sponsor-logo" />
+            </div>
           </div>
 
           <h3 style={{ fontSize: '2rem', marginBottom: '2.5rem', marginTop: '4rem', fontFamily: 'Outfit, sans-serif' }}>Technical Sponsors</h3>
-          <div className="sponsors-grid">
-            <div className="sponsor-card" style={{ padding: '0.5rem' }}>
-              <img src="./WIE Bengaluru section.png" alt="WIE Bengaluru Section" className="sponsor-logo" />
+          <div className="sponsors-section-wrapper" style={{ display: 'flex', flexDirection: 'column', gap: '2rem', alignItems: 'center' }}>
+            {/* First Row: 3 Cards */}
+            <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '2rem', width: '100%', maxWidth: '900px' }}>
+              <div className="sponsor-card" style={{ padding: '0.5rem' }}>
+                <img src="./ieee-mb-blue.png" alt="IEEE Kite" className="sponsor-logo" />
+              </div>
+              <div className="sponsor-card" style={{ padding: '0.5rem' }}>
+                <img src="./IEEE-banglore-Section-Blue-300x75-2.png" alt="IEEE Bangalore Section" className="sponsor-logo" />
+              </div>
+              <div className="sponsor-card" style={{ padding: '0.5rem' }}>
+                <img src="./IEEE mysore subsection white.png" alt="IEEE Mysore Subsection" className="sponsor-logo" />
+              </div>
             </div>
-            <div className="sponsor-card" style={{ padding: '0.5rem' }}>
-              <img src="./IEEE-banglore-Section-Blue-300x75-2.png" alt="IEEE Bangalore Section" className="sponsor-logo" />
-            </div>
-            <div className="sponsor-card" style={{ padding: '0.5rem' }}>
-              <img src="./IEEE mysore subsection white.png" alt="IEEE Mysore Subsection" className="sponsor-logo" />
-            </div>
-            <div className="sponsor-card" style={{ padding: '0.5rem' }}>
-              <img src="./ieee-mb-blue.png" alt="IEEE Blue" className="sponsor-logo" />
-            </div>
-            <div className="sponsor-card" style={{ padding: '0.5rem' }}>
-              <img src="./RAS.png" alt="RAS" className="sponsor-logo" />
-            </div>
-            <div className="sponsor-card" style={{ padding: '0.5rem' }}>
-              <img src="./CAS-WHITE-BG.jpg" alt="CAS" className="sponsor-logo" />
+
+            {/* Second Row: 2 Cards */}
+            <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '2rem', width: '100%', maxWidth: '900px' }}>
+              <div className="sponsor-card" style={{ padding: '0.5rem' }}>
+                <img src="./CAS-WHITE-BG.jpg" alt="CAS Bangalore" className="sponsor-logo" />
+              </div>
+              <div className="sponsor-card" style={{ padding: '0.5rem' }}>
+                <img src="./RAS.png" alt="RAS Bangalore" className="sponsor-logo" />
+              </div>
             </div>
           </div>
         </section>
@@ -964,6 +978,12 @@ const App: React.FC = () => {
             <p className="sr-only">Symbiot 2026 is the flagship national-level hackathon organized by the Electronics and Communication Engineering (ECE) Department of Vidyavardhaka College of Engineering (VVCE), Mysuru, Karnataka, India. It is a 24-hour offline hackathon held on April 24-25, 2026, featuring three competition domains: Embedded Systems &amp; IoT, Open Innovation, and Campus Innovation. Total prize pool exceeds ₹85,000 with IEEE certificates for all participants. Engineering students from colleges across India can register on Unstop. The event is powered by IoTCrew. Visit symbiotvvce.in for more details. Symbiot 2026 VVCE hackathon registration, Symbiot hackathon Mysore, national level hackathon India 2026, VVCE ECE department hackathon.</p>
           </div>
       </footer>
+
+      {/* Modal for Prize Details popping up in center */}
+      <TrophyModal
+        domain={activeTrophy}
+        onClose={() => setActiveTrophy(null)}
+      />
     </>
   );
 };
