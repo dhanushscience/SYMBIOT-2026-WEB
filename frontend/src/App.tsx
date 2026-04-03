@@ -436,7 +436,7 @@ const App: React.FC = () => {
             <a href="#faq" className="nav-link">FAQ</a>
             <a href="#contact" className="nav-link">Contact</a>
             <img src="./ece-logo.png" alt="ECE Department Logo" className="navbar-logo ece" />
-            <img src="./ieee-logo.webp" alt="IEEE Logo" className="navbar-logo ieee" />
+            <img src="./ieee-vvce-vertical.png" alt="IEEE Logo" className="navbar-logo ieee" />
           </div>
 
           <button className={`mobile-menu-btn ${isMobileMenuOpen ? 'open' : ''}`} onClick={toggleMobileMenu}>
@@ -465,7 +465,7 @@ const App: React.FC = () => {
             <a href="#sponsors" className="mobile-nav-link" onClick={() => setIsMobileMenuOpen(false)}>Sponsors</a>
             <a href="#faq" className="mobile-nav-link" onClick={() => setIsMobileMenuOpen(false)}>FAQ</a>
             <a href="#contact" className="mobile-nav-link" onClick={() => setIsMobileMenuOpen(false)}>Contact</a>
-            <a href="https://unstop.com/p/symbiot-2026-vidyavardhaka-college-of-engineering-mysore-1652707" onClick={handleRegisterClick} target="_blank" rel="noopener noreferrer" className={`btn btn-primary ${isPrankActive ? 'btn-primary-alert' : ''}`} style={{ marginTop: '1rem' }}>Register</a>
+            <a href="https://unstop.com/p/symbiot-2026-vidyavardhaka-college-of-engineering-mysore-1652707" onClick={handleRegisterClick} target="_blank" rel="noopener noreferrer" className={`btn btn-primary btn-register-heartbeat ${isPrankActive ? 'btn-primary-alert' : ''}`} style={{ marginTop: '1rem' }}>Register</a>
             <div className="mobile-logos-row">
               <img src="./vvce-logo.png" alt="VVCE Logo" className="mobile-footer-logo" />
               <img src="./ece-logo.png" alt="ECE Logo" className="mobile-footer-logo" />
@@ -499,14 +499,14 @@ const App: React.FC = () => {
             <div className="eligibility-banner">
               <div className="eligibility-text">
                 Open to <span className="highlight-bright">B.Tech & M.Tech</span> Students Nationwide<br className="mobile-break" />
-                Experience SYMBIOT’s First-Ever Dedicated <span className="highlight-gradient">VLSI Track</span>
+                Experience SYMBIOT’s First-Ever Dedicated <span className="highlight-gradient"><strong style={{fontWeight: 900}}>VLSI</strong> Track</span>
               </div>
             </div>
 
             <div className="hero-actions">
               <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
                 <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center' }}>
-                  <a href="https://unstop.com/p/symbiot-2026-vidyavardhaka-college-of-engineering-mysore-1652707" onClick={handleRegisterClick} target="_blank" rel="noopener noreferrer" className={`btn btn-primary ${isPrankActive ? 'btn-primary-alert' : ''}`}>Register</a>
+                  <a href="https://unstop.com/p/symbiot-2026-vidyavardhaka-college-of-engineering-mysore-1652707" onClick={handleRegisterClick} target="_blank" rel="noopener noreferrer" className={`btn btn-primary btn-register-heartbeat ${isPrankActive ? 'btn-primary-alert' : ''}`}>Register</a>
                   <a href="#about" className="btn btn-secondary">Learn More</a>
                 </div>
                 {isPrankActive && (
@@ -784,7 +784,7 @@ const App: React.FC = () => {
           <h3 style={{ fontSize: '2rem', marginBottom: '2.5rem', marginTop: '4rem', fontFamily: 'Outfit, sans-serif' }}>Proud Sponsors</h3>
           <div className="sponsors-grid-2x2">
             <a href="https://www.geeksforgeeks.org/" target="_blank" rel="noopener noreferrer" className="sponsor-card">
-              <img src="./gg.png" alt="Global Geeks" className="sponsor-logo logo-compact" />
+              <img src="./gfg-logo-new.png" alt="GeeksForGeeks" className="sponsor-logo logo-compact" />
             </a>
             <a href="https://logycent.com/" target="_blank" rel="noopener noreferrer" className="sponsor-card">
               <img src="./Logycent.png" alt="Logycent" className="sponsor-logo logo-wide" />
@@ -998,6 +998,15 @@ const App: React.FC = () => {
         domain={activeTrophy}
         onClose={() => setActiveTrophy(null)}
       />
+
+      {/* Scroll to Top Arrow */}
+      {scrolled && (
+        <button className="scroll-to-top" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} aria-label="Scroll to top">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M18 15l-6-6-6 6"/>
+          </svg>
+        </button>
+      )}
     </>
   );
 };

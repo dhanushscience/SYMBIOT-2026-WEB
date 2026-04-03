@@ -4653,3 +4653,78 @@ h1, h2, h3, h4, h5, h6 {
     text-align: center;
   }
 }
+
+/* Override IEEE navbar logo since it's vertical now */
+.navbar-logo.ieee {
+  height: 60px !important;
+  margin-left: 1rem !important;
+}
+
+/* Register Heartbeat Animation */
+.btn-register-heartbeat {
+  animation: heartbeat-glow 3s infinite ease-in-out;
+}
+
+@keyframes heartbeat-glow {
+  0% { 
+    transform: scale(1);
+    box-shadow: 0 0 10px rgba(0, 240, 255, 0.4), inset 0 0 5px rgba(0, 240, 255, 0.2);
+  }
+  50% { 
+    transform: scale(1.05);
+    box-shadow: 0 0 25px rgba(0, 240, 255, 0.8), inset 0 0 15px rgba(0, 240, 255, 0.5);
+  }
+  100% { 
+    transform: scale(1);
+    box-shadow: 0 0 10px rgba(0, 240, 255, 0.4), inset 0 0 5px rgba(0, 240, 255, 0.2);
+  }
+}
+
+/* Scroll to Top Button */
+.scroll-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(0, 240, 255, 0.15) 0%, rgba(26, 86, 219, 0.25) 100%);
+  border: 1.5px solid rgba(0, 240, 255, 0.4);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  cursor: pointer;
+  z-index: 1000;
+  box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  animation: slide-up-fade 0.5s ease-out forwards;
+}
+
+.scroll-to-top:hover {
+  background: linear-gradient(135deg, rgba(0, 240, 255, 0.3) 0%, rgba(26, 86, 219, 0.5) 100%);
+  transform: translateY(-5px) scale(1.1);
+  box-shadow: 0 8px 25px rgba(0, 240, 255, 0.4);
+  border-color: #00f0ff;
+}
+
+@keyframes slide-up-fade {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .scroll-to-top {
+    bottom: 20px;
+    right: 20px;
+    width: 44px;
+    height: 44px;
+  }
+}
