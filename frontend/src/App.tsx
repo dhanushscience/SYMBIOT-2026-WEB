@@ -733,53 +733,46 @@ const App: React.FC = () => {
             <a href="https://pravegasemi.com/" target="_blank" rel="noopener noreferrer" className="sponsor-card">
               <img src="./PravegaSemi-Logo.png" alt="Pravega Semi Logo" className="sponsor-logo" />
             </a>
-            <div className="sponsor-card" style={{ padding: '0.5rem' }}>
-              <img src="./WIE Bengaluru section.png" alt="WIE Bangalore" className="sponsor-logo" style={{ maxWidth: '95%', maxHeight: '95%' }} />
+            <div className="sponsor-card">
+              <img src="./WIE Bengaluru section.png" alt="WIE Bangalore" className="sponsor-logo" />
             </div>
-            <a href="https://tregoraa.com/?srsltid=AfmBOoqwkVjv00TXp2nV_r4Tg3iAPwxNFGxiobkdkkaZI0o5V4dX-ksq" target="_blank" rel="noopener noreferrer" className="sponsor-card" style={{ padding: '0.75rem' }}>
+            <a href="https://tregoraa.com/?srsltid=AfmBOoqwkVjv00TXp2nV_r4Tg3iAPwxNFGxiobkdkkaZI0o5V4dX-ksq" target="_blank" rel="noopener noreferrer" className="sponsor-card">
               <img src="./Tregorra.png" alt="Tregorra" className="sponsor-logo" />
             </a>
           </div>
 
           <h3 style={{ fontSize: '2rem', marginBottom: '2.5rem', marginTop: '4rem', fontFamily: 'Outfit, sans-serif' }}>Proud Sponsors</h3>
-          <div className="sponsors-grid">
+          <div className="sponsors-grid-2x2">
             <a href="https://www.geeksforgeeks.org/" target="_blank" rel="noopener noreferrer" className="sponsor-card">
               <img src="./gg.png" alt="Global Geeks" className="sponsor-logo" />
             </a>
             <a href="https://logycent.com/" target="_blank" rel="noopener noreferrer" className="sponsor-card">
               <img src="./Logycent.png" alt="Logycent" className="sponsor-logo" />
             </a>
-            <a href="https://www.instagram.com/pixel_hut/" target="_blank" rel="noopener noreferrer" className="sponsor-card" style={{ padding: '0.5rem' }}>
+            <a href="https://www.instagram.com/pixel_hut/" target="_blank" rel="noopener noreferrer" className="sponsor-card">
               <img src="./pixelhut.png" alt="Pixelhut" className="sponsor-logo" />
             </a>
-            <div className="sponsor-card" style={{ padding: '0.5rem' }}>
+            <div className="sponsor-card">
               <img src="./vivartan.png" alt="Vivartan" className="sponsor-logo" />
             </div>
           </div>
 
           <h3 style={{ fontSize: '2rem', marginBottom: '2.5rem', marginTop: '4rem', fontFamily: 'Outfit, sans-serif' }}>Technical Sponsors</h3>
-          <div className="sponsors-section-wrapper" style={{ display: 'flex', flexDirection: 'column', gap: '2rem', alignItems: 'center' }}>
-            {/* First Row: 3 Cards */}
-            <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '2rem', width: '100%', maxWidth: '900px' }}>
-              <div className="sponsor-card" style={{ padding: '0.5rem' }}>
-                <img src="./ieee-mb-blue.png" alt="IEEE Kite" className="sponsor-logo" />
-              </div>
-              <div className="sponsor-card" style={{ padding: '0.5rem' }}>
-                <img src="./IEEE-banglore-Section-Blue-300x75-2.png" alt="IEEE Bangalore Section" className="sponsor-logo" />
-              </div>
-              <div className="sponsor-card" style={{ padding: '0.5rem' }}>
-                <img src="./IEEE mysore subsection white.png" alt="IEEE Mysore Subsection" className="sponsor-logo" />
-              </div>
+          <div className="sponsors-grid">
+            <div className="sponsor-card">
+              <img src="./ieee-mb-blue.png" alt="IEEE Kite" className="sponsor-logo" />
             </div>
-
-            {/* Second Row: 2 Cards */}
-            <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '2rem', width: '100%', maxWidth: '900px' }}>
-              <div className="sponsor-card" style={{ padding: '0.5rem' }}>
-                <img src="./CAS-WHITE-BG.jpg" alt="CAS Bangalore" className="sponsor-logo" />
-              </div>
-              <div className="sponsor-card" style={{ padding: '0.5rem' }}>
-                <img src="./RAS.png" alt="RAS Bangalore" className="sponsor-logo" />
-              </div>
+            <div className="sponsor-card">
+              <img src="./IEEE-banglore-Section-Blue-300x75-2.png" alt="IEEE Bangalore Section" className="sponsor-logo" />
+            </div>
+            <div className="sponsor-card">
+              <img src="./IEEE mysore subsection white.png" alt="IEEE Mysore Subsection" className="sponsor-logo" />
+            </div>
+            <div className="sponsor-card">
+              <img src="./CAS-WHITE-BG.jpg" alt="CAS Bangalore" className="sponsor-logo" />
+            </div>
+            <div className="sponsor-card">
+              <img src="./RAS.png" alt="RAS Bangalore" className="sponsor-logo" />
             </div>
           </div>
         </section>
