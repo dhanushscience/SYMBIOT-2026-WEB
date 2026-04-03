@@ -322,7 +322,7 @@ const App: React.FC = () => {
   // Intersection Observer — reveal sections on scroll
   useEffect(() => {
     const targets = document.querySelectorAll<HTMLElement>(
-      '.section-header, .about-content, .about-cards, .countdown-section, .gallery-year-section, .sponsors-grid, .faq-container, .prizes-section-wrapper, .stats-ribbon, .ps-controls, .ps-table-wrapper'
+      '.section-header, .about-content, .about-cards, .countdown-section, .gallery-year-section, .sponsors-grid, .faq-container, .prizes-section-wrapper, .stats-ribbon, .ps-controls'
     );
     const observer = new IntersectionObserver(
       (entries) => {

@@ -3028,8 +3028,7 @@ h1, h2, h3, h4, h5, h6 {
 .faq-container,
 .prizes-grid,
 .stats-ribbon,
-.ps-controls,
-.ps-table-wrapper {
+.ps-controls {
   opacity: 0;
   transform: translateY(40px);
   transition: opacity 0.85s ease, transform 0.85s ease;
@@ -3044,8 +3043,7 @@ h1, h2, h3, h4, h5, h6 {
 .faq-container.in-view,
 .prizes-grid.in-view,
 .stats-ribbon.in-view,
-.ps-controls.in-view,
-.ps-table-wrapper.in-view {
+.ps-controls.in-view {
   opacity: 1;
   transform: translateY(0);
 }
