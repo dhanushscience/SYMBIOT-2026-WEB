@@ -226,9 +226,11 @@ const ProblemStatements: React.FC<ProblemStatementsProps> = ({ initialFilter }) 
   const [isMobileView, setIsMobileView] = useState(window.innerWidth <= 768);
 
   useEffect(() => {
-    const handleResize = () => setIsMobileView(window.innerWidth <= 768);
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    const mql = window.matchMedia('(max-width: 768px)');
+    const handleCheck = (e: any) => setIsMobileView(e.matches);
+    setIsMobileView(mql.matches);
+    mql.addEventListener('change', handleCheck);
+    return () => mql.removeEventListener('change', handleCheck);
   }, []);
 
   // Recommendations state
@@ -347,24 +349,26 @@ const ProblemStatements: React.FC<ProblemStatementsProps> = ({ initialFilter }) 
         </p>
       </div>
 
-      {isMobileView && !isMobileExpanded ? (
+      {isMobileView && (
         <div style={{ textAlign: 'center', marginTop: '1.5rem', marginBottom: '2rem', padding: '0 1rem' }}>
           <button 
-            className="btn btn-primary" 
-            onClick={() => setIsMobileExpanded(true)}
+            className={isMobileExpanded ? "btn btn-secondary" : "btn btn-primary"}
+            onClick={() => setIsMobileExpanded(!isMobileExpanded)}
             style={{ 
               padding: '1rem 2rem', 
               fontSize: '1.1rem', 
-              boxShadow: '0 0 15px rgba(0, 240, 255, 0.4)',
+              boxShadow: isMobileExpanded ? 'none' : '0 0 15px rgba(0, 240, 255, 0.4)',
               width: '100%',
               maxWidth: '350px',
-              animation: 'pulse-glow 2s infinite alternate'
+              animation: isMobileExpanded ? 'none' : 'pulse-glow 2s infinite alternate'
             }}
           >
-            Tap to view Problem Statements
+            {isMobileExpanded ? "Tap to close Problem Statements" : "Tap to view Problem Statements"}
           </button>
         </div>
-      ) : (
+      )}
+
+      {(!isMobileView || isMobileExpanded) && (
       <>
       {/* Sticky Filters & Search */}
 
@@ -670,23 +674,6 @@ const ProblemStatements: React.FC<ProblemStatementsProps> = ({ initialFilter }) 
         </div>
       )}
 
-      {isMobileView && isMobileExpanded && (
-        <div style={{ textAlign: 'center', marginTop: '2.5rem', marginBottom: '1rem' }}>
-          <button 
-            className="btn btn-secondary" 
-            onClick={() => {
-              setIsMobileExpanded(false);
-              document.getElementById('problem-statements')?.scrollIntoView({ behavior: 'smooth' });
-            }}
-            style={{ 
-              padding: '0.8rem 2rem', 
-              fontSize: '1rem',
-            }}
-          >
-            Tap to close Problem Statements
-          </button>
-        </div>
-      )}
       </>
       )}
     </section>
