@@ -493,6 +493,14 @@ const App: React.FC = () => {
               <br /><br />
               <span className="hero-dates">April 24th - 25th, 2026</span>
             </p>
+            
+            <div className="eligibility-banner">
+              <div className="eligibility-text">
+                Open to <span className="highlight-bright">B.Tech & M.Tech</span> Students Nationwide<br className="mobile-break" />
+                Experience SYMBIOT’s First-Ever Dedicated <span className="highlight-gradient">VLSI Track</span>
+              </div>
+            </div>
+
             <div className="hero-actions">
               <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
                 <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center' }}>
