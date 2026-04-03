@@ -424,11 +424,11 @@ const App: React.FC = () => {
                 Problem Statements <span className="nav-dropdown-arrow">▼</span>
               </button>
               <div className="nav-dropdown-menu">
-                <a href="#problem-statements" className="nav-dropdown-item" onClick={() => setPsFilter('Open Innovation')}>Open Innovation</a>
-                <a href="#problem-statements" className="nav-dropdown-item" onClick={() => setPsFilter('VLSI')}>VLSI</a>
                 <a href="#problem-statements" className="nav-dropdown-item" onClick={() => setPsFilter('Embedded and IOT')}>Embedded and IOT</a>
                 <a href="#problem-statements" className="nav-dropdown-item" onClick={() => setPsFilter('Software Domain')}>Software Domain</a>
                 <a href="#problem-statements" className="nav-dropdown-item" onClick={() => setPsFilter('Campus Innovation')}>Campus Innovation</a>
+                <a href="#problem-statements" className="nav-dropdown-item" onClick={() => setPsFilter('VLSI')}>VLSI</a>
+                <a href="#templates" className="nav-dropdown-item" onClick={() => { setPsFilter(undefined); document.getElementById('templates')?.scrollIntoView({ behavior: 'smooth' }); }}>PPTs</a>
               </div>
             </div>
             <a href="#prizes" className="nav-link">Prizes</a>
@@ -454,11 +454,11 @@ const App: React.FC = () => {
                 Problem Statements <span className="nav-dropdown-arrow" style={{ transform: mobilePsOpen ? 'rotate(180deg)' : 'none' }}>▼</span>
               </button>
               <div className={`mobile-ps-subnav ${mobilePsOpen ? 'open' : ''}`}>
-                <a href="#problem-statements" className="mobile-ps-link" onClick={() => { setPsFilter('Open Innovation'); setIsMobileMenuOpen(false); }}>Open Innovation</a>
-                <a href="#problem-statements" className="mobile-ps-link" onClick={() => { setPsFilter('VLSI'); setIsMobileMenuOpen(false); }}>VLSI</a>
                 <a href="#problem-statements" className="mobile-ps-link" onClick={() => { setPsFilter('Embedded and IOT'); setIsMobileMenuOpen(false); }}>Embedded and IOT</a>
                 <a href="#problem-statements" className="mobile-ps-link" onClick={() => { setPsFilter('Software Domain'); setIsMobileMenuOpen(false); }}>Software Domain</a>
                 <a href="#problem-statements" className="mobile-ps-link" onClick={() => { setPsFilter('Campus Innovation'); setIsMobileMenuOpen(false); }}>Campus Innovation</a>
+                <a href="#problem-statements" className="mobile-ps-link" onClick={() => { setPsFilter('VLSI'); setIsMobileMenuOpen(false); }}>VLSI</a>
+                <a href="#templates" className="mobile-ps-link" onClick={() => { setPsFilter(undefined); setIsMobileMenuOpen(false); document.getElementById('templates')?.scrollIntoView({ behavior: 'smooth' }); }}>PPTs</a>
               </div>
             </div>
             <a href="#prizes" className="mobile-nav-link" onClick={() => setIsMobileMenuOpen(false)}>Prizes</a>

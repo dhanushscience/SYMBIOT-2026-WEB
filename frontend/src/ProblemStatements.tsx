@@ -133,7 +133,7 @@ The tool should:
   }
 ];
 
-const DOMAINS = ['All', 'Embedded and IOT', 'Software Domain', 'VLSI', 'Campus Innovation', 'Open Innovation'] as const;
+const DOMAINS = ['All', 'Embedded and IOT', 'Software Domain', 'Campus Innovation', 'VLSI', 'Open Innovation'] as const;
 
 const domainBadgeClass: Record<string, string> = {
   'Open Innovation': 'ps-badge-vlsi',
