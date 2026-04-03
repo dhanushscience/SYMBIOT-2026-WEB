@@ -420,7 +420,7 @@ const App: React.FC = () => {
             <a href="#home" className="nav-link">Home</a>
             <a href="#about" className="nav-link">About</a>
             <div className="nav-dropdown">
-              <button className="nav-dropdown-trigger" onClick={() => { setPsFilter(undefined); document.getElementById('problem-statements')?.scrollIntoView({ behavior: 'smooth' }); }}>
+              <button className="nav-dropdown-trigger">
                 Problem Statements <span className="nav-dropdown-arrow">▼</span>
               </button>
               <div className="nav-dropdown-menu">
@@ -643,10 +643,6 @@ const App: React.FC = () => {
 
         <SectionDivider />
 
-        <ProblemStatements initialFilter={psFilter} />
-
-        <SectionDivider />
-
         <section id="templates" className="section">
           <div className="section-header">
             <h2 className="section-title">PPT <span className="text-gradient">Templates</span></h2>
@@ -663,13 +659,7 @@ const App: React.FC = () => {
             <div className="glass-panel feature-card" style={{ flex: '1 1 250px', maxWidth: '300px', display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
               <div className="feature-icon">💻</div>
               <h4 style={{ color: 'var(--accent-yellow)', marginBottom: '1.5rem', fontSize: '1.25rem', fontFamily: 'Outfit, sans-serif' }}>Software Domain</h4>
-              <a href="#" className="btn btn-secondary" onClick={(e) => { e.preventDefault(); alert("Template coming soon!"); }}>Download</a>
-            </div>
-
-            <div className="glass-panel feature-card" style={{ flex: '1 1 250px', maxWidth: '300px', display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
-              <div className="feature-icon">🔌</div>
-              <h4 style={{ color: 'var(--accent-yellow)', marginBottom: '1.5rem', fontSize: '1.25rem', fontFamily: 'Outfit, sans-serif' }}>VLSI</h4>
-              <a href={`${import.meta.env.BASE_URL}PPT_template/SYMBIOT_2026_VLSI_PPT.pptx`} download="SYMBIOT_2026_VLSI_PPT.pptx" className="btn btn-secondary">Download</a>
+              <a href={`${import.meta.env.BASE_URL}PPT_template/SYMBIOT_2026_SOFTWARE_PPT.pptx`} download="SYMBIOT_2026_SOFTWARE_PPT.pptx" className="btn btn-secondary">Download</a>
             </div>
 
             <div className="glass-panel feature-card" style={{ flex: '1 1 250px', maxWidth: '300px', display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
@@ -679,12 +669,22 @@ const App: React.FC = () => {
             </div>
 
             <div className="glass-panel feature-card" style={{ flex: '1 1 250px', maxWidth: '300px', display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
+              <div className="feature-icon">🔌</div>
+              <h4 style={{ color: 'var(--accent-yellow)', marginBottom: '1.5rem', fontSize: '1.25rem', fontFamily: 'Outfit, sans-serif' }}>VLSI</h4>
+              <a href={`${import.meta.env.BASE_URL}PPT_template/SYMBIOT_2026_VLSI_PPT.pptx`} download="SYMBIOT_2026_VLSI_PPT.pptx" className="btn btn-secondary">Download</a>
+            </div>
+
+            <div className="glass-panel feature-card" style={{ flex: '1 1 250px', maxWidth: '300px', display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
               <div className="feature-icon">🌐</div>
               <h4 style={{ color: 'var(--accent-yellow)', marginBottom: '1.5rem', fontSize: '1.25rem', fontFamily: 'Outfit, sans-serif' }}>Open Innovation</h4>
               <a href={`${import.meta.env.BASE_URL}PPT_template/SYMBIOT_2026_OPEN_PPT.pptx`} download="SYMBIOT_2026_OPEN_PPT.pptx" className="btn btn-secondary">Download</a>
             </div>
           </div>
         </section>
+
+        <SectionDivider />
+
+        <ProblemStatements initialFilter={psFilter} />
 
         <SectionDivider />
 

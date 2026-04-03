@@ -3130,6 +3130,17 @@ h1, h2, h3, h4, h5, h6 {
   pointer-events: none;
 }
 
+/* Invisible bridge for hover gap */
+.nav-dropdown-menu::before {
+  content: "";
+  position: absolute;
+  top: -15px;
+  left: 0;
+  width: 100%;
+  height: 15px;
+  background: transparent;
+}
+
 .nav-dropdown:hover .nav-dropdown-menu,
 .nav-dropdown.open .nav-dropdown-menu {
   opacity: 1;
