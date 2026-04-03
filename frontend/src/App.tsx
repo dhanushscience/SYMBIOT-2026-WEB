@@ -543,6 +543,11 @@ const App: React.FC = () => {
                   <span className="orbit-label">VLSI</span>
                   <span className="orbit-arrow">→</span>
                 </div>
+                <div className="orbit-el orbit-5" onClick={() => { setPsFilter('Software Domain'); document.getElementById('problem-statements')?.scrollIntoView({ behavior: 'smooth' }); }}>
+                  <span className="hw-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M4 17l6-6-6-6"></path><path d="M12 19h8"></path></svg></span>
+                  <span className="orbit-label">Software Domain</span>
+                  <span className="orbit-arrow">→</span>
+                </div>
               </div>
             </div>
           </div>

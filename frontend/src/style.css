@@ -1510,6 +1510,7 @@ h1, h2, h3, h4, h5, h6 {
 .orbit-2 { margin-top: -20px; margin-left: -80px; }
 .orbit-3 { margin-top: -20px; margin-left: -80px; }
 .orbit-4 { margin-top: -20px; margin-left: -80px; }
+.orbit-5 { margin-top: -20px; margin-left: -80px; }
 
 /* Expanded Positions on Hover — 4-element rectangular layout */
 .logo-container:hover .orbit-1,
@@ -1546,6 +1547,15 @@ h1, h2, h3, h4, h5, h6 {
   margin: 0;
   cursor: pointer; pointer-events: auto;
   animation: fadeInFloat 0.45s 0.24s ease-out forwards;
+}
+
+.logo-container:hover .orbit-5,
+.orbit-elements:hover .orbit-5 {
+  top: -25%; left: 50%;
+  transform: translateX(-50%) scale(1);
+  margin: 0;
+  cursor: pointer; pointer-events: auto;
+  animation: fadeInFloatCenter 0.45s 0.32s ease-out forwards;
 }
 
 /* Fade-in + float keyframes for cards without X-centering */
@@ -1586,6 +1596,10 @@ h1, h2, h3, h4, h5, h6 {
 
 .orbit-4:hover {
   transform: translateY(-5px) scale(1.05) !important;
+}
+
+.orbit-5:hover {
+  transform: translateX(-50%) translateY(-5px) scale(1.05) !important;
 }
 
 .orbit-el:active, .trophy-card:active {
@@ -1683,7 +1697,7 @@ h1, h2, h3, h4, h5, h6 {
   /* Trigger smooth slide-in on hover/tap */
   .logo-container:hover .orbit-1,
   .orbit-elements:hover .orbit-1 {
-    top: -10% !important; 
+    top: -2% !important; 
     left: -20% !important;
     transform: scale(1) !important;
     opacity: 1 !important;
@@ -1693,7 +1707,7 @@ h1, h2, h3, h4, h5, h6 {
 
   .logo-container:hover .orbit-2,
   .orbit-elements:hover .orbit-2 {
-    top: -10% !important; 
+    top: -2% !important; 
     left: auto !important;
     right: -20% !important;
     transform: scale(1) !important;
@@ -1706,7 +1720,7 @@ h1, h2, h3, h4, h5, h6 {
   .orbit-elements:hover .orbit-3 {
     top: auto !important; 
     bottom: -15% !important; 
-    left: -20% !important;
+    left: -12% !important;
     transform: scale(1) !important;
     opacity: 1 !important;
     pointer-events: auto;
@@ -1718,11 +1732,21 @@ h1, h2, h3, h4, h5, h6 {
     top: auto !important; 
     bottom: -15% !important; 
     left: auto !important;
-    right: -20% !important;
+    right: -12% !important;
     transform: scale(1) !important;
     opacity: 1 !important;
     pointer-events: auto;
     animation: fadeInFloat 0.45s 0.24s ease-out forwards !important;
+  }
+
+  .logo-container:hover .orbit-5,
+  .orbit-elements:hover .orbit-5 {
+    top: -35% !important; 
+    left: 50% !important;
+    transform: translateX(-50%) scale(1) !important;
+    opacity: 1 !important;
+    pointer-events: auto;
+    animation: fadeInFloatCenter 0.45s 0.32s ease-out forwards !important;
   }
   
   /* Ensuring hover scaling survives the override gracefully */
