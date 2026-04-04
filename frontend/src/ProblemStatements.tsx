@@ -372,14 +372,24 @@ const ProblemStatements: React.FC<ProblemStatementsProps> = ({ initialFilter }) 
       <>
       {/* Sticky Filters & Search */}
 
-      <div className="ps-controls-sticky">
+      <div className="ps-controls-sticky" style={isMobileView ? { position: 'relative', top: 'auto', background: 'rgba(12, 15, 30, 0.98)', padding: '0.75rem 1rem', margin: '0 -1rem', borderBottom: '1px solid rgba(0, 240, 255, 0.15)' } : undefined}>
         <div className="ps-controls">
-          <div className="ps-filters">
+          <div className="ps-filters" style={isMobileView ? { display: 'flex', flexWrap: 'nowrap', overflowX: 'auto', gap: '0.5rem', paddingBottom: '6px', scrollbarWidth: 'none' } : undefined}>
             {DOMAINS.map(domain => (
               <button
                 key={domain}
                 className={`ps-filter-btn ${activeFilter === domain ? 'active' : ''}`}
                 onClick={() => setActiveFilter(domain)}
+                style={isMobileView ? {
+                  flexShrink: 0,
+                  whiteSpace: 'nowrap',
+                  padding: '0.5rem 1rem',
+                  fontSize: '0.8rem',
+                  border: activeFilter === domain ? '1.5px solid #00f0ff' : '1.5px solid rgba(0, 240, 255, 0.4)',
+                  background: activeFilter === domain ? 'rgba(0, 240, 255, 0.18)' : 'rgba(0, 240, 255, 0.06)',
+                  color: '#fff',
+                  borderRadius: '6px',
+                } : undefined}
               >
                 {domain}
               </button>
@@ -396,6 +406,7 @@ const ProblemStatements: React.FC<ProblemStatementsProps> = ({ initialFilter }) 
               placeholder="Search by PSID, Domain, or Keywords"
               value={searchQuery}
               onChange={e => setSearchQuery(e.target.value)}
+              style={isMobileView ? { border: '1.5px solid rgba(0, 240, 255, 0.35)', background: 'rgba(15, 23, 42, 0.8)', color: '#fff' } : undefined}
             />
           </div>
         </div>
