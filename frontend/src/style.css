@@ -3510,6 +3510,17 @@ h1, h2, h3, h4, h5, h6 {
   box-shadow: 0 0 12px rgba(245, 158, 11, 0.4);
 }
 
+.ps-badge-software {
+  background: rgba(168, 85, 247, 0.15);
+  color: #c084fc;
+  border: 1px solid rgba(168, 85, 247, 0.4);
+}
+
+.ps-badge-software:hover,
+.ps-row:hover .ps-badge-software {
+  box-shadow: 0 0 12px rgba(168, 85, 247, 0.4);
+}
+
 /* --- Empty State --- */
 .ps-empty-row td {
   border: none !important;
@@ -5392,5 +5403,61 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 0.82rem !important;
     clear: both !important;
     display: block !important;
+  }
+
+  /* ── Filter navigation wrapper ── */
+  section#problem-statements .ps-filters-nav-wrapper {
+    display: flex !important;
+    align-items: center !important;
+    gap: 0 !important;
+    position: relative !important;
+    width: 100% !important;
+  }
+
+  /* ── Arrow navigation buttons ── */
+  section#problem-statements .ps-filter-arrow {
+    flex-shrink: 0 !important;
+    width: 30px !important;
+    height: 30px !important;
+    border-radius: 50% !important;
+    border: 1.5px solid rgba(0, 240, 255, 0.5) !important;
+    background: rgba(0, 240, 255, 0.1) !important;
+    color: #00f0ff !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    cursor: pointer !important;
+    transition: all 0.25s ease !important;
+    z-index: 5 !important;
+    padding: 0 !important;
+    box-shadow: 0 0 8px rgba(0, 240, 255, 0.2) !important;
+  }
+
+  section#problem-statements .ps-filter-arrow:active {
+    transform: scale(0.9) !important;
+    background: rgba(0, 240, 255, 0.25) !important;
+    box-shadow: 0 0 14px rgba(0, 240, 255, 0.4) !important;
+  }
+
+  section#problem-statements .ps-filter-arrow svg {
+    width: 14px !important;
+    height: 14px !important;
+    stroke: #00f0ff !important;
+  }
+
+  section#problem-statements .ps-filter-arrow-left {
+    margin-right: 6px !important;
+  }
+
+  section#problem-statements .ps-filter-arrow-right {
+    margin-left: 6px !important;
+  }
+
+  /* ── Filters scroll area within wrapper ── */
+  section#problem-statements .ps-filters-nav-wrapper .ps-filters {
+    flex: 1 !important;
+    min-width: 0 !important;
+    mask-image: none !important;
+    -webkit-mask-image: none !important;
   }
 }

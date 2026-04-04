@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect, useMemo, useRef, useCallback } from 'react';
 
 // --- Problem Statement Data ---
 interface ProblemStatement {
@@ -130,6 +130,101 @@ The tool should:
 • Compare settings with CIS benchmark recommendations
 • Generate compliance reports
 • Suggest remediation steps for security improvements`
+  },
+  {
+    psid: 'SYMB0201',
+    domain: 'Software Domain',
+    title: 'NFT-Based Marketplace for Physical Goods',
+    department: 'Computer Science / Blockchain',
+    category: 'Web3 / E-commerce',
+    theme: 'Digital Ownership & Asset Integration',
+    description: `Build a decentralized platform where users can purchase NFTs linked to real-world products and redeem them securely using blockchain technology.
+
+This problem focuses on building a decentralized platform where users can purchase NFTs that are directly linked to physical goods. These NFTs act as proof of ownership and can be redeemed for tangible items such as clothing, accessories, artwork, or exclusive merchandise.
+
+The platform should ensure transparency, authenticity, and trust using blockchain technology and smart contracts, eliminating intermediaries and reducing fraud in digital-to-physical transactions.
+
+The system should:
+• Enable NFT minting and trading
+• Link NFTs to physical products
+• Allow secure redemption
+• Use smart contracts for ownership and transactions`
+  },
+  {
+    psid: 'SYMB0202',
+    domain: 'Software Domain',
+    title: 'NFT Platform for Real-World Experiences',
+    department: 'Computer Science',
+    category: 'Web3 / Event Tech',
+    theme: 'Phygital Experiences',
+    description: `In today's digital era, users increasingly seek unique and immersive experiences rather than just products. NFTs provide a powerful way to represent ownership and access rights digitally.
+
+This problem aims to develop a "phygital" (physical + digital) platform where users can purchase NFTs that unlock exclusive real-world experiences such as VIP concert access, meet-and-greets, backstage tours, or special event privileges.
+
+The platform should ensure secure access control, authenticity of experiences, and seamless interaction between digital ownership and real-world participation.
+
+The system should:
+• Provide NFT-based ticketing
+• Verify ownership at entry
+• Enable event creation and management
+• Ensure secure validation`
+  },
+  {
+    psid: 'SYMB0203',
+    domain: 'Software Domain',
+    title: 'Renewable Energy Credit Marketplace',
+    department: 'Computer Science / Energy',
+    category: 'Blockchain / Sustainability',
+    theme: 'Clean Energy Systems',
+    description: `With the increasing need to transition towards renewable energy, Renewable Energy Credits (RECs) play a crucial role in promoting clean energy adoption. However, existing REC marketplaces often lack transparency, trust, and efficient verification mechanisms.
+
+This problem focuses on building a decentralized marketplace where individuals and organizations can buy and sell renewable energy credits securely using blockchain technology. The system should ensure authenticity, traceability, and trust by leveraging smart contracts and decentralized verification mechanisms.
+
+By enabling a transparent and tamper-proof ecosystem, this platform can significantly contribute to reducing reliance on fossil fuels and encouraging sustainable energy practices.
+
+The system should:
+• Enable buying/selling of credits
+• Ensure authenticity via oracles
+• Record transactions immutably
+• Prevent fraud`
+  },
+  {
+    psid: 'SYMB0204',
+    domain: 'Software Domain',
+    title: 'Secure Blockchain Voting System',
+    department: 'Computer Science / Cybersecurity',
+    category: 'Blockchain / GovTech',
+    theme: 'Digital Governance',
+    description: `Traditional voting systems often face challenges such as lack of transparency, security vulnerabilities, and potential manipulation. There is a growing need for a system that ensures trust, fairness, and verifiability in voting processes.
+
+This problem aims to develop a blockchain-based voting platform where users can cast votes securely using digital identities. The system should ensure that votes are immutable, transparent, and verifiable while maintaining voter privacy.
+
+Such a system can be used not only for political elections but also for organizational decision-making, surveys, and governance processes.
+
+The system should:
+• Enable secure digital voting
+• Prevent duplicate voting
+• Maintain anonymity
+• Provide verifiable results`
+  },
+  {
+    psid: 'SYMB0205',
+    domain: 'Software Domain',
+    title: 'Decentralized Identity System',
+    department: 'Computer Science / Security',
+    category: 'Web3 / Identity Systems',
+    theme: 'Data Privacy & Ownership',
+    description: `Build a decentralized identity system allowing users to control and share their personal data securely.
+
+This problem focuses on building a decentralized identity (DID) management system where users fully own and control their digital identity. Using blockchain technology, users can securely create, manage, and share their identity credentials across multiple platforms without relying on centralized authorities.
+
+The system should empower users to selectively share their data with third parties while ensuring privacy, security, and transparency. Additionally, users may be incentivized or rewarded for sharing verified data.
+
+The system should:
+• Enable DID creation
+• Allow selective data sharing
+• Ensure user consent
+• Provide secure authentication`
   }
 ];
 
@@ -139,7 +234,7 @@ const domainBadgeClass: Record<string, string> = {
   'Open Innovation': 'ps-badge-vlsi',
   'VLSI': 'ps-badge-vlsi',
   'Embedded and IOT': 'ps-badge-embedded',
-  'Software Domain': 'ps-badge-campus',
+  'Software Domain': 'ps-badge-software',
   'Campus Innovation': 'ps-badge-campus',
 };
 
@@ -224,6 +319,37 @@ const ProblemStatements: React.FC<ProblemStatementsProps> = ({ initialFilter }) 
 
   const [isMobileExpanded, setIsMobileExpanded] = useState(false);
   const [isMobileView, setIsMobileView] = useState(window.innerWidth <= 768);
+
+  // Filter scroll navigation
+  const filtersRef = useRef<HTMLDivElement>(null);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(false);
+
+  const updateScrollArrows = useCallback(() => {
+    const el = filtersRef.current;
+    if (!el) return;
+    setCanScrollLeft(el.scrollLeft > 4);
+    setCanScrollRight(el.scrollLeft < el.scrollWidth - el.clientWidth - 4);
+  }, []);
+
+  useEffect(() => {
+    const el = filtersRef.current;
+    if (!el || !isMobileView) return;
+    updateScrollArrows();
+    el.addEventListener('scroll', updateScrollArrows, { passive: true });
+    window.addEventListener('resize', updateScrollArrows);
+    return () => {
+      el.removeEventListener('scroll', updateScrollArrows);
+      window.removeEventListener('resize', updateScrollArrows);
+    };
+  }, [isMobileView, isMobileExpanded, updateScrollArrows]);
+
+  const scrollFilters = (direction: 'left' | 'right') => {
+    const el = filtersRef.current;
+    if (!el) return;
+    const amount = direction === 'left' ? -160 : 160;
+    el.scrollBy({ left: amount, behavior: 'smooth' });
+  };
 
   useEffect(() => {
     const mql = window.matchMedia('(max-width: 768px)');
@@ -374,26 +500,55 @@ const ProblemStatements: React.FC<ProblemStatementsProps> = ({ initialFilter }) 
 
       <div className="ps-controls-sticky" style={isMobileView ? { position: 'relative', top: 'auto', background: 'rgba(12, 15, 30, 0.98)', padding: '0.75rem 1rem', margin: '0 -1rem', borderBottom: '1px solid rgba(0, 240, 255, 0.15)' } : undefined}>
         <div className="ps-controls">
-          <div className="ps-filters" style={isMobileView ? { display: 'flex', flexWrap: 'nowrap', overflowX: 'auto', gap: '0.5rem', paddingBottom: '6px', scrollbarWidth: 'none' } : undefined}>
-            {DOMAINS.map(domain => (
+          {/* Filter row with navigation arrows on mobile */}
+          <div className="ps-filters-nav-wrapper">
+            {isMobileView && canScrollLeft && (
               <button
-                key={domain}
-                className={`ps-filter-btn ${activeFilter === domain ? 'active' : ''}`}
-                onClick={() => setActiveFilter(domain)}
-                style={isMobileView ? {
-                  flexShrink: 0,
-                  whiteSpace: 'nowrap',
-                  padding: '0.5rem 1rem',
-                  fontSize: '0.8rem',
-                  border: activeFilter === domain ? '1.5px solid #00f0ff' : '1.5px solid rgba(0, 240, 255, 0.4)',
-                  background: activeFilter === domain ? 'rgba(0, 240, 255, 0.18)' : 'rgba(0, 240, 255, 0.06)',
-                  color: '#fff',
-                  borderRadius: '6px',
-                } : undefined}
+                className="ps-filter-arrow ps-filter-arrow-left"
+                onClick={() => scrollFilters('left')}
+                aria-label="Scroll filters left"
               >
-                {domain}
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" width="16" height="16">
+                  <path d="M15 18l-6-6 6-6" />
+                </svg>
               </button>
-            ))}
+            )}
+            <div
+              className="ps-filters"
+              ref={filtersRef}
+              style={isMobileView ? { display: 'flex', flexWrap: 'nowrap', overflowX: 'auto', gap: '0.5rem', paddingBottom: '6px', scrollbarWidth: 'none', scrollBehavior: 'smooth' } : undefined}
+            >
+              {DOMAINS.map(domain => (
+                <button
+                  key={domain}
+                  className={`ps-filter-btn ${activeFilter === domain ? 'active' : ''}`}
+                  onClick={() => setActiveFilter(domain)}
+                  style={isMobileView ? {
+                    flexShrink: 0,
+                    whiteSpace: 'nowrap',
+                    padding: '0.5rem 1rem',
+                    fontSize: '0.8rem',
+                    border: activeFilter === domain ? '1.5px solid #00f0ff' : '1.5px solid rgba(0, 240, 255, 0.4)',
+                    background: activeFilter === domain ? 'rgba(0, 240, 255, 0.18)' : 'rgba(0, 240, 255, 0.06)',
+                    color: '#fff',
+                    borderRadius: '6px',
+                  } : undefined}
+                >
+                  {domain}
+                </button>
+              ))}
+            </div>
+            {isMobileView && canScrollRight && (
+              <button
+                className="ps-filter-arrow ps-filter-arrow-right"
+                onClick={() => scrollFilters('right')}
+                aria-label="Scroll filters right"
+              >
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" width="16" height="16">
+                  <path d="M9 18l6-6-6-6" />
+                </svg>
+              </button>
+            )}
           </div>
           <div className="ps-search-wrapper">
             <svg className="ps-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -429,17 +584,6 @@ const ProblemStatements: React.FC<ProblemStatementsProps> = ({ initialFilter }) 
           <a href={`${import.meta.env.BASE_URL}PPT_template/SYMBIOT_2026_OPEN_PPT.pptx`} download="SYMBIOT_2026_OPEN_PPT.pptx" className="btn btn-primary" style={{ marginTop: '1.5rem', fontSize: '1.1rem', padding: '1rem 2.5rem', background: 'linear-gradient(135deg, #00f0ff, #007bb5)', border: 'none', boxShadow: '0 4px 15px rgba(0,240,255,0.4)', color: '#fff' }}>
             Download Open Innovation PPT
           </a>
-        </div>
-      ) : activeFilter === 'Software Domain' ? (
-        <div className="software-domain-view" style={{ textAlign: 'center', padding: '4rem 2rem', background: 'rgba(255, 255, 255, 0.05)', borderRadius: '16px', margin: '2rem 0', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1.5rem', border: '1px solid rgba(0, 240, 255, 0.3)', boxShadow: '0 0 30px rgba(0, 240, 255, 0.1)' }}>
-          <h3 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.8rem)', margin: 0, background: 'linear-gradient(90deg, #fff, #00f0ff)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', fontWeight: '800', lineHeight: '1.2' }}>
-            Software Domain<br/>Problem Statements
-          </h3>
-          <div style={{ marginTop: '1rem', padding: '1.5rem 3rem', background: 'rgba(0, 240, 255, 0.05)', border: '1px solid rgba(0, 240, 255, 0.2)', borderRadius: '12px' }}>
-            <p style={{ fontSize: '1.25rem', margin: '0', color: '#e2e8f0', lineHeight: '1.6', fontWeight: '500', letterSpacing: '1px' }}>
-              Coming soon. Stay Tuned...
-            </p>
-          </div>
         </div>
       ) : (
       <>
