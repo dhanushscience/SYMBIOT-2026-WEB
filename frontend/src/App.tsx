@@ -677,7 +677,7 @@ const App: React.FC = () => {
           <div className="section-header">
             <h2 className="section-title">Rewards & <span className="text-gradient">Recognition</span></h2>
             <p className="section-subtitle">Celebrate engineering excellence with prestigious titles and exciting rewards.</p>
-            <p className="sr-only">Symbiot 2026 hackathon prizes: Total prize pool of over ₹85,000. Each domain (Embedded &amp; IoT, Open Innovation, Campus Innovation) has prizes of ₹15,000 for 1st place and ₹10,000 for 2nd place. Additional awards include Best Women Team (₹5,000), Best Innovation (₹5,000), and participation swags with IEEE certificates for all participants at VVCE Mysore.</p>
+            <p className="sr-only">Symbiot 2026 hackathon prizes: Total prize pool of over ₹95,000. Each domain (Embedded &amp; IoT, Open Innovation, Campus Innovation) has prizes of ₹15,000 for 1st place and ₹10,000 for 2nd place. Additional awards include Best Women Team (₹5,000), Best Innovation (₹5,000), and participation swags with IEEE certificates for all participants at VVCE Mysore.</p>
           </div>
 
           <div className="prizes-section-wrapper" style={{ display: 'flex', flexDirection: 'column', gap: '2rem', alignItems: 'center', paddingBottom: '3rem' }}>
@@ -1030,7 +1030,7 @@ const App: React.FC = () => {
                 <div className="contact-avatar">GO</div>
                 <div className="contact-info">
                   <div className="contact-name">K Goutam</div>
-                  <div className="contact-email">Kgoutam12504@@gmail.com</div>
+                  <div className="contact-email">Kgoutam12504@gmail.com</div>
                   <div className="contact-phone">+917646903404</div>
                 </div>
               </div>
