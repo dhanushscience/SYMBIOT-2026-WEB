@@ -6,6 +6,7 @@ interface ProblemStatement {
   domain: 'Open Innovation' | 'Embedded and IOT' | 'Software Domain' | 'Campus Innovation' | 'VLSI';
   subdomain?: string;
   title: string;
+  fullTitle?: string;
   department: string;
   category: string;
   theme: string;
@@ -225,6 +226,129 @@ The system should:
 • Allow selective data sharing
 • Ensure user consent
 • Provide secure authentication`
+  },
+  {
+    psid: 'SYM1010',
+    domain: 'Campus Innovation',
+    title: 'Renewable Energy Credit Marketplace',
+    fullTitle: 'Blockchain-Based Marketplace for Renewable Energy Credits',
+    department: 'Computer Science / Energy Systems',
+    category: 'Blockchain / Sustainability',
+    theme: 'Clean Energy & Sustainable Systems',
+    description: `Develop a decentralized marketplace for buying and selling renewable energy credits using blockchain for transparency and trust.
+
+The system should:
+• Enable credit trading
+• Record transactions immutably
+• Verify authenticity via oracles
+• Prevent fraud and duplication
+• Provide transparent tracking`
+  },
+  {
+    psid: 'SYMB0008',
+    domain: 'Embedded and IOT',
+    title: 'Smart Medication Reminder System',
+    fullTitle: 'Smart Medication Reminder and Automated Dispensing System',
+    department: 'Electronics / Embedded Systems / Biomedical',
+    category: 'Embedded Systems / Healthcare',
+    theme: 'Smart Healthcare & Assistive Technology',
+    description: `Medication adherence is a major challenge, especially for elderly individuals and patients with chronic illnesses. Missing doses or incorrect timing can lead to serious health complications.
+
+Design an intelligent embedded system that reminds users to take medication on time and automatically dispenses the correct dosage. The system should provide alerts, track medication schedules, and ensure reliability in real-world usage.
+
+The system should:
+• Provide scheduled reminders using RTC
+• Automatically dispense correct medication dosage
+• Alert users for missed doses
+• Maintain logs of medication history
+• Ensure safe and reliable operation
+
+Expected Features:
+• RTC-based scheduling
+• Motor/actuator-based dispensing system
+• Buzzer / mobile alert system
+• Simple user interface (buttons/display/app)
+• Data logging mechanism`
+  },
+  {
+    psid: 'SYMB0009',
+    domain: 'Embedded and IOT',
+    title: 'AI Prosthetic Hand & Drug Detection',
+    fullTitle: 'AI-Based Prosthetic Hand with Gesture Recognition and Anti-Counterfeit Drug Detection',
+    department: 'Electronics / AI / Biomedical',
+    category: 'Embedded AI / Assistive Technology / Computer Vision',
+    theme: 'Human Augmentation & Healthcare Security',
+    description: `Modern assistive technologies aim to improve the quality of life for individuals with disabilities, while counterfeit drugs remain a serious threat to healthcare systems.
+
+Develop an advanced embedded healthcare system that integrates an AI-powered prosthetic hand controller using EMG sensors and TinyML for gesture recognition. Additionally, incorporate a computer vision system to verify drug authenticity by scanning QR codes, holograms, or packaging features.
+
+The system should:
+• Capture EMG signals for gesture recognition
+• Use TinyML for real-time classification
+• Control prosthetic hand movements
+• Detect counterfeit drugs using vision system
+• Ensure real-time and accurate processing
+
+Expected Features:
+• EMG sensor interface
+• TinyML-based gesture classification
+• Motor control system
+• Camera-based drug verification module
+• Embedded processor (MCU/SoC)`
+  },
+  {
+    psid: 'SYMB0010',
+    domain: 'Embedded and IOT',
+    title: 'RTOS Stepper Motor Controller',
+    fullTitle: 'RTOS-Based Embedded Controller for Precision Stepper Motor Control',
+    department: 'Electronics / Embedded Systems / Robotics',
+    category: 'Embedded Systems / Industrial Automation',
+    theme: 'Precision Control & Real-Time Systems',
+    description: `Precision motor control is critical in industrial automation, robotics, and CNC applications. Traditional control methods often fail to provide accurate timing and flexibility.
+
+Design a 3-axis stepper motor control system using an RTOS to achieve precise timing, synchronization, and control. The system should support real-time operations such as pause, resume, and feed-rate override without introducing timing errors.
+
+The system should:
+• Control 3-axis stepper motors
+• Ensure precise timing using RTOS
+• Support real-time commands
+• Implement pause/resume functionality
+• Enable feed-rate override
+
+Expected Features:
+• RTOS-based task scheduling
+• Stepper motor driver integration
+• Real-time command interface
+• Speed and position control
+• Fault detection and safety handling`
+  },
+  {
+    psid: 'SYMB0206',
+    domain: 'Software Domain',
+    title: 'Ayurvedic Traceability System',
+    fullTitle: 'Blockchain-Based System for Ayurvedic Product Traceability',
+    department: 'Computer Science / Information Science / Supply Chain',
+    category: 'Blockchain / Supply Chain / AgriTech',
+    theme: 'Transparent Supply Chain & Herbal Product Authenticity',
+    description: `The Ayurvedic medicine supply chain involves multiple stages, including herb sourcing, collection, processing, and manufacturing. Lack of transparency and traceability can lead to quality issues, adulteration, and reduced trust among consumers.
+
+Develop a blockchain-based traceability system that enables end-to-end tracking of Ayurvedic herbs and products. The system should allow geo-tagging of collection points (such as farmers and wild collectors) and track the journey of raw materials through processing to the final Ayurvedic product.
+
+This platform will improve transparency, ensure authenticity, and enhance trust in Ayurvedic products by providing verifiable and immutable records of the supply chain.
+
+The system should:
+• Enable geo-tagging of herb collection locations
+• Track movement of raw materials across supply chain stages
+• Store data immutably using blockchain
+• Ensure transparency and prevent tampering
+• Allow stakeholders to verify product origin and authenticity
+
+Expected Features:
+• Blockchain-based data storage
+• Geo-tagging system (GPS/location tracking)
+• Supply chain tracking dashboard
+• QR/ID-based product traceability
+• User roles (farmers, collectors, manufacturers, consumers)`
   }
 ];
 
@@ -581,6 +705,9 @@ const ProblemStatements: React.FC<ProblemStatementsProps> = ({ initialFilter }) 
           <p style={{ fontSize: '1.15rem', maxWidth: '800px', margin: '0', color: '#e2e8f0', lineHeight: '1.6' }}>
             Whether it's code, circuits, or a fusion of both, if it’s innovative, it belongs here.
           </p>
+          <p style={{ fontSize: '1.25rem', maxWidth: '800px', margin: '0.75rem 0 0 0', color: '#00f0ff', fontWeight: 'bold', lineHeight: '1.6', textShadow: '0 0 15px rgba(0, 240, 255, 0.4)' }}>
+            You're not Sponsoring an Event , You are Shaping the Future of Innovation.
+          </p>
           <a href={`${import.meta.env.BASE_URL}PPT_template/SYMBIOT_2026_OPEN_PPT.pptx`} download="SYMBIOT_2026_OPEN_PPT.pptx" className="btn btn-primary" style={{ marginTop: '1.5rem', fontSize: '1.1rem', padding: '1rem 2.5rem', background: 'linear-gradient(135deg, #00f0ff, #007bb5)', border: 'none', boxShadow: '0 4px 15px rgba(0,240,255,0.4)', color: '#fff' }}>
             Download Open Innovation PPT
           </a>
@@ -788,7 +915,7 @@ const ProblemStatements: React.FC<ProblemStatementsProps> = ({ initialFilter }) 
 
               {/* Title */}
               <div className="ps-modal-field-label">Problem Statement Title</div>
-              <h3 className="ps-modal-title">{selectedPS.title}</h3>
+              <h3 className="ps-modal-title">{selectedPS.fullTitle || selectedPS.title}</h3>
 
               {/* Domain Badge */}
               <div className="ps-modal-field-label">Domain Bucket</div>
