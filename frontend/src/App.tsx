@@ -3,7 +3,6 @@ import './style.css';
 import CircuitBackground from './CircuitBackground';
 import ProblemStatements from './ProblemStatements';
 import FoolPage from './FoolPage';
-import EventSchedule from './EventSchedule';
 
 const SectionDivider: React.FC = () => (
   <div className="section-divider">
@@ -323,7 +322,7 @@ const App: React.FC = () => {
   // Intersection Observer — reveal sections on scroll
   useEffect(() => {
     const targets = document.querySelectorAll<HTMLElement>(
-      '.section-header, .about-content, .about-cards, .countdown-section, .gallery-year-section, .sponsors-grid, .faq-container, .prizes-section-wrapper, .stats-ribbon, .ps-controls, .schedule-section'
+      '.section-header, .about-content, .about-cards, .countdown-section, .gallery-year-section, .sponsors-grid, .faq-container, .prizes-section-wrapper, .stats-ribbon, .ps-controls'
     );
     const observer = new IntersectionObserver(
       (entries) => {
@@ -432,7 +431,6 @@ const App: React.FC = () => {
                 <a href="#templates" className="nav-dropdown-item" onClick={() => { setPsFilter(undefined); document.getElementById('templates')?.scrollIntoView({ behavior: 'smooth' }); }}>PPTs</a>
               </div>
             </div>
-            <a href="#schedule" className="nav-link">Schedule</a>
             <a href="#prizes" className="nav-link">Prizes</a>
             <a href="#sponsors" className="nav-link">Sponsors</a>
             <a href="#faq" className="nav-link">FAQ</a>
@@ -463,7 +461,6 @@ const App: React.FC = () => {
                 <a href="#templates" className="mobile-ps-link" onClick={() => { setPsFilter(undefined); setIsMobileMenuOpen(false); document.getElementById('templates')?.scrollIntoView({ behavior: 'smooth' }); }}>PPTs</a>
               </div>
             </div>
-            <a href="#schedule" className="mobile-nav-link" onClick={() => setIsMobileMenuOpen(false)}>Schedule</a>
             <a href="#prizes" className="mobile-nav-link" onClick={() => setIsMobileMenuOpen(false)}>Prizes</a>
             <a href="#sponsors" className="mobile-nav-link" onClick={() => setIsMobileMenuOpen(false)}>Sponsors</a>
             <a href="#faq" className="mobile-nav-link" onClick={() => setIsMobileMenuOpen(false)}>FAQ</a>
@@ -621,10 +618,6 @@ const App: React.FC = () => {
             </div>
           </div>
         </section>
-
-        <SectionDivider />
-
-        <EventSchedule />
 
         <SectionDivider />
 
