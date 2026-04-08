@@ -621,13 +621,10 @@ const App: React.FC = () => {
 
         <SectionDivider />
 
-<<<<<<< HEAD
         <ProblemStatements initialFilter={psFilter} />
 
         <SectionDivider />
 
-=======
->>>>>>> 1747a69f9fad67e62950e7ef5231aafc27d32946
         <section id="templates" className="section">
           <div className="section-header">
             <h2 className="section-title">PPT <span className="text-gradient">Templates</span></h2>
