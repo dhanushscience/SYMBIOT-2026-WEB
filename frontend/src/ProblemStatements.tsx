@@ -602,18 +602,29 @@ const ProblemStatements: React.FC<ProblemStatementsProps> = ({ initialFilter }) 
       {isMobileView && (
         <div style={{ textAlign: 'center', marginTop: '1.5rem', marginBottom: '2rem', padding: '0 1rem' }}>
           <button 
-            className={isMobileExpanded ? "btn btn-secondary" : "btn btn-primary"}
             onClick={() => setIsMobileExpanded(!isMobileExpanded)}
             style={{ 
-              padding: '1rem 2rem', 
-              fontSize: '1.1rem', 
-              boxShadow: isMobileExpanded ? 'none' : '0 0 15px rgba(0, 240, 255, 0.4)',
+              padding: '1rem 2.5rem', 
+              fontSize: '1.15rem', 
+              fontWeight: 800,
+              letterSpacing: '0.5px',
               width: '100%',
-              maxWidth: '350px',
-              animation: isMobileExpanded ? 'none' : 'pulse-glow 2s infinite alternate'
+              maxWidth: '380px',
+              border: isMobileExpanded ? '2px solid rgba(255, 255, 255, 0.25)' : '2px solid rgba(0, 240, 255, 0.6)',
+              borderRadius: '14px',
+              background: isMobileExpanded 
+                ? 'rgba(255, 255, 255, 0.06)' 
+                : 'linear-gradient(135deg, #00d4e6 0%, #0090b8 100%)',
+              color: '#ffffff',
+              boxShadow: isMobileExpanded 
+                ? 'none' 
+                : '0 4px 20px rgba(0, 200, 230, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.15)',
+              cursor: 'pointer',
+              transition: 'all 0.3s ease',
+              fontFamily: "'Outfit', sans-serif",
             }}
           >
-            {isMobileExpanded ? "Tap to close Problem Statements" : "Tap to view Problem Statements"}
+            {isMobileExpanded ? "✕  Close Problem Statements" : "⚡  View Problem Statements"}
           </button>
         </div>
       )}

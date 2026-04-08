@@ -3,7 +3,6 @@ import './style.css';
 import CircuitBackground from './CircuitBackground';
 import ProblemStatements from './ProblemStatements';
 import FoolPage from './FoolPage';
-import EventSchedule from './EventSchedule';
 
 const SectionDivider: React.FC = () => (
   <div className="section-divider">
@@ -432,7 +431,6 @@ const App: React.FC = () => {
                 <a href="#templates" className="nav-dropdown-item" onClick={() => { setPsFilter(undefined); document.getElementById('templates')?.scrollIntoView({ behavior: 'smooth' }); }}>PPTs</a>
               </div>
             </div>
-            <a href="#schedule" className="nav-link">Schedule</a>
             <a href="#prizes" className="nav-link">Prizes</a>
             <a href="#sponsors" className="nav-link">Sponsors</a>
             <a href="#faq" className="nav-link">FAQ</a>
@@ -463,7 +461,6 @@ const App: React.FC = () => {
                 <a href="#templates" className="mobile-ps-link" onClick={() => { setPsFilter(undefined); setIsMobileMenuOpen(false); document.getElementById('templates')?.scrollIntoView({ behavior: 'smooth' }); }}>PPTs</a>
               </div>
             </div>
-            <a href="#schedule" className="mobile-nav-link" onClick={() => setIsMobileMenuOpen(false)}>Schedule</a>
             <a href="#prizes" className="mobile-nav-link" onClick={() => setIsMobileMenuOpen(false)}>Prizes</a>
             <a href="#sponsors" className="mobile-nav-link" onClick={() => setIsMobileMenuOpen(false)}>Sponsors</a>
             <a href="#faq" className="mobile-nav-link" onClick={() => setIsMobileMenuOpen(false)}>FAQ</a>
@@ -624,7 +621,7 @@ const App: React.FC = () => {
 
         <SectionDivider />
 
-        <EventSchedule />
+        <ProblemStatements initialFilter={psFilter} />
 
         <SectionDivider />
 
@@ -666,10 +663,6 @@ const App: React.FC = () => {
             </div>
           </div>
         </section>
-
-        <SectionDivider />
-
-        <ProblemStatements initialFilter={psFilter} />
 
         <SectionDivider />
 
@@ -934,7 +927,7 @@ const App: React.FC = () => {
                 </div>
                 <div className="facilitator" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                   <div style={{ width: '130px', height: '130px', borderRadius: '50%', overflow: 'hidden', border: '3px solid var(--accent-cyan)', marginBottom: '1.2rem', boxShadow: '0 0 20px var(--glow-cyan)' }}>
-                    <img src="./geethashree-A.jpg" alt="Dr. Geetha Shree A" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                    <img src="./geetha-mam.jpeg" alt="Dr. Geetha Shree A" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top' }} />
                   </div>
                   <p style={{ color: 'var(--text-primary)', fontWeight: 'bold', fontSize: '1.3rem', margin: 0 }}>Dr. Geetha Shree A</p>
                   <p style={{ color: 'var(--text-secondary)', fontSize: '1.05rem', margin: '0.4rem 0 0 0' }}>SYMBIOT Faculty Coordinator</p>
