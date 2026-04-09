@@ -121,17 +121,30 @@ const TrophyModal: React.FC<{
           )}
 
           {domain === 'VLSI' && (
-            <div className="prize-tier">
-              <div className="prize-tier-header">
-                <h4>Winner</h4>
-                <span className="prize-amt">₹15K</span>
+            <>
+              <div className="prize-tier">
+                <div className="prize-tier-header">
+                  <h4>Winner</h4>
+                  <span className="prize-amt">₹10K</span>
+                </div>
+                <ul>
+                  <li><span className="detail-check">✓</span>₹10,000 Cash Prize</li>
+                  <li><span className="detail-check">✓</span>IEEE Participation Certificate</li>
+                  <li><span className="detail-check">✓</span>Exciting Goodies</li>
+                </ul>
               </div>
-              <ul>
-                <li><span className="detail-check">✓</span>₹15,000 Cash Prize</li>
-                <li><span className="detail-check">✓</span>IEEE Participation Certificate</li>
-                <li><span className="detail-check">✓</span>Exciting Goodies</li>
-              </ul>
-            </div>
+              <div className="prize-tier">
+                <div className="prize-tier-header">
+                  <h4>Runner-Up</h4>
+                  <span className="prize-amt">₹5K</span>
+                </div>
+                <ul>
+                  <li><span className="detail-check">✓</span>₹5,000 Cash Prize</li>
+                  <li><span className="detail-check">✓</span>IEEE Participation Certificate</li>
+                  <li><span className="detail-check">✓</span>Exciting Goodies</li>
+                </ul>
+              </div>
+            </>
           )}
 
           {domain === 'Campus Innovation' && (
@@ -155,7 +168,7 @@ const TrophyModal: React.FC<{
                 <span className="prize-amt">Swags</span>
               </div>
               <ul>
-                <li><span className="detail-check">✓</span>IEEE Certificate</li>
+                <li><span className="detail-check">✓</span>Participation Certificate</li>
                 <li><span className="detail-check">✓</span>Exciting Goodies & Swags</li>
               </ul>
             </div>
@@ -670,7 +683,7 @@ const App: React.FC = () => {
           <div className="section-header">
             <h2 className="section-title">Rewards & <span className="text-gradient">Recognition</span></h2>
             <p className="section-subtitle">Celebrate engineering excellence with prestigious titles and exciting rewards.</p>
-            <p className="sr-only">Symbiot 2026 hackathon prizes: Total prize pool of over ₹95,000. Each domain (Embedded &amp; IoT, Open Innovation, Campus Innovation) has prizes of ₹15,000 for 1st place and ₹10,000 for 2nd place. Additional awards include Best Women Team (₹5,000), Best Innovation (₹5,000), and participation swags with IEEE certificates for all participants at VVCE Mysore.</p>
+            <p className="sr-only">Symbiot 2026 hackathon prizes: Total prize pool of over ₹95,000. Each domain (Embedded &amp; IoT, Open Innovation, Campus Innovation) has prizes of ₹15,000 for 1st place and ₹10,000 for 2nd place. Additional awards include Best Women Team (₹5,000), Best Innovation (₹5,000), and Participation Certificates with exciting swags for all participants at VVCE Mysore.</p>
           </div>
 
           <div className="prizes-section-wrapper" style={{ display: 'flex', flexDirection: 'column', gap: '2rem', alignItems: 'center', paddingBottom: '3rem' }}>
@@ -1064,7 +1077,7 @@ const App: React.FC = () => {
 
         <div className="footer-bottom-bar">
           <p>Copyright © 2026 All rights reserved | Made with <span className="heart">❤️</span> by <strong>IoTCrew</strong></p>
-          <p className="sr-only">Symbiot 2026 is the flagship national-level hackathon organized by the Electronics and Communication Engineering (ECE) Department of Vidyavardhaka College of Engineering (VVCE), Mysuru, Karnataka, India. It is a 24-hour offline hackathon held on April 24-25, 2026, featuring three competition domains: Embedded Systems &amp; IoT, Open Innovation, and Campus Innovation. Total prize pool exceeds ₹85,000 with IEEE certificates for all participants. Engineering students from colleges across India can register on Unstop. The event is powered by IoTCrew. Visit symbiotvvce.in for more details. Symbiot 2026 VVCE hackathon registration, Symbiot hackathon Mysore, national level hackathon India 2026, VVCE ECE department hackathon.</p>
+          <p className="sr-only">Symbiot 2026 is the flagship national-level hackathon organized by the Electronics and Communication Engineering (ECE) Department of Vidyavardhaka College of Engineering (VVCE), Mysuru, Karnataka, India. It is a 24-hour offline hackathon held on April 24-25, 2026, featuring three competition domains: Embedded Systems &amp; IoT, Open Innovation, and Campus Innovation. Total prize pool exceeds ₹85,000 with Participation Certificates for all participants. Engineering students from colleges across India can register on Unstop. The event is powered by IoTCrew. Visit symbiotvvce.in for more details. Symbiot 2026 VVCE hackathon registration, Symbiot hackathon Mysore, national level hackathon India 2026, VVCE ECE department hackathon.</p>
         </div>
       </footer>
 
