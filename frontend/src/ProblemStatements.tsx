@@ -853,14 +853,13 @@ const ProblemStatements: React.FC<ProblemStatementsProps> = ({ initialFilter }) 
               <th>Domain</th>
               <th>Problem Statement</th>
               <th>PSID</th>
-              <th>No of Submissions</th>
               <th></th>
             </tr>
           </thead>
           <tbody>
             {filteredStatements.length === 0 ? (
               <tr className="ps-empty-row">
-                <td colSpan={6}>
+                <td colSpan={5}>
                   <div className="ps-empty-state">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" width="48" height="48">
                       <circle cx="11" cy="11" r="8" />
@@ -889,7 +888,6 @@ const ProblemStatements: React.FC<ProblemStatementsProps> = ({ initialFilter }) 
                   </td>
                   <td className="ps-title-cell">{ps.title}</td>
                   <td className="ps-psid">{ps.psid}</td>
-                  <td className="ps-submissions">0</td>
                   <td className="ps-row-arrow">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="20" height="20">
                       <path d="M5 12h14M12 5l7 7-7 7" />
@@ -930,10 +928,6 @@ const ProblemStatements: React.FC<ProblemStatementsProps> = ({ initialFilter }) 
                 <span className="ps-card-psid">{ps.psid}</span>
               </div>
               <h4 className="ps-card-title">{ps.title}</h4>
-              <div className="ps-card-submissions-mobile">
-                <span className="ps-sub-label">Submissions:</span>
-                <span className="ps-sub-value">0</span>
-              </div>
               <div className="ps-card-footer">
                 <span className="ps-card-view">View Details</span>
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="18" height="18">
