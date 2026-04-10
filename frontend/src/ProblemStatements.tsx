@@ -349,6 +349,120 @@ Expected Features:
 • Supply chain tracking dashboard
 • QR/ID-based product traceability
 • User roles (farmers, collectors, manufacturers, consumers)`
+  },
+  {
+    psid: 'SYM1011',
+    domain: 'Campus Innovation',
+    title: 'Unified College Information & Announcement Portal',
+    department: 'Computer Science / Information Systems',
+    category: 'Web Development / Information Management Systems',
+    theme: 'Smart Campus & Digital Communication',
+    description: `Develop a centralized web-based platform to manage and disseminate all official college communications, ensuring that students and faculty have access to accurate and up-to-date information in one place.
+
+The system should:
+• Provide a unified dashboard for all college announcements and notices
+• Display academic updates such as timetables, internal assessment schedules, and examination timetables
+• Publish important notifications related to revaluation, results, and academic deadlines
+• Maintain a calendar of events organized by the college and individual departments
+• Display holiday lists and institutional schedules
+• Support branch-wise (department-wise) filtering of information
+• Enable role-based access for administrators, faculty, and students
+• Provide real-time updates and notifications for newly posted information
+• Ensure easy navigation and search functionality for quick access to past notices`
+  },
+  {
+    psid: 'SYM1012',
+    domain: 'Campus Innovation',
+    title: 'Digital Approval Workflow & Faculty Availability Tracking System',
+    department: 'Computer Science / Information Systems',
+    category: 'Web Development / Workflow Automation',
+    theme: 'Smart Campus & Process Automation',
+    description: `Develop a web-based platform to streamline the approval process for documents such as letters, reports, and requests within a college, while also providing real-time visibility into faculty availability.
+
+The system should:
+• Display real-time availability status of faculty members (e.g., Available, In Class, Busy, Out of Office), similar to presence indicators in platforms like Microsoft Teams
+• Allow students to submit documents for approval with a defined hierarchy (e.g., Mentor → Lecturer → HOD → Dean → Principal)
+• Automatically route the document through the specified approval chain
+• Enable approvers to review, approve, or request modifications at each stage
+• Provide a “mark for review” feature with comments and suggested correction points
+• Allow faculty to share available time slots for in-person or virtual discussions
+• Support scheduling of meetings between students and faculty when required
+• Maintain a complete audit trail of approvals, timestamps, and actions taken
+• Notify users (students and faculty) at each stage of the workflow`
+  },
+  {
+    psid: 'SYMB0011',
+    domain: 'Embedded and IOT',
+    title: 'Cost-Effective Detection of Breakage in Low Voltage AC Distribution Lines',
+    department: 'Electrical Engineering & Embedded Systems',
+    category: 'Hardware',
+    theme: 'Disaster Management / Smart Infrastructure',
+    description: `Breakage of low voltage overhead distribution lines can result in live conductors falling to the ground, causing severe electrocution hazards. Existing protection systems often fail to detect such faults due to low fault currents and high earth resistance.
+
+The solution should develop a cost-effective system to detect conductor breakage, isolate supply, and generate real-time alerts to prevent accidents and enable quick response.
+
+The system should:
+• Detect conductor breakage or line faults in real time
+• Identify low-current fault conditions not detected by conventional systems
+• Trigger automatic isolation of power supply
+• Send alerts to authorities for immediate action
+• Utilize IoT/edge intelligence for scalable deployment`
+  },
+  {
+    psid: 'SYMB0012',
+    domain: 'Embedded and IOT',
+    title: 'Detection and Prevention of Tampering in Weighing and Measuring Instruments',
+    department: 'Computer Networks & Embedded Systems',
+    category: 'Cybersecurity',
+    theme: 'Network Security / Smart Infrastructure',
+    description: `Weighing and measuring instruments are critical for ensuring fair trade and consumer trust. However, tampering through hardware modifications, firmware manipulation, or remote control methods leads to fraudulent practices and financial losses.
+
+The solution should develop a robust system to detect, prevent, and alert against both physical and digital tampering in real time, ensuring secure and reliable instrument operation.
+
+The system should:
+• Detect physical tampering (seal break, circuit changes)
+• Ensure firmware integrity and secure updates
+• Monitor anomalies in measurements and calibration
+• Generate real-time alerts for authorities
+• Enable remote monitoring via IoT integration
+• Maintain secure and tamper-proof logs`
+  },
+  {
+    psid: 'SYMB0013',
+    domain: 'Embedded and IOT',
+    title: 'Automated Compliance Checker for Legal Metrology Declarations on E-Commerce Platforms',
+    department: 'Artificial Intelligence & Data Analytics',
+    category: 'Hardware / AI / Compliance Automation',
+    theme: 'Consumer Protection / Regulatory Technology / Smart Governance',
+    description: `E-commerce platforms must comply with Legal Metrology rules requiring clear display of product details such as manufacturer information, net quantity, MRP, and consumer care details. However, many listings fail to meet these requirements.
+
+The solution should automate the detection of missing or incorrect declarations in product listings to ensure regulatory compliance and protect consumers.
+
+The system should:
+• Monitor and extract product listing data from e-commerce platforms
+• Identify missing or incorrect legal metrology declarations
+• Validate fields such as MRP, quantity, and manufacturer details
+• Generate compliance reports or alerts automatically
+• Provide a scalable and efficient solution for large datasets`
+  },
+  {
+    psid: 'SYM1013',
+    domain: 'Campus Innovation',
+    title: 'Centralized Club Management & Event Tracking Platform',
+    department: 'Computer Science',
+    category: 'Web Development (Software)',
+    theme: 'Smart Campus & Digital Transformation',
+    description: `Develop a centralized web-based platform for managing all college clubs, events, and student participation in a seamless and transparent manner.
+
+The system should:
+• Provide a unified platform for multiple clubs (cultural, technical, sports, etc.)
+• Enable students to explore, follow, and join clubs of interest
+• Facilitate event creation, announcements, and discussions
+• Generate QR-based tickets for event entry and validation
+• Track attendance accurately to prevent proxy or fake participation
+• Maintain detailed records of participants including department, year, and club affiliation
+• Provide real-time updates on event schedules, results, and prize announcements
+• Automatically generate post-event reports in PDF format including participation data and organizer details`
   }
 ];
 
