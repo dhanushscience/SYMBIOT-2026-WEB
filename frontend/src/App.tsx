@@ -817,7 +817,7 @@ const App: React.FC = () => {
                       alt={`Symbiot 2025 hackathon at VVCE Mysore - highlight ${idx + 1}`} 
                       loading="lazy" 
                       decoding="async"
-                      fetchpriority={idx < 2 ? "high" : "auto"}
+                      fetchPriority={idx < 2 ? "high" : "auto"}
                     />
                     <div className="gallery-overlay"><span className="gallery-text">SYMBIOT 2025</span></div>
                   </div>
@@ -841,7 +841,7 @@ const App: React.FC = () => {
                       alt={`Symbiot 2024 hackathon at VVCE Mysore - highlight ${idx + 1}`} 
                       loading="lazy" 
                       decoding="async"
-                      fetchpriority="low"
+                      fetchPriority="low"
                     />
                     <div className="gallery-overlay"><span className="gallery-text">SYMBIOT 2024</span></div>
                   </div>
@@ -865,7 +865,7 @@ const App: React.FC = () => {
                       alt={`Symbiot 2023 hackathon at VVCE Mysore - highlight ${idx + 1}`} 
                       loading="lazy" 
                       decoding="async"
-                      fetchpriority="low"
+                      fetchPriority="low"
                     />
                     <div className="gallery-overlay"><span className="gallery-text">SYMBIOT 2023</span></div>
                   </div>
