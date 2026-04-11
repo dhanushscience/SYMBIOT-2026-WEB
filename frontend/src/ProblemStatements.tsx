@@ -83,7 +83,7 @@ The system should:
   },
   {
     psid: 'SYM0007',
-    domain: 'Embedded and IOT',
+    domain: 'Software Domain',
     title: 'Develop a system that detects sensitive personal information in uploaded documents and alerts users before the data is shared or stored.',
     department: 'Information Security',
     category: 'Software / AI Security',
@@ -617,7 +617,7 @@ const ProblemStatements: React.FC<ProblemStatementsProps> = ({ initialFilter }) 
     let scoredList = problemStatements.map(ps => {
       let score = 0;
       const t = `${ps.title} ${ps.description} ${ps.category} ${ps.department} ${ps.theme} ${ps.domain}`.toLowerCase();
-      
+
       const bStr = userBranch.toLowerCase();
       const iStr = userInterest.toLowerCase();
 
@@ -625,7 +625,7 @@ const ProblemStatements: React.FC<ProblemStatementsProps> = ({ initialFilter }) 
       if (bStr === "ece" && (t.includes("electronic") || t.includes("vlsi") || t.includes("hardware") || t.includes("embedded"))) score += 3;
       if (bStr.includes("cse") && (t.includes("software") || t.includes("cybersecurity") || t.includes("network") || t.includes("cloud"))) score += 3;
       if (bStr === "eee" && (t.includes("power") || t.includes("motor") || t.includes("hardware"))) score += 2;
-      
+
       // Interest scoring
       if (iStr.includes("hardware") && (t.includes("hardware") || t.includes("fpga") || t.includes("vlsi"))) score += 5;
       if (iStr.includes("software") && (t.includes("software") || t.includes("tool"))) score += 5;
@@ -635,19 +635,19 @@ const ProblemStatements: React.FC<ProblemStatementsProps> = ({ initialFilter }) 
 
       // Bonus if highly relevant
       if (t.includes(bStr)) score += 1;
-      
+
       return { ps, score };
     });
 
     scoredList.sort((a, b) => b.score - a.score);
-    
+
     // Top 3 positive score matches
     const topMatches = scoredList.filter(item => item.score > 0).slice(0, 3).map(i => i.ps);
-    
+
     setTimeout(() => {
-        setRecommendedResults(topMatches.length > 0 ? topMatches : problemStatements.slice(0, 3));
-        setIsSearching(false);
-        setHasSearched(true);
+      setRecommendedResults(topMatches.length > 0 ? topMatches : problemStatements.slice(0, 3));
+      setIsSearching(false);
+      setHasSearched(true);
     }, 600);
   };
 
@@ -715,23 +715,23 @@ const ProblemStatements: React.FC<ProblemStatementsProps> = ({ initialFilter }) 
 
       {isMobileView && (
         <div style={{ textAlign: 'center', marginTop: '1.5rem', marginBottom: '2rem', padding: '0 1rem' }}>
-          <button 
+          <button
             onClick={() => setIsMobileExpanded(!isMobileExpanded)}
-            style={{ 
-              padding: '1rem 2.5rem', 
-              fontSize: '1.15rem', 
+            style={{
+              padding: '1rem 2.5rem',
+              fontSize: '1.15rem',
               fontWeight: 800,
               letterSpacing: '0.5px',
               width: '100%',
               maxWidth: '380px',
               border: isMobileExpanded ? '2px solid rgba(255, 255, 255, 0.25)' : '2px solid rgba(0, 240, 255, 0.6)',
               borderRadius: '14px',
-              background: isMobileExpanded 
-                ? 'rgba(255, 255, 255, 0.06)' 
+              background: isMobileExpanded
+                ? 'rgba(255, 255, 255, 0.06)'
                 : 'linear-gradient(135deg, #00d4e6 0%, #0090b8 100%)',
               color: '#ffffff',
-              boxShadow: isMobileExpanded 
-                ? 'none' 
+              boxShadow: isMobileExpanded
+                ? 'none'
                 : '0 4px 20px rgba(0, 200, 230, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.15)',
               cursor: 'pointer',
               transition: 'all 0.3s ease',
@@ -744,122 +744,165 @@ const ProblemStatements: React.FC<ProblemStatementsProps> = ({ initialFilter }) 
       )}
 
       {(!isMobileView || isMobileExpanded) && (
-      <>
-      {/* Sticky Filters & Search */}
+        <>
+          {/* Sticky Filters & Search */}
 
-      <div className="ps-controls-sticky" style={isMobileView ? { position: 'relative', top: 'auto', background: 'rgba(12, 15, 30, 0.98)', padding: '0.75rem 1rem', margin: '0 -1rem', borderBottom: '1px solid rgba(0, 240, 255, 0.15)' } : undefined}>
-        <div className="ps-controls">
-          {/* Filter row with navigation arrows on mobile */}
-          <div className="ps-filters-nav-wrapper">
-            {isMobileView && canScrollLeft && (
-              <button
-                className="ps-filter-arrow ps-filter-arrow-left"
-                onClick={() => scrollFilters('left')}
-                aria-label="Scroll filters left"
-              >
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" width="16" height="16">
-                  <path d="M15 18l-6-6 6-6" />
-                </svg>
-              </button>
-            )}
-            <div
-              className="ps-filters"
-              ref={filtersRef}
-              style={isMobileView ? { display: 'flex', flexWrap: 'nowrap', overflowX: 'auto', gap: '0.5rem', paddingBottom: '6px', scrollbarWidth: 'none', scrollBehavior: 'smooth' } : undefined}
-            >
-              {DOMAINS.map(domain => (
-                <button
-                  key={domain}
-                  className={`ps-filter-btn ${activeFilter === domain ? 'active' : ''}`}
-                  onClick={() => setActiveFilter(domain)}
-                  style={isMobileView ? {
-                    flexShrink: 0,
-                    whiteSpace: 'nowrap',
-                    padding: '0.5rem 1rem',
-                    fontSize: '0.8rem',
-                    border: activeFilter === domain ? '1.5px solid #00f0ff' : '1.5px solid rgba(0, 240, 255, 0.4)',
-                    background: activeFilter === domain ? 'rgba(0, 240, 255, 0.18)' : 'rgba(0, 240, 255, 0.06)',
-                    color: '#fff',
-                    borderRadius: '6px',
-                  } : undefined}
+          <div className="ps-controls-sticky" style={isMobileView ? { position: 'relative', top: 'auto', background: 'rgba(12, 15, 30, 0.98)', padding: '0.75rem 1rem', margin: '0 -1rem', borderBottom: '1px solid rgba(0, 240, 255, 0.15)' } : undefined}>
+            <div className="ps-controls">
+              {/* Filter row with navigation arrows on mobile */}
+              <div className="ps-filters-nav-wrapper">
+                {isMobileView && canScrollLeft && (
+                  <button
+                    className="ps-filter-arrow ps-filter-arrow-left"
+                    onClick={() => scrollFilters('left')}
+                    aria-label="Scroll filters left"
+                  >
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" width="16" height="16">
+                      <path d="M15 18l-6-6 6-6" />
+                    </svg>
+                  </button>
+                )}
+                <div
+                  className="ps-filters"
+                  ref={filtersRef}
+                  style={isMobileView ? { display: 'flex', flexWrap: 'nowrap', overflowX: 'auto', gap: '0.5rem', paddingBottom: '6px', scrollbarWidth: 'none', scrollBehavior: 'smooth' } : undefined}
                 >
-                  {domain}
-                </button>
-              ))}
-            </div>
-            {isMobileView && canScrollRight && (
-              <button
-                className="ps-filter-arrow ps-filter-arrow-right"
-                onClick={() => scrollFilters('right')}
-                aria-label="Scroll filters right"
-              >
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" width="16" height="16">
-                  <path d="M9 18l6-6-6-6" />
+                  {DOMAINS.map(domain => (
+                    <button
+                      key={domain}
+                      className={`ps-filter-btn ${activeFilter === domain ? 'active' : ''}`}
+                      onClick={() => setActiveFilter(domain)}
+                      style={isMobileView ? {
+                        flexShrink: 0,
+                        whiteSpace: 'nowrap',
+                        padding: '0.5rem 1rem',
+                        fontSize: '0.8rem',
+                        border: activeFilter === domain ? '1.5px solid #00f0ff' : '1.5px solid rgba(0, 240, 255, 0.4)',
+                        background: activeFilter === domain ? 'rgba(0, 240, 255, 0.18)' : 'rgba(0, 240, 255, 0.06)',
+                        color: '#fff',
+                        borderRadius: '6px',
+                      } : undefined}
+                    >
+                      {domain}
+                    </button>
+                  ))}
+                </div>
+                {isMobileView && canScrollRight && (
+                  <button
+                    className="ps-filter-arrow ps-filter-arrow-right"
+                    onClick={() => scrollFilters('right')}
+                    aria-label="Scroll filters right"
+                  >
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" width="16" height="16">
+                      <path d="M9 18l6-6-6-6" />
+                    </svg>
+                  </button>
+                )}
+              </div>
+              <div className="ps-search-wrapper">
+                <svg className="ps-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <circle cx="11" cy="11" r="8" />
+                  <line x1="21" y1="21" x2="16.65" y2="16.65" />
                 </svg>
-              </button>
-            )}
+                <input
+                  type="text"
+                  className="ps-search"
+                  placeholder="Search by PSID, Domain, or Keywords"
+                  value={searchQuery}
+                  onChange={e => setSearchQuery(e.target.value)}
+                  style={isMobileView ? { border: '1.5px solid rgba(0, 240, 255, 0.35)', background: 'rgba(15, 23, 42, 0.8)', color: '#fff' } : undefined}
+                />
+              </div>
+            </div>
           </div>
-          <div className="ps-search-wrapper">
-            <svg className="ps-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <circle cx="11" cy="11" r="8" />
-              <line x1="21" y1="21" x2="16.65" y2="16.65" />
-            </svg>
-            <input
-              type="text"
-              className="ps-search"
-              placeholder="Search by PSID, Domain, or Keywords"
-              value={searchQuery}
-              onChange={e => setSearchQuery(e.target.value)}
-              style={isMobileView ? { border: '1.5px solid rgba(0, 240, 255, 0.35)', background: 'rgba(15, 23, 42, 0.8)', color: '#fff' } : undefined}
-            />
-          </div>
-        </div>
-      </div>
 
-      {activeFilter === 'Open Innovation' ? (
-        <div className="open-innovation-view" style={{ textAlign: 'center', padding: '4rem 2rem', background: 'rgba(255, 255, 255, 0.05)', borderRadius: '16px', margin: '2rem 0', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1.5rem', border: '1px solid rgba(0, 240, 255, 0.3)', boxShadow: '0 0 30px rgba(0, 240, 255, 0.1)' }}>
-          <h3 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.8rem)', margin: 0, background: 'linear-gradient(90deg, #fff, #00f0ff)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', fontWeight: '800', lineHeight: '1.2' }}>
-            No limits. Just innovation.<br/>This is where you shine. 🚀
-          </h3>
-          <p style={{ fontSize: '1.15rem', maxWidth: '800px', margin: '0', color: '#e2e8f0', lineHeight: '1.6' }}>
-            Build anything you want — AI, apps, web platforms, embedded systems, hardware innovations, or hybrid solutions.
-          </p>
-          <p style={{ fontSize: '1.15rem', maxWidth: '800px', margin: '0', color: '#e2e8f0', lineHeight: '1.6' }}>
-            Bring your own problem statement or pick one and go all in.
-          </p>
-          <p style={{ fontSize: '1.15rem', maxWidth: '800px', margin: '0', color: '#e2e8f0', lineHeight: '1.6' }}>
-            Whether it's code, circuits, or a fusion of both, if it’s innovative, it belongs here.
-          </p>
-          <p style={{ fontSize: '1.25rem', maxWidth: '800px', margin: '0.75rem 0 0 0', color: '#00f0ff', fontWeight: 'bold', lineHeight: '1.6', textShadow: '0 0 15px rgba(0, 240, 255, 0.4)' }}>
-            You're not Sponsoring an Event , You are Shaping the Future of Innovation.
-          </p>
-          <a href={`${import.meta.env.BASE_URL}PPT_template/SYMBIOT_2026_OPEN_PPT.pptx`} download="SYMBIOT_2026_OPEN_PPT.pptx" className="btn btn-primary" style={{ marginTop: '1.5rem', fontSize: '1.1rem', padding: '1rem 2.5rem', background: 'linear-gradient(135deg, #00f0ff, #007bb5)', border: 'none', boxShadow: '0 4px 15px rgba(0,240,255,0.4)', color: '#fff' }}>
-            Download Open Innovation PPT
-          </a>
-        </div>
-      ) : (
-      <>
-      {/* Results count */}
-      <div className="ps-results-count">
-        Showing <span>{filteredStatements.length}</span> of <span>{problemStatements.length}</span> problem statements
-      </div>
+          {activeFilter === 'Open Innovation' ? (
+            <div className="open-innovation-view" style={{ textAlign: 'center', padding: '4rem 2rem', background: 'rgba(255, 255, 255, 0.05)', borderRadius: '16px', margin: '2rem 0', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1.5rem', border: '1px solid rgba(0, 240, 255, 0.3)', boxShadow: '0 0 30px rgba(0, 240, 255, 0.1)' }}>
+              <h3 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.8rem)', margin: 0, background: 'linear-gradient(90deg, #fff, #00f0ff)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', fontWeight: '800', lineHeight: '1.2' }}>
+                No limits. Just innovation.<br />This is where you shine. 🚀
+              </h3>
+              <p style={{ fontSize: '1.15rem', maxWidth: '800px', margin: '0', color: '#e2e8f0', lineHeight: '1.6' }}>
+                Build anything you want — AI, apps, web platforms, embedded systems, hardware innovations, or hybrid solutions.
+              </p>
+              <p style={{ fontSize: '1.15rem', maxWidth: '800px', margin: '0', color: '#e2e8f0', lineHeight: '1.6' }}>
+                Bring your own problem statement or pick one and go all in.
+              </p>
+              <p style={{ fontSize: '1.15rem', maxWidth: '800px', margin: '0', color: '#e2e8f0', lineHeight: '1.6' }}>
+                Whether it's code, circuits, or a fusion of both, if it’s innovative, it belongs here.
+              </p>
+              <p style={{ fontSize: '1.25rem', maxWidth: '800px', margin: '0.75rem 0 0 0', color: '#00f0ff', fontWeight: 'bold', lineHeight: '1.6', textShadow: '0 0 15px rgba(0, 240, 255, 0.4)' }}>
+                You're not Sponsoring an Event , You are Shaping the Future of Innovation.
+              </p>
+              <a href={`${import.meta.env.BASE_URL}PPT_template/SYMBIOT_2026_OPEN_PPT.pptx`} download="SYMBIOT_2026_OPEN_PPT.pptx" className="btn btn-primary" style={{ marginTop: '1.5rem', fontSize: '1.1rem', padding: '1rem 2.5rem', background: 'linear-gradient(135deg, #00f0ff, #007bb5)', border: 'none', boxShadow: '0 4px 15px rgba(0,240,255,0.4)', color: '#fff' }}>
+                Download Open Innovation PPT
+              </a>
+            </div>
+          ) : (
+            <>
+              {/* Results count */}
+              <div className="ps-results-count">
+                Showing <span>{filteredStatements.length}</span> of <span>{problemStatements.length}</span> problem statements
+              </div>
 
-      {/* Desktop Table */}
-      <div className="ps-table-wrapper">
-        <table className="ps-table">
-          <thead>
-            <tr>
-              <th>Sl No</th>
-              <th>Domain</th>
-              <th>Problem Statement</th>
-              <th>PSID</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            {filteredStatements.length === 0 ? (
-              <tr className="ps-empty-row">
-                <td colSpan={5}>
+              {/* Desktop Table */}
+              <div className="ps-table-wrapper">
+                <table className="ps-table">
+                  <thead>
+                    <tr>
+                      <th>Sl No</th>
+                      <th>Domain</th>
+                      <th>Problem Statement</th>
+                      <th>PSID</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {filteredStatements.length === 0 ? (
+                      <tr className="ps-empty-row">
+                        <td colSpan={5}>
+                          <div className="ps-empty-state">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" width="48" height="48">
+                              <circle cx="11" cy="11" r="8" />
+                              <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                              <line x1="8" y1="11" x2="14" y2="11" />
+                            </svg>
+                            <p>No problem statements found matching your criteria.</p>
+                          </div>
+                        </td>
+                      </tr>
+                    ) : (
+                      filteredStatements.map((ps, idx) => (
+                        <tr key={ps.psid} className="ps-row" onClick={() => openModal(ps)}>
+                          <td className="ps-sl">{idx + 1}</td>
+                          <td>
+                            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem', alignItems: 'flex-start' }}>
+                              <span className={`ps-badge ${domainBadgeClass[ps.domain]}`}>
+                                {ps.domain}
+                              </span>
+                              {ps.subdomain && (
+                                <span className="ps-badge" style={{ background: 'rgba(255,255,255,0.1)', color: '#fff', border: '1px solid rgba(255,255,255,0.2)', fontSize: '0.7rem', padding: '0.2rem 0.5rem' }}>
+                                  {ps.subdomain}
+                                </span>
+                              )}
+                            </div>
+                          </td>
+                          <td className="ps-title-cell">{ps.title}</td>
+                          <td className="ps-psid">{ps.psid}</td>
+                          <td className="ps-row-arrow">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="20" height="20">
+                              <path d="M5 12h14M12 5l7 7-7 7" />
+                            </svg>
+                          </td>
+                        </tr>
+                      ))
+                    )}
+                  </tbody>
+                </table>
+              </div>
+
+              {/* Mobile Cards */}
+              <div className="ps-cards-mobile">
+                {filteredStatements.length === 0 ? (
                   <div className="ps-empty-state">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" width="48" height="48">
                       <circle cx="11" cy="11" r="8" />
@@ -868,214 +911,171 @@ const ProblemStatements: React.FC<ProblemStatementsProps> = ({ initialFilter }) 
                     </svg>
                     <p>No problem statements found matching your criteria.</p>
                   </div>
-                </td>
-              </tr>
-            ) : (
-              filteredStatements.map((ps, idx) => (
-                <tr key={ps.psid} className="ps-row" onClick={() => openModal(ps)}>
-                  <td className="ps-sl">{idx + 1}</td>
-                  <td>
-                    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem', alignItems: 'flex-start' }}>
-                      <span className={`ps-badge ${domainBadgeClass[ps.domain]}`}>
-                        {ps.domain}
-                      </span>
-                      {ps.subdomain && (
-                        <span className="ps-badge" style={{ background: 'rgba(255,255,255,0.1)', color: '#fff', border: '1px solid rgba(255,255,255,0.2)', fontSize: '0.7rem', padding: '0.2rem 0.5rem' }}>
-                          {ps.subdomain}
-                        </span>
-                      )}
+                ) : (
+                  filteredStatements.map((ps) => (
+                    <div key={ps.psid} className="ps-card" onClick={() => openModal(ps)}>
+                      <div className="ps-card-header">
+                        <div style={{ display: 'flex', gap: '0.4rem', flexWrap: 'wrap' }}>
+                          <span className={`ps-badge ${domainBadgeClass[ps.domain]}`}>
+                            {ps.domain}
+                          </span>
+                          {ps.subdomain && (
+                            <span className="ps-badge" style={{ background: 'rgba(255,255,255,0.1)', color: '#fff', border: '1px solid rgba(255,255,255,0.2)' }}>
+                              {ps.subdomain}
+                            </span>
+                          )}
+                        </div>
+                        <span className="ps-card-psid">{ps.psid}</span>
+                      </div>
+                      <h4 className="ps-card-title">{ps.title}</h4>
+                      <div className="ps-card-footer">
+                        <span className="ps-card-view">View Details</span>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="18" height="18">
+                          <path d="M5 12h14M12 5l7 7-7 7" />
+                        </svg>
+                      </div>
                     </div>
-                  </td>
-                  <td className="ps-title-cell">{ps.title}</td>
-                  <td className="ps-psid">{ps.psid}</td>
-                  <td className="ps-row-arrow">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="20" height="20">
-                      <path d="M5 12h14M12 5l7 7-7 7" />
-                    </svg>
-                  </td>
-                </tr>
-              ))
-            )}
-          </tbody>
-        </table>
-      </div>
-
-      {/* Mobile Cards */}
-      <div className="ps-cards-mobile">
-        {filteredStatements.length === 0 ? (
-          <div className="ps-empty-state">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" width="48" height="48">
-              <circle cx="11" cy="11" r="8" />
-              <line x1="21" y1="21" x2="16.65" y2="16.65" />
-              <line x1="8" y1="11" x2="14" y2="11" />
-            </svg>
-            <p>No problem statements found matching your criteria.</p>
-          </div>
-        ) : (
-          filteredStatements.map((ps) => (
-            <div key={ps.psid} className="ps-card" onClick={() => openModal(ps)}>
-              <div className="ps-card-header">
-                <div style={{ display: 'flex', gap: '0.4rem', flexWrap: 'wrap' }}>
-                  <span className={`ps-badge ${domainBadgeClass[ps.domain]}`}>
-                    {ps.domain}
-                  </span>
-                  {ps.subdomain && (
-                    <span className="ps-badge" style={{ background: 'rgba(255,255,255,0.1)', color: '#fff', border: '1px solid rgba(255,255,255,0.2)' }}>
-                      {ps.subdomain}
-                    </span>
-                  )}
-                </div>
-                <span className="ps-card-psid">{ps.psid}</span>
-              </div>
-              <h4 className="ps-card-title">{ps.title}</h4>
-              <div className="ps-card-footer">
-                <span className="ps-card-view">View Details</span>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="18" height="18">
-                  <path d="M5 12h14M12 5l7 7-7 7" />
-                </svg>
-              </div>
-            </div>
-          ))
-        )}
-      </div>
-      </>
-      )}
-
-      {/* Recommender Section */}
-      <div className="recommender-container">
-        <h3 className="recommender-title">Didn't find a match? Find Your Perfect Problem Statement</h3>
-        <p className="recommender-subtitle">Tell us your domain and interests, and we'll suggest the best matches for your team.</p>
-        
-        <div className="recommender-form">
-          <select 
-            className="recommender-select" 
-            value={userBranch} 
-            onChange={(e) => setUserBranch(e.target.value)}
-          >
-            {branches.map(b => <option key={b} value={b}>{b}</option>)}
-          </select>
-
-          <select 
-            className="recommender-select" 
-            value={userInterest} 
-            onChange={(e) => setUserInterest(e.target.value)}
-          >
-            {interests.map(i => <option key={i} value={i}>{i}</option>)}
-          </select>
-
-          <button className={`btn ${isSearching ? 'btn-secondary' : 'btn-primary'} recommender-btn`} onClick={handleRecommend} disabled={isSearching}>
-            {isSearching ? 'Analyzing...' : 'Find Match'}
-          </button>
-        </div>
-
-        {hasSearched && recommendedResults.length > 0 && (
-          <div className="recommender-results fade-in">
-            <h4 className="recommender-results-title">🔥 Top Recommended For You</h4>
-            <div className="ps-cards-mobile" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1.5rem', marginTop: '1.5rem' }}>
-              {recommendedResults.map((ps) => (
-                <div key={'rec-'+ps.psid} className="ps-card recommended-card-glow" onClick={() => openModal(ps)}>
-                  <div className="ps-card-header">
-                    <div style={{ display: 'flex', gap: '0.4rem', flexWrap: 'wrap' }}>
-                      <span className={`ps-badge ${domainBadgeClass[ps.domain]}`}>
-                        {ps.domain}
-                      </span>
-                      {ps.subdomain && (
-                        <span className="ps-badge" style={{ background: 'rgba(255,255,255,0.1)', color: '#fff', border: '1px solid rgba(255,255,255,0.2)' }}>
-                          {ps.subdomain}
-                        </span>
-                      )}
-                    </div>
-                    <span className="ps-card-psid">{ps.psid}</span>
-                  </div>
-                  <h4 className="ps-card-title">{ps.title}</h4>
-                  <div className="ps-card-footer">
-                    <span className="ps-card-view">View Details</span>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="18" height="18">
-                      <path d="M5 12h14M12 5l7 7-7 7" />
-                    </svg>
-                  </div>
-                </div>
-              ))}
-            </div>
-            
-            <div style={{ textAlign: 'center', marginTop: '2rem', display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-              <a 
-                href={`${import.meta.env.BASE_URL}PPT_template/SYMBIOT_2026_OPEN_PPT.pptx`} 
-                download="SYMBIOT_2026_OPEN_PPT.pptx" 
-                className="btn btn-primary"
-                style={{ background: 'linear-gradient(135deg, #00f0ff, #007bb5)', border: 'none', color: '#fff', boxShadow: '0 4px 15px rgba(0,240,255,0.3)' }}
-              >
-                Make Your Own Problem Statement
-              </a>
-              <button 
-                className="btn btn-secondary" 
-                onClick={() => {
-                  setHasSearched(false);
-                  document.getElementById('problem-statements')?.scrollIntoView({ behavior: 'smooth' });
-                }}
-              >
-                View All Statements ↓
-              </button>
-            </div>
-          </div>
-        )}
-      </div>
-      {/* Modal — SIH-style structured detail view */}
-      {selectedPS && (
-        <div className="ps-modal-overlay" onClick={closeModal}>
-          <div className="ps-modal" onClick={e => e.stopPropagation()}>
-            <button className="ps-modal-close" onClick={closeModal} aria-label="Close">
-              ✕
-            </button>
-            <div className="ps-modal-scroll">
-              {/* Problem Statement ID */}
-              <div className="ps-modal-id-label">Problem Statement ID</div>
-              <div className="ps-modal-id-value">{selectedPS.psid}</div>
-
-              {/* Title */}
-              <div className="ps-modal-field-label">Problem Statement Title</div>
-              <h3 className="ps-modal-title">{selectedPS.fullTitle || selectedPS.title}</h3>
-
-              {/* Domain Badge */}
-              <div className="ps-modal-field-label">Domain Bucket</div>
-              <div className="ps-modal-domain-row">
-                <span className={`ps-badge ps-badge-lg ${domainBadgeClass[selectedPS.domain]}`}>
-                  {selectedPS.domain}
-                </span>
-                {selectedPS.subdomain && (
-                  <span className="ps-badge ps-badge-secondary ps-badge-lg" style={{ marginLeft: '1rem', background: 'rgba(255,255,255,0.1)', color: '#fff', border: '1px solid rgba(255,255,255,0.2)' }}>
-                    {selectedPS.subdomain}
-                  </span>
+                  ))
                 )}
               </div>
+            </>
+          )}
 
-              {/* Description */}
-              <div className="ps-modal-field-label">Description</div>
-              <div className="ps-modal-description">
-                {renderDescription(selectedPS.description)}
+          {/* Recommender Section */}
+          <div className="recommender-container">
+            <h3 className="recommender-title">Didn't find a match? Find Your Perfect Problem Statement</h3>
+            <p className="recommender-subtitle">Tell us your domain and interests, and we'll suggest the best matches for your team.</p>
+
+            <div className="recommender-form">
+              <select
+                className="recommender-select"
+                value={userBranch}
+                onChange={(e) => setUserBranch(e.target.value)}
+              >
+                {branches.map(b => <option key={b} value={b}>{b}</option>)}
+              </select>
+
+              <select
+                className="recommender-select"
+                value={userInterest}
+                onChange={(e) => setUserInterest(e.target.value)}
+              >
+                {interests.map(i => <option key={i} value={i}>{i}</option>)}
+              </select>
+
+              <button className={`btn ${isSearching ? 'btn-secondary' : 'btn-primary'} recommender-btn`} onClick={handleRecommend} disabled={isSearching}>
+                {isSearching ? 'Analyzing...' : 'Find Match'}
+              </button>
+            </div>
+
+            {hasSearched && recommendedResults.length > 0 && (
+              <div className="recommender-results fade-in">
+                <h4 className="recommender-results-title">🔥 Top Recommended For You</h4>
+                <div className="ps-cards-mobile" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1.5rem', marginTop: '1.5rem' }}>
+                  {recommendedResults.map((ps) => (
+                    <div key={'rec-' + ps.psid} className="ps-card recommended-card-glow" onClick={() => openModal(ps)}>
+                      <div className="ps-card-header">
+                        <div style={{ display: 'flex', gap: '0.4rem', flexWrap: 'wrap' }}>
+                          <span className={`ps-badge ${domainBadgeClass[ps.domain]}`}>
+                            {ps.domain}
+                          </span>
+                          {ps.subdomain && (
+                            <span className="ps-badge" style={{ background: 'rgba(255,255,255,0.1)', color: '#fff', border: '1px solid rgba(255,255,255,0.2)' }}>
+                              {ps.subdomain}
+                            </span>
+                          )}
+                        </div>
+                        <span className="ps-card-psid">{ps.psid}</span>
+                      </div>
+                      <h4 className="ps-card-title">{ps.title}</h4>
+                      <div className="ps-card-footer">
+                        <span className="ps-card-view">View Details</span>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="18" height="18">
+                          <path d="M5 12h14M12 5l7 7-7 7" />
+                        </svg>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                <div style={{ textAlign: 'center', marginTop: '2rem', display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+                  <a
+                    href={`${import.meta.env.BASE_URL}PPT_template/SYMBIOT_2026_OPEN_PPT.pptx`}
+                    download="SYMBIOT_2026_OPEN_PPT.pptx"
+                    className="btn btn-primary"
+                    style={{ background: 'linear-gradient(135deg, #00f0ff, #007bb5)', border: 'none', color: '#fff', boxShadow: '0 4px 15px rgba(0,240,255,0.3)' }}
+                  >
+                    Make Your Own Problem Statement
+                  </a>
+                  <button
+                    className="btn btn-secondary"
+                    onClick={() => {
+                      setHasSearched(false);
+                      document.getElementById('problem-statements')?.scrollIntoView({ behavior: 'smooth' });
+                    }}
+                  >
+                    View All Statements ↓
+                  </button>
+                </div>
               </div>
+            )}
+          </div>
+          {/* Modal — SIH-style structured detail view */}
+          {selectedPS && (
+            <div className="ps-modal-overlay" onClick={closeModal}>
+              <div className="ps-modal" onClick={e => e.stopPropagation()}>
+                <button className="ps-modal-close" onClick={closeModal} aria-label="Close">
+                  ✕
+                </button>
+                <div className="ps-modal-scroll">
+                  {/* Problem Statement ID */}
+                  <div className="ps-modal-id-label">Problem Statement ID</div>
+                  <div className="ps-modal-id-value">{selectedPS.psid}</div>
 
-              {/* Meta Grid — Department, Category, Theme */}
-              <div className="ps-modal-meta-grid">
-                <div className="ps-modal-meta-item">
-                  <span className="ps-meta-label">Department</span>
-                  <span className="ps-meta-value">{selectedPS.department}</span>
-                </div>
-                <div className="ps-modal-meta-item">
-                  <span className="ps-meta-label">Category</span>
-                  <span className="ps-meta-value">{selectedPS.category}</span>
-                </div>
-                <div className="ps-modal-meta-item">
-                  <span className="ps-meta-label">Theme</span>
-                  <span className="ps-meta-value">{selectedPS.theme}</span>
+                  {/* Title */}
+                  <div className="ps-modal-field-label">Problem Statement Title</div>
+                  <h3 className="ps-modal-title">{selectedPS.fullTitle || selectedPS.title}</h3>
+
+                  {/* Domain Badge */}
+                  <div className="ps-modal-field-label">Domain Bucket</div>
+                  <div className="ps-modal-domain-row">
+                    <span className={`ps-badge ps-badge-lg ${domainBadgeClass[selectedPS.domain]}`}>
+                      {selectedPS.domain}
+                    </span>
+                    {selectedPS.subdomain && (
+                      <span className="ps-badge ps-badge-secondary ps-badge-lg" style={{ marginLeft: '1rem', background: 'rgba(255,255,255,0.1)', color: '#fff', border: '1px solid rgba(255,255,255,0.2)' }}>
+                        {selectedPS.subdomain}
+                      </span>
+                    )}
+                  </div>
+
+                  {/* Description */}
+                  <div className="ps-modal-field-label">Description</div>
+                  <div className="ps-modal-description">
+                    {renderDescription(selectedPS.description)}
+                  </div>
+
+                  {/* Meta Grid — Department, Category, Theme */}
+                  <div className="ps-modal-meta-grid">
+                    <div className="ps-modal-meta-item">
+                      <span className="ps-meta-label">Department</span>
+                      <span className="ps-meta-value">{selectedPS.department}</span>
+                    </div>
+                    <div className="ps-modal-meta-item">
+                      <span className="ps-meta-label">Category</span>
+                      <span className="ps-meta-value">{selectedPS.category}</span>
+                    </div>
+                    <div className="ps-modal-meta-item">
+                      <span className="ps-meta-label">Theme</span>
+                      <span className="ps-meta-value">{selectedPS.theme}</span>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-      )}
+          )}
 
-      </>
+        </>
       )}
     </section>
   );
