@@ -94,58 +94,82 @@ const CircuitBackground: React.FC = () => {
       const { x: mx, y: my } = mouseRef.current;
       const segs = segmentsRef.current;
 
+      // 1. Draw all base (dim) traces in ONE batch for performance
+      ctx.beginPath();
+      ctx.strokeStyle = 'rgba(26, 86, 219, 0.08)';
+      ctx.lineWidth = 1;
+      ctx.shadowBlur = 0; 
+      segs.forEach(seg => {
+        const dist = distToSeg(mx, my, seg);
+        const power = Math.max(0, 1 - dist / POWER_RADIUS);
+        if (power <= 0) {
+          ctx.moveTo(seg.x1, seg.y1);
+          ctx.lineTo(seg.x2, seg.y2);
+        }
+      });
+      ctx.stroke();
+
+      // 2. Draw active (glowing) traces and pads individually
       segs.forEach(seg => {
         const dist = distToSeg(mx, my, seg);
         const power = Math.max(0, 1 - dist / POWER_RADIUS);
 
-        // Draw trace
-        ctx.beginPath();
-        ctx.moveTo(seg.x1, seg.y1);
-        ctx.lineTo(seg.x2, seg.y2);
         if (power > 0) {
+          // Energetic trace
+          ctx.beginPath();
+          ctx.moveTo(seg.x1, seg.y1);
+          ctx.lineTo(seg.x2, seg.y2);
           ctx.strokeStyle = `rgba(0, 240, 255, ${0.12 + power * 0.88})`;
           ctx.lineWidth = 1 + power * 1.5;
-          ctx.shadowColor = '#00f0ff';
-          ctx.shadowBlur = power * 22;
-        } else {
-          ctx.strokeStyle = 'rgba(26, 86, 219, 0.08)';
-          ctx.lineWidth = 1;
+          if (power > 0.45) {
+             ctx.shadowColor = '#00f0ff';
+             ctx.shadowBlur = power * 18;
+          } else {
+             ctx.shadowBlur = 0;
+          }
+          ctx.stroke();
           ctx.shadowBlur = 0;
-        }
-        ctx.stroke();
-        ctx.shadowBlur = 0;
 
-        // Solder pads at endpoints
+          // Spawn pulses on energised traces
+          if (
+            power > 0.3 &&
+            pulsesRef.current.length < MAX_PULSES &&
+            Math.random() < 0.022 * power
+          ) {
+            pulsesRef.current.push({
+              seg,
+              t: 0,
+              speed: 0.005 + Math.random() * 0.009,
+              alpha: 0.7 + power * 0.3,
+            });
+          }
+        }
+
+        // Solder pads - Only draw if they are active OR the trace is already being drawn
         ([[seg.x1, seg.y1], [seg.x2, seg.y2]] as [number, number][]).forEach(([px, py]) => {
-          const padPow = Math.max(0, 1 - Math.hypot(mx - px, my - py) / POWER_RADIUS);
+          const d = Math.hypot(mx - px, my - py);
+          const padPow = Math.max(0, 1 - d / POWER_RADIUS);
+          
+          if (padPow <= 0 && power <= 0) return; // Skip far-away dim pads
+
           ctx.beginPath();
           ctx.arc(px, py, 2.5, 0, Math.PI * 2);
           if (padPow > 0) {
             ctx.fillStyle = `rgba(0, 240, 255, ${0.35 + padPow * 0.65})`;
-            ctx.shadowColor = '#00f0ff';
-            ctx.shadowBlur = padPow * 14;
+            if (padPow > 0.6) {
+              ctx.shadowColor = '#00f0ff';
+              ctx.shadowBlur = padPow * 12;
+            } else {
+              ctx.shadowBlur = 0;
+            }
           } else {
             ctx.fillStyle = 'rgba(26, 86, 219, 0.18)';
             ctx.shadowBlur = 0;
           }
           ctx.fill();
-          ctx.shadowBlur = 0;
         });
-
-        // Spawn power pulses on energised traces
-        if (
-          power > 0.3 &&
-          pulsesRef.current.length < MAX_PULSES &&
-          Math.random() < 0.022 * power
-        ) {
-          pulsesRef.current.push({
-            seg,
-            t: 0,
-            speed: 0.005 + Math.random() * 0.009,
-            alpha: 0.7 + power * 0.3,
-          });
-        }
       });
+
 
       // Animate pulses (power flowing through traces)
       pulsesRef.current = pulsesRef.current.filter(pulse => {
