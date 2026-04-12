@@ -95,29 +95,21 @@ const TrophyModal: React.FC<{
                   <li><span className="detail-check">✓</span>Exciting Goodies</li>
                 </ul>
               </div>
-              <div className="prize-tier">
-                <div className="prize-tier-header">
-                  <h4>Best Innovation</h4>
-                  <span className="prize-amt">₹5K</span>
-                </div>
-                <ul>
-                  <li><span className="detail-check">✓</span>₹5,000 Cash Prize</li>
-                  <li><span className="detail-check">✓</span>IEEE Participation Certificate</li>
-                  <li><span className="detail-check">✓</span>Exciting Goodies</li>
-                </ul>
-              </div>
-              <div className="prize-tier">
-                <div className="prize-tier-header">
-                  <h4>Best Women's Team</h4>
-                  <span className="prize-amt">₹5K</span>
-                </div>
-                <ul>
-                  <li><span className="detail-check">✓</span>₹5,000 Cash Prize</li>
-                  <li><span className="detail-check">✓</span>IEEE Participation Certificate</li>
-                  <li><span className="detail-check">✓</span>Exciting Goodies</li>
-                </ul>
-              </div>
             </>
+          )}
+
+          {(domain === 'Best Innovation' || domain === 'Best Women\'s Team') && (
+            <div className="prize-tier">
+              <div className="prize-tier-header">
+                <h4>Winner</h4>
+                <span className="prize-amt">₹5K</span>
+              </div>
+              <ul>
+                <li><span className="detail-check">✓</span>₹5,000 Cash Prize</li>
+                <li><span className="detail-check">✓</span>IEEE Participation Certificate</li>
+                <li><span className="detail-check">✓</span>Exciting Goodies</li>
+              </ul>
+            </div>
           )}
 
           {domain === 'VLSI' && (
@@ -353,10 +345,12 @@ const App: React.FC = () => {
   }, []);
 
   const trophyDomains = [
-    { id: "embedded", name: "Embedded & IoT", prize: "₹35,000" },
-    { id: "software", name: "Software Domain", prize: "₹35,000" },
+    { id: "embedded", name: "Embedded & IoT", prize: "₹25,000" },
+    { id: "software", name: "Software Domain", prize: "₹25,000" },
     { id: "vlsi", name: "VLSI", prize: "₹15,000" },
-    { id: "campus", name: "Campus Innovation", prize: "₹10,000" }
+    { id: "campus", name: "Campus Innovation", prize: "₹10,000" },
+    { id: "best-innovation", name: "Best Innovation", prize: "₹5,000" },
+    { id: "best-women", name: "Best Women's Team", prize: "₹5,000" }
   ];
 
   return (
@@ -683,12 +677,12 @@ const App: React.FC = () => {
           <div className="section-header">
             <h2 className="section-title">Rewards & <span className="text-gradient">Recognition</span></h2>
             <p className="section-subtitle">Celebrate engineering excellence with prestigious titles and exciting rewards.</p>
-            <p className="sr-only">Symbiot 2026 hackathon prizes: Total prize pool of over ₹95,000. Each domain (Embedded &amp; IoT, Open Innovation, Campus Innovation) has prizes of ₹15,000 for 1st place and ₹10,000 for 2nd place. Additional awards include Best Women Team (₹5,000), Best Innovation (₹5,000), and Participation Certificates with exciting swags for all participants at VVCE Mysore.</p>
+            <p className="sr-only">Symbiot 2026 hackathon prizes: Total prize pool of over ₹1,20,000. Main tracks (Embedded &amp; IoT, Software Domain) each have ₹25,000 prize pools (₹15,000 Winner, ₹10,000 Runner-up). VLSI has ₹15,000 and Campus Innovation has ₹10,000. Special awards include Best Innovation (₹5,000) and Best Women's Team (₹5,000). Participation Certificates and exciting swags for all participants at VVCE Mysore.</p>
           </div>
 
           <div className="prizes-section-wrapper" style={{ display: 'flex', flexDirection: 'column', gap: '2rem', alignItems: 'center', paddingBottom: '3rem' }}>
-            {/* First Row: 3 Cards */}
-            <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '2rem', width: '100%', maxWidth: '900px' }}>
+            {/* First Row: 3 Cards - Core Domains */}
+            <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '2rem', width: '100%', maxWidth: '950px' }}>
               {trophyDomains.slice(0, 3).map((t) => (
                 <TrophyCard
                   key={t.id}
@@ -699,9 +693,24 @@ const App: React.FC = () => {
               ))}
             </div>
 
-            {/* Second Row: 2 Cards */}
-            <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '2rem', width: '100%', maxWidth: '900px' }}>
-              {trophyDomains.slice(3).map((t) => (
+            {/* Second Row: 2 Cards - Campus & Rewards */}
+            <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '2rem', width: '100%', maxWidth: '950px' }}>
+              <TrophyCard
+                domain={trophyDomains[3].name}
+                prizeAmount={trophyDomains[3].prize}
+                onClick={() => setActiveTrophy(trophyDomains[3].name)}
+              />
+              <TrophyCard
+                domain="Participation"
+                prizeAmount="Swags"
+                bannerLabel="REWARDS"
+                onClick={() => setActiveTrophy("Participation")}
+              />
+            </div>
+
+            {/* Third Row: 2 Cards - Special Awards */}
+            <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '2rem', width: '100%', maxWidth: '950px' }}>
+              {trophyDomains.slice(4).map((t) => (
                 <TrophyCard
                   key={t.id}
                   domain={t.name}
@@ -709,12 +718,6 @@ const App: React.FC = () => {
                   onClick={() => setActiveTrophy(t.name)}
                 />
               ))}
-              <TrophyCard
-                domain="Participation"
-                prizeAmount="Swags"
-                bannerLabel="REWARDS"
-                onClick={() => setActiveTrophy("Participation")}
-              />
             </div>
           </div>
         </section>
