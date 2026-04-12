@@ -1042,13 +1042,18 @@ h1, h2, h3, h4, h5, h6 {
   height: 80px;
   z-index: 1000;
   transition: var(--transition-smooth);
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  outline: none;
+  border: none;
 }
 
 .navbar.scrolled {
-  background: rgba(8, 13, 38, 0.85);
+  background: rgba(8, 13, 38, 0.95); /* Increased opacity slightly to prevent leak */
   backdrop-filter: var(--blur-lg);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+  -webkit-backdrop-filter: var(--blur-lg);
+  border-bottom: none;
+  box-shadow: none;
 }
 
 .navbar-container {
