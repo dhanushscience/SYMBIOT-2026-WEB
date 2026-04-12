@@ -463,6 +463,27 @@ The system should:
 • Maintain detailed records of participants including department, year, and club affiliation
 • Provide real-time updates on event schedules, results, and prize announcements
 • Automatically generate post-event reports in PDF format including participation data and organizer details`
+  },
+  {
+    psid: 'SYM1014',
+    domain: 'Campus Innovation',
+    title: 'Intelligent Placement Training & Student Progress Tracking System',
+    department: 'Computer Science / Information Science / Electronics & Communication',
+    category: 'Web Development / Data Analytics / EdTech Systems',
+    theme: 'Smart Campus & Career Development',
+    description: `Develop a centralized, real-time platform to manage, monitor, and enhance student placement readiness through structured training and performance tracking.
+
+The system should:
+• Provide a unified dashboard to track individual student performance across aptitude, coding, core subjects, and soft skills
+• Monitor student progress through regular assessments, mock tests, and training activities
+• Generate a placement readiness score based on performance metrics and consistency
+• Identify weak areas and recommend personalized training modules for improvement
+• Enable faculty to analyze batch-wise performance and identify common skill gaps
+• Assist placement cells in filtering students based on company-specific eligibility criteria
+• Maintain historical data of student performance for trend analysis and reporting
+• Provide real-time updates on training activities, test results, and progress status
+• Support role-based access for administrators, faculty, and students
+• Ensure scalable performance to handle large batches of students efficiently`
   }
 ];
 
