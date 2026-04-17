@@ -4,7 +4,7 @@ import React, { useState, useMemo, useRef, useEffect, useCallback } from 'react'
 interface ShortlistedTeam {
   teamName: string;
   leader: string;
-  domain: 'HARDWARE' | 'SOFTWARE' | 'VLSI' | 'CAMPUS INNOVATION';
+  domain: 'HARDWARE' | 'SOFTWARE' | 'VLSI' | 'CAMPUS INNOVATION' | 'WAITLISTED';
   status: 'SHORTLISTED' | 'WAITLISTED' | 'NOT SELECTED';
 }
 
@@ -111,34 +111,35 @@ const shortlistedTeams: ShortlistedTeam[] = [
   { teamName: 'Genz innovators', leader: 'Rachana P', domain: 'SOFTWARE', status: 'SHORTLISTED' },
   { teamName: 'GEC CHAMARAJAN', leader: 'Ishank Mourya Mourya', domain: 'SOFTWARE', status: 'SHORTLISTED' },
   { teamName: 'Medirush', leader: 'Swati B parshi', domain: 'SOFTWARE', status: 'SHORTLISTED' },
-  { teamName: 'Quadcore titans', leader: 'Vineeth Kumar', domain: 'SOFTWARE', status: 'WAITLISTED' },
-  { teamName: 'vvcians', leader: 'R Shreya', domain: 'SOFTWARE', status: 'WAITLISTED' },
-  { teamName: 'Neural Ninjas', leader: 'VINAY M', domain: 'SOFTWARE', status: 'WAITLISTED' },
-  { teamName: 'Kaizen', leader: 'Chiranthan M S', domain: 'SOFTWARE', status: 'WAITLISTED' },
-  { teamName: 'VoltNexus', leader: 'Mohamed Arif M', domain: 'SOFTWARE', status: 'WAITLISTED' },
-  { teamName: 'Think Quest', leader: 'Punith', domain: 'SOFTWARE', status: 'WAITLISTED' },
-  { teamName: 'Vision Coders', leader: 'Priyanka S K', domain: 'SOFTWARE', status: 'WAITLISTED' },
-  { teamName: 'NeuroFlex', leader: 'Granthini CA', domain: 'SOFTWARE', status: 'WAITLISTED' },
-  { teamName: 'DebugLeaf', leader: 'Karthik M', domain: 'SOFTWARE', status: 'WAITLISTED' },
-  { teamName: 'Rookies', leader: 'Prajwal Goni', domain: 'SOFTWARE', status: 'WAITLISTED' },
-  { teamName: 'pink panthers', leader: 'SINDHU H M', domain: 'SOFTWARE', status: 'WAITLISTED' },
-  { teamName: 'Binary brains', leader: 'Sanjana K G', domain: 'SOFTWARE', status: 'WAITLISTED' },
-  { teamName: 'Spark Igniters', leader: 'Pushpa dc', domain: 'SOFTWARE', status: 'WAITLISTED' },
-  { teamName: 'SquadBytes', leader: 'GNANA RAVANDUR PRAKASH', domain: 'SOFTWARE', status: 'WAITLISTED' },
-  { teamName: 'Team404', leader: 'Dhanush urs', domain: 'SOFTWARE', status: 'WAITLISTED' },
-  { teamName: 'Phoenix A*', leader: 'Madhukeshwar Shripad Hegde', domain: 'SOFTWARE', status: 'WAITLISTED' },
-  { teamName: 'Data dynamos', leader: 'Anirudh Pai', domain: 'SOFTWARE', status: 'WAITLISTED' },
-  { teamName: 'Herb_Ledger', leader: 'Pranamya R', domain: 'SOFTWARE', status: 'WAITLISTED' },
-  { teamName: 'Curly Braces', leader: 'Tarun S G', domain: 'SOFTWARE', status: 'WAITLISTED' }
+  { teamName: 'Quadcore titans', leader: 'Vineeth Kumar', domain: 'WAITLISTED', status: 'WAITLISTED' },
+  { teamName: 'vvcians', leader: 'R Shreya', domain: 'WAITLISTED', status: 'WAITLISTED' },
+  { teamName: 'Neural Ninjas', leader: 'VINAY M', domain: 'WAITLISTED', status: 'WAITLISTED' },
+  { teamName: 'Kaizen', leader: 'Chiranthan M S', domain: 'WAITLISTED', status: 'WAITLISTED' },
+  { teamName: 'VoltNexus', leader: 'Mohamed Arif M', domain: 'WAITLISTED', status: 'WAITLISTED' },
+  { teamName: 'Think Quest', leader: 'Punith', domain: 'WAITLISTED', status: 'WAITLISTED' },
+  { teamName: 'Vision Coders', leader: 'Priyanka S K', domain: 'WAITLISTED', status: 'WAITLISTED' },
+  { teamName: 'NeuroFlex', leader: 'Granthini CA', domain: 'WAITLISTED', status: 'WAITLISTED' },
+  { teamName: 'DebugLeaf', leader: 'Karthik M', domain: 'WAITLISTED', status: 'WAITLISTED' },
+  { teamName: 'Rookies', leader: 'Prajwal Goni', domain: 'WAITLISTED', status: 'WAITLISTED' },
+  { teamName: 'pink panthers', leader: 'SINDHU H M', domain: 'WAITLISTED', status: 'WAITLISTED' },
+  { teamName: 'Binary brains', leader: 'Sanjana K G', domain: 'WAITLISTED', status: 'WAITLISTED' },
+  { teamName: 'Spark Igniters', leader: 'Pushpa dc', domain: 'WAITLISTED', status: 'WAITLISTED' },
+  { teamName: 'SquadBytes', leader: 'GNANA RAVANDUR PRAKASH', domain: 'WAITLISTED', status: 'WAITLISTED' },
+  { teamName: 'Team404', leader: 'Dhanush urs', domain: 'WAITLISTED', status: 'WAITLISTED' },
+  { teamName: 'Phoenix A*', leader: 'Madhukeshwar Shripad Hegde', domain: 'WAITLISTED', status: 'WAITLISTED' },
+  { teamName: 'Data dynamos', leader: 'Anirudh Pai', domain: 'WAITLISTED', status: 'WAITLISTED' },
+  { teamName: 'Herb_Ledger', leader: 'Pranamya R', domain: 'WAITLISTED', status: 'WAITLISTED' },
+  { teamName: 'Curly Braces', leader: 'Tarun S G', domain: 'WAITLISTED', status: 'WAITLISTED' }
 ];
 
-const DOMAINS = ['ALL', 'HARDWARE', 'SOFTWARE', 'VLSI', 'CAMPUS INNOVATION'] as const;
+const DOMAINS = ['ALL', 'HARDWARE', 'SOFTWARE', 'VLSI', 'CAMPUS INNOVATION', 'WAITLISTED'] as const;
 
 const domainBadgeClass: Record<string, string> = {
   'HARDWARE': 'ps-badge-embedded',
   'SOFTWARE': 'ps-badge-software',
   'VLSI': 'ps-badge-vlsi',
   'CAMPUS INNOVATION': 'ps-badge-campus',
+  'WAITLISTED': 'ps-badge-software',
 };
 
 const statusBadgeStyle = (status: 'SHORTLISTED' | 'WAITLISTED' | 'NOT SELECTED') => {
@@ -277,6 +278,11 @@ const ShortlistedTeams: React.FC<ShortlistedTeamsProps> = ({ initialFilter }) =>
         <p className="section-subtitle" style={{ color: '#00f0ff', marginTop: '0.5rem', fontWeight: 'bold', fontSize: '1rem', textShadow: '0 0 10px rgba(0, 240, 255, 0.4)' }}>
           ✨ Results announced. Congratulations to all shortlisted teams!
         </p>
+        {activeFilter === 'WAITLISTED' && (
+          <p className="section-subtitle" style={{ color: '#fde047', marginTop: '0.5rem', fontWeight: 'bold', fontSize: '0.95rem', textShadow: '0 0 10px rgba(250, 204, 21, 0.4)' }}>
+            ⏳ Reserve / Backup Teams — These teams are on the waitlist and may be promoted.
+          </p>
+        )}
       </div>
 
       <div className="ps-controls-sticky" style={isMobileView ? { position: 'relative', top: 'auto', background: 'rgba(12, 15, 30, 0.98)', padding: '0.75rem 1rem', margin: '0 -1rem', borderBottom: '1px solid rgba(0, 240, 255, 0.15)' } : undefined}>
@@ -299,25 +305,40 @@ const ShortlistedTeams: React.FC<ShortlistedTeamsProps> = ({ initialFilter }) =>
               ref={filtersRef}
               style={isMobileView ? { display: 'flex', flexWrap: 'nowrap', overflowX: 'auto', gap: '0.5rem', paddingBottom: '6px', scrollbarWidth: 'none', scrollBehavior: 'smooth' } : undefined}
             >
-              {DOMAINS.map(domain => (
-                <button
-                  key={domain}
-                  className={`ps-filter-btn ${activeFilter === domain ? 'active' : ''}`}
-                  onClick={() => setActiveFilter(domain)}
-                  style={isMobileView ? {
-                    flexShrink: 0,
-                    whiteSpace: 'nowrap',
-                    padding: '0.5rem 1rem',
-                    fontSize: '0.8rem',
-                    border: activeFilter === domain ? '1.5px solid #00f0ff' : '1.5px solid rgba(0, 240, 255, 0.4)',
-                    background: activeFilter === domain ? 'rgba(0, 240, 255, 0.18)' : 'rgba(0, 240, 255, 0.06)',
-                    color: '#fff',
-                    borderRadius: '6px',
-                  } : undefined}
-                >
-                  {domain}
-                </button>
-              ))}
+              {DOMAINS.map(domain => {
+                const isWaitlisted = domain === 'WAITLISTED';
+                const isActive = activeFilter === domain;
+                return (
+                  <button
+                    key={domain}
+                    className={`ps-filter-btn ${isActive ? 'active' : ''}`}
+                    onClick={() => setActiveFilter(domain)}
+                    style={isMobileView ? {
+                      flexShrink: 0,
+                      whiteSpace: 'nowrap',
+                      padding: '0.5rem 1rem',
+                      fontSize: '0.8rem',
+                      border: isActive
+                        ? (isWaitlisted ? '1.5px solid #fde047' : '1.5px solid #00f0ff')
+                        : (isWaitlisted ? '1.5px solid rgba(250, 204, 21, 0.4)' : '1.5px solid rgba(0, 240, 255, 0.4)'),
+                      background: isActive
+                        ? (isWaitlisted ? 'rgba(250, 204, 21, 0.18)' : 'rgba(0, 240, 255, 0.18)')
+                        : (isWaitlisted ? 'rgba(250, 204, 21, 0.06)' : 'rgba(0, 240, 255, 0.06)'),
+                      color: isWaitlisted ? '#fde047' : '#fff',
+                      borderRadius: '6px',
+                    } : (
+                      isWaitlisted ? {
+                        border: isActive ? '1.5px solid #fde047' : '1.5px solid rgba(250, 204, 21, 0.4)',
+                        background: isActive ? 'rgba(250, 204, 21, 0.18)' : 'rgba(250, 204, 21, 0.06)',
+                        color: '#fde047',
+                        boxShadow: isActive ? '0 0 12px rgba(250, 204, 21, 0.3)' : 'none',
+                      } : undefined
+                    )}
+                  >
+                    {domain}
+                  </button>
+                );
+              })}
             </div>
             {isMobileView && canScrollRight && (
               <button
