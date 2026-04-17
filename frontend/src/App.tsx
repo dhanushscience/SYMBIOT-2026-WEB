@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import './style.css';
 import CircuitBackground from './CircuitBackground';
 import ProblemStatements from './ProblemStatements';
+import ShortlistedTeams from './ShortlistedTeams';
 import FoolPage from './FoolPage';
 
 const SectionDivider: React.FC = () => (
@@ -628,6 +629,10 @@ const App: React.FC = () => {
 
         <SectionDivider />
 
+        <ShortlistedTeams />
+
+        <SectionDivider />
+        
         <ProblemStatements initialFilter={psFilter} />
 
         <SectionDivider />
