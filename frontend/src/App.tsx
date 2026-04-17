@@ -249,6 +249,7 @@ const App: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const [psFilter, setPsFilter] = useState<string | undefined>(undefined);
+  const [teamFilter, setTeamFilter] = useState<string | undefined>(undefined);
   const [mobilePsOpen, setMobilePsOpen] = useState(false);
   const [activeTrophy, setActiveTrophy] = useState<string | null>(null);
 
@@ -433,7 +434,7 @@ const App: React.FC = () => {
               </button>
               <div className="nav-dropdown-menu">
                 <a href="#problem-statements" className="nav-dropdown-item" onClick={() => setPsFilter('Embedded and IOT')}>Embedded and IOT</a>
-                <a href="#problem-statements" className="nav-dropdown-item" onClick={() => setPsFilter('Software Domain')}>Software Domain</a>
+                <a href="#shortlisted-teams" className="nav-dropdown-item" onClick={(e) => { e.stopPropagation(); setTeamFilter('SOFTWARE'); setPsFilter(undefined); }}>Software Domain</a>
                 <a href="#problem-statements" className="nav-dropdown-item" onClick={() => setPsFilter('Campus Innovation')}>Campus Innovation</a>
                 <a href="#problem-statements" className="nav-dropdown-item" onClick={() => setPsFilter('VLSI')}>VLSI</a>
                 <a href="#templates" className="nav-dropdown-item" onClick={() => { setPsFilter(undefined); document.getElementById('templates')?.scrollIntoView({ behavior: 'smooth' }); }}>PPTs</a>
@@ -463,7 +464,7 @@ const App: React.FC = () => {
               </button>
               <div className={`mobile-ps-subnav ${mobilePsOpen ? 'open' : ''}`}>
                 <a href="#problem-statements" className="mobile-ps-link" onClick={() => { setPsFilter('Embedded and IOT'); setIsMobileMenuOpen(false); }}>Embedded and IOT</a>
-                <a href="#problem-statements" className="mobile-ps-link" onClick={() => { setPsFilter('Software Domain'); setIsMobileMenuOpen(false); }}>Software Domain</a>
+                <a href="#shortlisted-teams" className="mobile-ps-link" onClick={(e) => { e.stopPropagation(); setTeamFilter('SOFTWARE'); setPsFilter(undefined); setIsMobileMenuOpen(false); }}>Software Domain</a>
                 <a href="#problem-statements" className="mobile-ps-link" onClick={() => { setPsFilter('Campus Innovation'); setIsMobileMenuOpen(false); }}>Campus Innovation</a>
                 <a href="#problem-statements" className="mobile-ps-link" onClick={() => { setPsFilter('VLSI'); setIsMobileMenuOpen(false); }}>VLSI</a>
                 <a href="#templates" className="mobile-ps-link" onClick={() => { setPsFilter(undefined); setIsMobileMenuOpen(false); document.getElementById('templates')?.scrollIntoView({ behavior: 'smooth' }); }}>PPTs</a>
@@ -629,7 +630,7 @@ const App: React.FC = () => {
 
         <SectionDivider />
 
-        <ShortlistedTeams />
+        <ShortlistedTeams initialFilter={teamFilter} />
 
         <SectionDivider />
         

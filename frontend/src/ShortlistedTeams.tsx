@@ -110,7 +110,26 @@ const shortlistedTeams: ShortlistedTeam[] = [
   { teamName: 'Hashiras', leader: 'Mohamed mansoor khateeb', domain: 'SOFTWARE', status: 'SHORTLISTED' },
   { teamName: 'Genz innovators', leader: 'Rachana P', domain: 'SOFTWARE', status: 'SHORTLISTED' },
   { teamName: 'GEC CHAMARAJAN', leader: 'Ishank Mourya Mourya', domain: 'SOFTWARE', status: 'SHORTLISTED' },
-  { teamName: 'Medirush', leader: 'Swati B parshi', domain: 'SOFTWARE', status: 'SHORTLISTED' }
+  { teamName: 'Medirush', leader: 'Swati B parshi', domain: 'SOFTWARE', status: 'SHORTLISTED' },
+  { teamName: 'Quadcore titans', leader: 'Vineeth Kumar', domain: 'SOFTWARE', status: 'WAITLISTED' },
+  { teamName: 'vvcians', leader: 'R Shreya', domain: 'SOFTWARE', status: 'WAITLISTED' },
+  { teamName: 'Neural Ninjas', leader: 'VINAY M', domain: 'SOFTWARE', status: 'WAITLISTED' },
+  { teamName: 'Kaizen', leader: 'Chiranthan M S', domain: 'SOFTWARE', status: 'WAITLISTED' },
+  { teamName: 'VoltNexus', leader: 'Mohamed Arif M', domain: 'SOFTWARE', status: 'WAITLISTED' },
+  { teamName: 'Think Quest', leader: 'Punith', domain: 'SOFTWARE', status: 'WAITLISTED' },
+  { teamName: 'Vision Coders', leader: 'Priyanka S K', domain: 'SOFTWARE', status: 'WAITLISTED' },
+  { teamName: 'NeuroFlex', leader: 'Granthini CA', domain: 'SOFTWARE', status: 'WAITLISTED' },
+  { teamName: 'DebugLeaf', leader: 'Karthik M', domain: 'SOFTWARE', status: 'WAITLISTED' },
+  { teamName: 'Rookies', leader: 'Prajwal Goni', domain: 'SOFTWARE', status: 'WAITLISTED' },
+  { teamName: 'pink panthers', leader: 'SINDHU H M', domain: 'SOFTWARE', status: 'WAITLISTED' },
+  { teamName: 'Binary brains', leader: 'Sanjana K G', domain: 'SOFTWARE', status: 'WAITLISTED' },
+  { teamName: 'Spark Igniters', leader: 'Pushpa dc', domain: 'SOFTWARE', status: 'WAITLISTED' },
+  { teamName: 'SquadBytes', leader: 'GNANA RAVANDUR PRAKASH', domain: 'SOFTWARE', status: 'WAITLISTED' },
+  { teamName: 'Team404', leader: 'Dhanush urs', domain: 'SOFTWARE', status: 'WAITLISTED' },
+  { teamName: 'Phoenix A*', leader: 'Madhukeshwar Shripad Hegde', domain: 'SOFTWARE', status: 'WAITLISTED' },
+  { teamName: 'Data dynamos', leader: 'Anirudh Pai', domain: 'SOFTWARE', status: 'WAITLISTED' },
+  { teamName: 'Herb_Ledger', leader: 'Pranamya R', domain: 'SOFTWARE', status: 'WAITLISTED' },
+  { teamName: 'Curly Braces', leader: 'Tarun S G', domain: 'SOFTWARE', status: 'WAITLISTED' }
 ];
 
 const DOMAINS = ['ALL', 'HARDWARE', 'SOFTWARE', 'VLSI', 'CAMPUS INNOVATION'] as const;
@@ -160,8 +179,19 @@ const statusBadgeStyle = (status: 'SHORTLISTED' | 'WAITLISTED' | 'NOT SELECTED')
   };
 };
 
-const ShortlistedTeams: React.FC = () => {
+interface ShortlistedTeamsProps {
+  initialFilter?: string;
+}
+
+const ShortlistedTeams: React.FC<ShortlistedTeamsProps> = ({ initialFilter }) => {
   const [activeFilter, setActiveFilter] = useState('ALL');
+
+  useEffect(() => {
+    if (initialFilter) {
+      setActiveFilter(initialFilter);
+    }
+  }, [initialFilter]);
+
   const [searchQuery, setSearchQuery] = useState('');
 
   const [isMobileView, setIsMobileView] = useState(window.innerWidth <= 768);
