@@ -416,7 +416,21 @@ const App: React.FC = () => {
           </div>
         </>
       )}
-      <nav className={`navbar ${scrolled ? 'scrolled' : ''}`} style={{ top: isPrankActive ? '56px' : '0' }} aria-label="Main Navigation - Symbiot 2026 Hackathon">
+      {/* Announcement Bar */}
+      <div className="announcement-bar" aria-label="Announcement">
+        <div className="announcement-bar-track">
+          <span className="announcement-bar-text">
+            <span className="announcement-bar-dot"></span>
+            🚀 Shortlisted Teams Announcement: Results are now live! Check your status below.
+            &nbsp;&nbsp;&nbsp;✦&nbsp;&nbsp;&nbsp;
+            🚀 Shortlisted Teams Announcement: Results are now live! Check your status below.
+            &nbsp;&nbsp;&nbsp;✦&nbsp;&nbsp;&nbsp;
+            🚀 Shortlisted Teams Announcement: Results are now live! Check your status below.
+          </span>
+        </div>
+      </div>
+
+      <nav className={`navbar ${scrolled ? 'scrolled' : ''}`} style={{ top: isPrankActive ? '94px' : '38px' }} aria-label="Main Navigation - Symbiot 2026 Hackathon">
         <div className="navbar-container">
           <div className="navbar-brand">
             <div className="navbar-logos">
@@ -516,7 +530,7 @@ const App: React.FC = () => {
               <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
                 <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center' }}>
                   <a href="https://unstop.com/p/symbiot-2026-vidyavardhaka-college-of-engineering-mysore-1652707" onClick={handleRegisterClick} target="_blank" rel="noopener noreferrer" className={`btn btn-primary btn-register-heartbeat ${isPrankActive ? 'btn-primary-alert' : ''}`}>Register</a>
-                  <a href="#about" className="btn btn-secondary">Learn More</a>
+                  <a href="#shortlisted-teams" className="btn btn-secondary">🏆 Shortlisted</a>
                 </div>
                 {isPrankActive && (
                   <div style={{ color: '#ff4444', fontWeight: 'bold', fontSize: '0.95rem', animation: 'pulse-glow 2s infinite alternate', padding: '0.5rem 1rem', background: 'rgba(255, 68, 68, 0.1)', border: '1px solid rgba(255, 68, 68, 0.3)', borderRadius: '8px', textAlign: 'center' }}>

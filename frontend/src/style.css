@@ -1033,6 +1033,98 @@ h1, h2, h3, h4, h5, h6 {
   100% { transform: translate(50px, 50px) scale(1.1); }
 }
 
+/* ── Announcement Bar ── */
+.announcement-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 38px;
+  z-index: 1100;
+  background: linear-gradient(90deg, rgba(0, 240, 255, 0.06) 0%, rgba(0, 10, 30, 0.92) 20%, rgba(0, 10, 30, 0.92) 80%, rgba(0, 240, 255, 0.06) 100%);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(0, 240, 255, 0.2);
+  box-shadow: 0 2px 20px rgba(0, 240, 255, 0.08);
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.announcement-bar::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent 0%, rgba(0, 240, 255, 0.04) 50%, transparent 100%);
+  animation: ann-sweep 3s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes ann-sweep {
+  0%   { opacity: 0; transform: translateX(-100%); }
+  50%  { opacity: 1; }
+  100% { opacity: 0; transform: translateX(100%); }
+}
+
+.announcement-bar-track {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  animation: marquee-scroll 28s linear infinite;
+  will-change: transform;
+}
+
+.announcement-bar-track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes marquee-scroll {
+  0%   { transform: translateX(100vw); }
+  100% { transform: translateX(-100%); }
+}
+
+.announcement-bar-text {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.6px;
+  color: #e0f7ff;
+  text-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
+  padding-right: 6rem;
+  animation: ann-glow 2.5s ease-in-out infinite alternate;
+}
+
+@keyframes ann-glow {
+  0%   { text-shadow: 0 0 8px rgba(0, 240, 255, 0.4); }
+  100% { text-shadow: 0 0 18px rgba(0, 240, 255, 0.9), 0 0 30px rgba(0, 240, 255, 0.3); }
+}
+
+.announcement-bar-dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #00f0ff;
+  box-shadow: 0 0 8px rgba(0, 240, 255, 0.8);
+  margin-right: 0.75rem;
+  animation: dot-pulse 1.5s ease-in-out infinite;
+  vertical-align: middle;
+}
+
+@keyframes dot-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.5; transform: scale(0.7); }
+}
+
+@media (max-width: 768px) {
+  .announcement-bar {
+    height: 32px;
+  }
+  .announcement-bar-text {
+    font-size: 0.75rem;
+  }
+}
+
 /* Navbar */
 .navbar {
   position: fixed;
