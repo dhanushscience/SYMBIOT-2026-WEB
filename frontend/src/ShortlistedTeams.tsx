@@ -267,7 +267,7 @@ const ShortlistedTeams: React.FC<ShortlistedTeamsProps> = ({ initialFilter }) =>
   }, [activeFilter, searchQuery]);
 
   return (
-    <section id="shortlisted-teams" className="section ps-section">
+    <section id="shortlisted-teams" className="section ps-section" onClick={(e) => e.stopPropagation()}>
       <div className="section-header">
         <h2 className="section-title">
           <span className="text-gradient">Shortlisted Teams</span> <span style={{ fontSize: '1.5rem', verticalAlign: 'middle', textShadow: 'none' }}>🏆</span>
@@ -292,8 +292,8 @@ const ShortlistedTeams: React.FC<ShortlistedTeamsProps> = ({ initialFilter }) =>
             {isMobileView && canScrollLeft && (
               <button
                 className="ps-filter-arrow ps-filter-arrow-left"
-                onClick={() => scrollFilters('left')}
-                aria-label="Scroll filters left"
+                onClick={(e) => { e.preventDefault(); e.stopPropagation(); scrollFilters('left'); }}
+                aria-label="Scroll results filters left"
               >
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" width="16" height="16">
                   <path d="M15 18l-6-6 6-6" />
@@ -311,8 +311,13 @@ const ShortlistedTeams: React.FC<ShortlistedTeamsProps> = ({ initialFilter }) =>
                 return (
                   <button
                     key={domain}
+                    type="button"
                     className={`ps-filter-btn ${isActive ? 'active' : ''}`}
-                    onClick={() => setActiveFilter(domain)}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      e.stopPropagation();
+                      setActiveFilter(domain);
+                    }}
                     style={isMobileView ? {
                       flexShrink: 0,
                       whiteSpace: 'nowrap',
@@ -343,8 +348,8 @@ const ShortlistedTeams: React.FC<ShortlistedTeamsProps> = ({ initialFilter }) =>
             {isMobileView && canScrollRight && (
               <button
                 className="ps-filter-arrow ps-filter-arrow-right"
-                onClick={() => scrollFilters('right')}
-                aria-label="Scroll filters right"
+                onClick={(e) => { e.preventDefault(); e.stopPropagation(); scrollFilters('right'); }}
+                aria-label="Scroll results filters right"
               >
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" width="16" height="16">
                   <path d="M9 18l6-6-6-6" />
@@ -364,6 +369,7 @@ const ShortlistedTeams: React.FC<ShortlistedTeamsProps> = ({ initialFilter }) =>
               placeholder="Search by Team Name, Leader, or Domain"
               value={searchQuery}
               onChange={e => setSearchQuery(e.target.value)}
+              onClick={(e) => e.stopPropagation()}
               style={isMobileView ? { border: '1.5px solid rgba(0, 240, 255, 0.35)', background: 'rgba(15, 23, 42, 0.8)', color: '#fff' } : undefined}
             />
           </div>
