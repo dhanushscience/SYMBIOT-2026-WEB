@@ -3365,10 +3365,88 @@ h1, h2, h3, h4, h5, h6 {
   gap: 1rem;
 }
 
+/* --- Filter Nav Wrapper (mobile scroll arrows) --- */
+.ps-filters-nav-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex: 1;
+  min-width: 0;
+}
+
+.ps-filter-arrow {
+  display: none; /* hidden on desktop */
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 240, 255, 0.5);
+  background: rgba(0, 240, 255, 0.08);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  color: #00f0ff;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  transition: background 0.25s ease, box-shadow 0.25s ease;
+  animation: arrow-pulse 2.4s ease-in-out infinite;
+  outline: none;
+  padding: 0;
+  line-height: 1;
+}
+
+.ps-filter-arrow:hover {
+  background: rgba(0, 240, 255, 0.2);
+  box-shadow: 0 0 14px rgba(0, 240, 255, 0.45);
+  animation: none;
+}
+
+.ps-filter-arrow-left {
+  margin-right: 6px;
+}
+
+.ps-filter-arrow-right {
+  margin-left: 6px;
+}
+
+@keyframes arrow-pulse {
+  0%, 100%  { box-shadow: 0 0 0px rgba(0, 240, 255, 0); }
+  50%       { box-shadow: 0 0 10px rgba(0, 240, 255, 0.4); }
+}
+
 .ps-filters {
   display: flex;
   gap: 0.6rem;
   flex-wrap: wrap;
+  flex: 1;
+  min-width: 0;
+}
+
+@media (max-width: 768px) {
+  .ps-filter-arrow {
+    display: flex;
+  }
+
+  .ps-filters {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 4px;
+  }
+
+  .ps-filters::-webkit-scrollbar {
+    display: none;
+  }
+
+  .ps-filters .ps-filter-btn {
+    flex-shrink: 0;
+    scroll-snap-align: start;
+    white-space: nowrap;
+  }
 }
 
 .ps-filter-btn {

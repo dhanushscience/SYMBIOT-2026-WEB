@@ -210,15 +210,17 @@ const ShortlistedTeams: React.FC<ShortlistedTeamsProps> = ({ initialFilter }) =>
 
   useEffect(() => {
     const el = filtersRef.current;
-    if (!el || !isMobileView) return;
-    updateScrollArrows();
+    if (!el) return;
+    // Delay slightly so DOM is painted and scrollWidth is accurate
+    const timer = setTimeout(() => updateScrollArrows(), 80);
     el.addEventListener('scroll', updateScrollArrows, { passive: true });
     window.addEventListener('resize', updateScrollArrows);
     return () => {
+      clearTimeout(timer);
       el.removeEventListener('scroll', updateScrollArrows);
       window.removeEventListener('resize', updateScrollArrows);
     };
-  }, [isMobileView, updateScrollArrows]);
+  }, [updateScrollArrows]);
 
   const scrollFilters = (direction: 'left' | 'right') => {
     const el = filtersRef.current;
