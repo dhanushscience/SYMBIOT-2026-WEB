@@ -95,7 +95,7 @@ const shortlistedTeams: ShortlistedTeam[] = [
   { teamName: 'InnovX', leader: 'Aimanz Sarwad Sarwad', domain: 'SOFTWARE', status: 'SHORTLISTED' },
   { teamName: 'TCA', leader: 'Shravani D', domain: 'SOFTWARE', status: 'SHORTLISTED' },
   { teamName: 'DSE', leader: 'PRAJWAL MATHS', domain: 'SOFTWARE', status: 'SHORTLISTED' },
-  { teamName: 'CODE BREAKERS', leader: 'SRIVALLI S SHARMA', domain: 'SOFTWARE', status: 'SHORTLISTED' },
+  { teamName: 'Curly Braces', leader: 'Tarun S G', domain: 'SOFTWARE', status: 'SHORTLISTED' },
   { teamName: 'Jungly Billi', leader: 'Zidane Contractor', domain: 'SOFTWARE', status: 'SHORTLISTED' },
   { teamName: 'Alive', leader: 'D S Chirag', domain: 'SOFTWARE', status: 'SHORTLISTED' },
   { teamName: 'Algorythm', leader: 'TUSHAR MV', domain: 'SOFTWARE', status: 'SHORTLISTED' },
@@ -126,7 +126,7 @@ const shortlistedTeams: ShortlistedTeam[] = [
   { teamName: 'Phoenix A*', leader: 'Madhukeshwar Shripad Hegde', domain: 'WAITLISTED', status: 'WAITLISTED' },
   { teamName: 'Data dynamos', leader: 'Anirudh Pai', domain: 'WAITLISTED', status: 'WAITLISTED' },
   { teamName: 'Herb_Ledger', leader: 'Pranamya R', domain: 'WAITLISTED', status: 'WAITLISTED' },
-  { teamName: 'Curly Braces', leader: 'Tarun S G', domain: 'WAITLISTED', status: 'WAITLISTED' }
+
 ];
 
 const DOMAINS = ['ALL', 'HARDWARE', 'SOFTWARE', 'VLSI', 'CAMPUS INNOVATION', 'WAITLISTED'] as const;
