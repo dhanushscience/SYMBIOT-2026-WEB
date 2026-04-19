@@ -51,7 +51,7 @@ const shortlistedTeams: ShortlistedTeam[] = [
   { teamName: 'MedMatrix', leader: 'Dheeraj Achar H', domain: 'HARDWARE', status: 'SHORTLISTED' },
   { teamName: 'Team Virus', leader: 'MAHESHA M', domain: 'HARDWARE', status: 'SHORTLISTED' },
   { teamName: 'NatureX', leader: 'SAMARTH S', domain: 'HARDWARE', status: 'SHORTLISTED' },
-  { teamName: 'ODNMS', leader: 'Nandan SV', domain: 'HARDWARE', status: 'SHORTLISTED' },
+  { teamName: 'Toxic Trace', leader: 'Shrilalitha M', domain: 'HARDWARE', status: 'SHORTLISTED' },
   { teamName: 'Quadsync', leader: 'Monish P', domain: 'HARDWARE', status: 'SHORTLISTED' },
   { teamName: 'INFINITE IGNITY', leader: 'Impana H N', domain: 'HARDWARE', status: 'SHORTLISTED' },
   { teamName: 'RescueX', leader: 'Yashwanth N', domain: 'HARDWARE', status: 'SHORTLISTED' },
