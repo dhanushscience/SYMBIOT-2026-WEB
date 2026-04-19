@@ -65,7 +65,6 @@ const shortlistedTeams: ShortlistedTeam[] = [
   { teamName: 'The Mind Mesh', leader: 'Sanjay A', domain: 'HARDWARE', status: 'SHORTLISTED' },
   { teamName: 'AURALIS', leader: 'Dhanush R', domain: 'HARDWARE', status: 'SHORTLISTED' },
   { teamName: 'Lumina', leader: 'Hema Rashmi S', domain: 'HARDWARE', status: 'SHORTLISTED' },
-  { teamName: 'AlgoRangers', leader: 'Ayush N P', domain: 'SOFTWARE', status: 'SHORTLISTED' },
   { teamName: 'Devsquad', leader: 'Harshan H B', domain: 'SOFTWARE', status: 'SHORTLISTED' },
   { teamName: 'Code Aeternum', leader: 'Mohammed Zayid Khan', domain: 'SOFTWARE', status: 'SHORTLISTED' },
   { teamName: 'GenCodez', leader: 'Rithvik S', domain: 'SOFTWARE', status: 'SHORTLISTED' },
