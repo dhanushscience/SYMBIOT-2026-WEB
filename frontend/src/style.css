@@ -3129,8 +3129,7 @@ h1, h2, h3, h4, h5, h6 {
 .sponsors-grid,
 .faq-container,
 .prizes-grid,
-.stats-ribbon,
-.ps-controls {
+.stats-ribbon {
   opacity: 0;
   transform: translateY(40px);
   transition: opacity 0.85s ease, transform 0.85s ease;
@@ -3144,10 +3143,15 @@ h1, h2, h3, h4, h5, h6 {
 .sponsors-grid.in-view,
 .faq-container.in-view,
 .prizes-grid.in-view,
-.stats-ribbon.in-view,
-.ps-controls.in-view {
+.stats-ribbon.in-view {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* ps-controls is always visible — sticky positioning requires no fade-in delay */
+.ps-controls {
+  opacity: 1;
+  transform: none;
 }
 
 @media (max-width: 768px) {
@@ -3334,15 +3338,23 @@ h1, h2, h3, h4, h5, h6 {
 /* --- Sticky Controls --- */
 .ps-controls-sticky {
   position: sticky;
-  top: 80px;
-  z-index: 50;
-  background: rgba(10, 10, 12, 0.92);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  margin: 0 -2rem;
+  top: 118px; /* navbar (~80px) + announcement bar (~38px) */
+  z-index: 1000;
+  background: rgba(8, 10, 20, 0.97);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   padding: 1rem 2rem;
-  border-bottom: 1px solid rgba(0, 240, 255, 0.08);
+  border-bottom: 1px solid rgba(0, 240, 255, 0.12);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
   transition: box-shadow 0.3s ease;
+  overflow: visible;
+}
+
+@media (max-width: 768px) {
+  .ps-controls-sticky {
+    top: 70px;
+    padding: 0.75rem 1rem;
+  }
 }
 
 .ps-controls {
