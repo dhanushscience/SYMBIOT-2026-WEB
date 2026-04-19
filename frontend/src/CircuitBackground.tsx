@@ -11,7 +11,8 @@ interface Pulse {
   alpha: number;
 }
 
-const CircuitBackground: React.FC = () => {
+// ── Internal implementation (always has hooks) ──────────────────────────────
+const CircuitBackgroundImpl: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const mouseRef = useRef({ x: -1000, y: -1000 });
   const segmentsRef = useRef<Segment[]>([]);
@@ -69,16 +70,6 @@ const CircuitBackground: React.FC = () => {
     };
     window.addEventListener('mousemove', handleMouseMove);
 
-    // Touch support — update position on every touchmove/touchstart
-    const handleTouch = (e: TouchEvent) => {
-      if (e.touches.length > 0) {
-        const t = e.touches[0];
-        mouseRef.current = { x: t.clientX, y: t.clientY };
-      }
-    };
-    window.addEventListener('touchstart', handleTouch, { passive: true });
-    window.addEventListener('touchmove', handleTouch, { passive: true });
-
     // Perpendicular distance from point to segment
     const distToSeg = (px: number, py: number, s: Segment) => {
       const dx = s.x2 - s.x1;
@@ -98,7 +89,7 @@ const CircuitBackground: React.FC = () => {
       ctx.beginPath();
       ctx.strokeStyle = 'rgba(26, 86, 219, 0.08)';
       ctx.lineWidth = 1;
-      ctx.shadowBlur = 0; 
+      ctx.shadowBlur = 0;
       segs.forEach(seg => {
         const dist = distToSeg(mx, my, seg);
         const power = Math.max(0, 1 - dist / POWER_RADIUS);
@@ -115,22 +106,20 @@ const CircuitBackground: React.FC = () => {
         const power = Math.max(0, 1 - dist / POWER_RADIUS);
 
         if (power > 0) {
-          // Energetic trace
           ctx.beginPath();
           ctx.moveTo(seg.x1, seg.y1);
           ctx.lineTo(seg.x2, seg.y2);
           ctx.strokeStyle = `rgba(0, 240, 255, ${0.12 + power * 0.88})`;
           ctx.lineWidth = 1 + power * 1.5;
           if (power > 0.45) {
-             ctx.shadowColor = '#00f0ff';
-             ctx.shadowBlur = power * 18;
+            ctx.shadowColor = '#00f0ff';
+            ctx.shadowBlur = power * 18;
           } else {
-             ctx.shadowBlur = 0;
+            ctx.shadowBlur = 0;
           }
           ctx.stroke();
           ctx.shadowBlur = 0;
 
-          // Spawn pulses on energised traces
           if (
             power > 0.3 &&
             pulsesRef.current.length < MAX_PULSES &&
@@ -145,12 +134,11 @@ const CircuitBackground: React.FC = () => {
           }
         }
 
-        // Solder pads - Only draw if they are active OR the trace is already being drawn
         ([[seg.x1, seg.y1], [seg.x2, seg.y2]] as [number, number][]).forEach(([px, py]) => {
           const d = Math.hypot(mx - px, my - py);
           const padPow = Math.max(0, 1 - d / POWER_RADIUS);
-          
-          if (padPow <= 0 && power <= 0) return; // Skip far-away dim pads
+
+          if (padPow <= 0 && power <= 0) return;
 
           ctx.beginPath();
           ctx.arc(px, py, 2.5, 0, Math.PI * 2);
@@ -170,8 +158,7 @@ const CircuitBackground: React.FC = () => {
         });
       });
 
-
-      // Animate pulses (power flowing through traces)
+      // Animate pulses
       pulsesRef.current = pulsesRef.current.filter(pulse => {
         pulse.t += pulse.speed;
         if (pulse.t > 1) return false;
@@ -183,7 +170,6 @@ const CircuitBackground: React.FC = () => {
         const tailX = seg.x1 + (seg.x2 - seg.x1) * trailT;
         const tailY = seg.y1 + (seg.y2 - seg.y1) * trailT;
 
-        // Glowing trailing streak
         const grad = ctx.createLinearGradient(tailX, tailY, headX, headY);
         grad.addColorStop(0, 'rgba(0, 240, 255, 0)');
         grad.addColorStop(0.5, `rgba(0, 240, 255, ${alpha * 0.4})`);
@@ -197,7 +183,6 @@ const CircuitBackground: React.FC = () => {
         ctx.shadowBlur = 16;
         ctx.stroke();
 
-        // Bright head dot
         ctx.beginPath();
         ctx.arc(headX, headY, 3.5, 0, Math.PI * 2);
         ctx.fillStyle = `rgba(255, 255, 255, ${alpha})`;
@@ -218,8 +203,6 @@ const CircuitBackground: React.FC = () => {
       cancelAnimationFrame(rafRef.current);
       window.removeEventListener('resize', resize);
       window.removeEventListener('mousemove', handleMouseMove);
-      window.removeEventListener('touchstart', handleTouch);
-      window.removeEventListener('touchmove', handleTouch);
     };
   }, []);
 
@@ -237,6 +220,14 @@ const CircuitBackground: React.FC = () => {
       }}
     />
   );
+};
+
+// ── Public export: disabled on mobile ───────────────────────────────────────
+// The wrapper has NO hooks, so returning null early is safe (no rules-of-hooks violation).
+// On mobile: no canvas is mounted, no rAF loop runs, no event listeners are attached.
+const CircuitBackground: React.FC = () => {
+  if (window.innerWidth <= 768) return null;
+  return <CircuitBackgroundImpl />;
 };
 
 export default CircuitBackground;
