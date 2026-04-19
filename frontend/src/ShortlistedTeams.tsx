@@ -39,7 +39,7 @@ const shortlistedTeams: ShortlistedTeam[] = [
   { teamName: 'Techives', leader: 'Shiva Prasad M B', domain: 'HARDWARE', status: 'SHORTLISTED' },
   { teamName: 'Team conquerors', leader: 'C N PRATHAM', domain: 'HARDWARE', status: 'SHORTLISTED' },
   { teamName: 'Ai avengers', leader: 'PUNYASHREE', domain: 'HARDWARE', status: 'SHORTLISTED' },
-  { teamName: '3Bytes', leader: 'Devan Arya', domain: 'HARDWARE', status: 'SHORTLISTED' },
+  { teamName: '4Bytes', leader: 'Devan Arya', domain: 'HARDWARE', status: 'SHORTLISTED' },
   { teamName: 'BitVeda', leader: 'Sujith', domain: 'HARDWARE', status: 'SHORTLISTED' },
   { teamName: 'Quadcore Titans', leader: 'Vineeth Kumar', domain: 'HARDWARE', status: 'SHORTLISTED' },
   { teamName: 'Short Circuit', leader: 'Keerthana BL', domain: 'HARDWARE', status: 'SHORTLISTED' },
