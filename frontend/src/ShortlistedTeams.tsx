@@ -286,26 +286,22 @@ const ShortlistedTeams: React.FC<ShortlistedTeamsProps> = ({ initialFilter }) =>
         )}
       </div>
 
-      <div className="ps-controls-sticky" style={isMobileView ? { position: 'relative', top: 'auto', background: 'rgba(12, 15, 30, 0.98)', padding: '0.75rem 1rem', margin: '0 -1rem', borderBottom: '1px solid rgba(0, 240, 255, 0.15)' } : undefined}>
+      <div className="ps-controls-sticky">
         <div className="ps-controls">
-          {/* Filter row */}
+          {/* Filter row with scroll arrows */}
           <div className="ps-filters-nav-wrapper">
-            {isMobileView && canScrollLeft && (
-              <button
-                className="ps-filter-arrow ps-filter-arrow-left"
-                onClick={(e) => { e.preventDefault(); e.stopPropagation(); scrollFilters('left'); }}
-                aria-label="Scroll results filters left"
-              >
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" width="16" height="16">
-                  <path d="M15 18l-6-6 6-6" />
-                </svg>
-              </button>
-            )}
-            <div
-              className="ps-filters"
-              ref={filtersRef}
-              style={isMobileView ? { display: 'flex', flexWrap: 'nowrap', overflowX: 'auto', gap: '0.5rem', paddingBottom: '6px', scrollbarWidth: 'none', scrollBehavior: 'smooth' } : undefined}
+            <button
+              className={`ps-filter-arrow ps-filter-arrow-left${canScrollLeft ? ' visible' : ''}`}
+              onClick={(e) => { e.preventDefault(); e.stopPropagation(); scrollFilters('left'); }}
+              aria-label="Scroll results filters left"
+              tabIndex={-1}
             >
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" width="16" height="16">
+                <path d="M15 18l-6-6 6-6" />
+              </svg>
+            </button>
+
+            <div className="ps-filters" ref={filtersRef}>
               {DOMAINS.map(domain => {
                 const isWaitlisted = domain === 'WAITLISTED';
                 const isActive = activeFilter === domain;
@@ -313,50 +309,29 @@ const ShortlistedTeams: React.FC<ShortlistedTeamsProps> = ({ initialFilter }) =>
                   <button
                     key={domain}
                     type="button"
-                    className={`ps-filter-btn ${isActive ? 'active' : ''}`}
+                    className={`ps-filter-btn${isActive ? ' active' : ''}${isWaitlisted ? ' waitlisted' : ''}`}
                     onClick={(e) => {
                       e.preventDefault();
                       e.stopPropagation();
                       setActiveFilter(domain);
                     }}
-                    style={isMobileView ? {
-                      flexShrink: 0,
-                      whiteSpace: 'nowrap',
-                      padding: '0.5rem 1rem',
-                      fontSize: '0.8rem',
-                      border: isActive
-                        ? (isWaitlisted ? '1.5px solid #fde047' : '1.5px solid #00f0ff')
-                        : (isWaitlisted ? '1.5px solid rgba(250, 204, 21, 0.4)' : '1.5px solid rgba(0, 240, 255, 0.4)'),
-                      background: isActive
-                        ? (isWaitlisted ? 'rgba(250, 204, 21, 0.18)' : 'rgba(0, 240, 255, 0.18)')
-                        : (isWaitlisted ? 'rgba(250, 204, 21, 0.06)' : 'rgba(0, 240, 255, 0.06)'),
-                      color: isWaitlisted ? '#fde047' : '#fff',
-                      borderRadius: '6px',
-                    } : (
-                      isWaitlisted ? {
-                        border: isActive ? '1.5px solid #fde047' : '1.5px solid rgba(250, 204, 21, 0.4)',
-                        background: isActive ? 'rgba(250, 204, 21, 0.18)' : 'rgba(250, 204, 21, 0.06)',
-                        color: '#fde047',
-                        boxShadow: isActive ? '0 0 12px rgba(250, 204, 21, 0.3)' : 'none',
-                      } : undefined
-                    )}
                   >
                     {domain}
                   </button>
                 );
               })}
             </div>
-            {isMobileView && canScrollRight && (
-              <button
-                className="ps-filter-arrow ps-filter-arrow-right"
-                onClick={(e) => { e.preventDefault(); e.stopPropagation(); scrollFilters('right'); }}
-                aria-label="Scroll results filters right"
-              >
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" width="16" height="16">
-                  <path d="M9 18l6-6-6-6" />
-                </svg>
-              </button>
-            )}
+
+            <button
+              className={`ps-filter-arrow ps-filter-arrow-right${canScrollRight ? ' visible' : ''}`}
+              onClick={(e) => { e.preventDefault(); e.stopPropagation(); scrollFilters('right'); }}
+              aria-label="Scroll results filters right"
+              tabIndex={-1}
+            >
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" width="16" height="16">
+                <path d="M9 18l6-6-6-6" />
+              </svg>
+            </button>
           </div>
 
           <div className="ps-search-wrapper">
@@ -371,7 +346,6 @@ const ShortlistedTeams: React.FC<ShortlistedTeamsProps> = ({ initialFilter }) =>
               value={searchQuery}
               onChange={e => setSearchQuery(e.target.value)}
               onClick={(e) => e.stopPropagation()}
-              style={isMobileView ? { border: '1.5px solid rgba(0, 240, 255, 0.35)', background: 'rgba(15, 23, 42, 0.8)', color: '#fff' } : undefined}
             />
           </div>
         </div>

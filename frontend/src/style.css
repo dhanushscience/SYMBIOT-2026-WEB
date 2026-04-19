@@ -3338,7 +3338,7 @@ h1, h2, h3, h4, h5, h6 {
 /* --- Sticky Controls --- */
 .ps-controls-sticky {
   position: sticky;
-  top: 118px; /* navbar (~80px) + announcement bar (~38px) */
+  top: 118px;
   z-index: 1000;
   background: rgba(8, 10, 20, 0.97);
   backdrop-filter: blur(16px);
@@ -3346,42 +3346,36 @@ h1, h2, h3, h4, h5, h6 {
   padding: 1rem 2rem;
   border-bottom: 1px solid rgba(0, 240, 255, 0.12);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-  transition: box-shadow 0.3s ease;
   overflow: visible;
-}
-
-@media (max-width: 768px) {
-  .ps-controls-sticky {
-    top: 70px;
-    padding: 0.75rem 1rem;
-  }
 }
 
 .ps-controls {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap;
   gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
-/* --- Filter Nav Wrapper (mobile scroll arrows) --- */
+/* --- Filter Nav Wrapper --- */
 .ps-filters-nav-wrapper {
-  position: relative;
   display: flex;
   align-items: center;
   flex: 1;
   min-width: 0;
+  gap: 0;
+  overflow: hidden; /* clip area for the scroll zone */
 }
 
+/* Arrow buttons: always in DOM, hidden via opacity so layout stays stable */
 .ps-filter-arrow {
-  display: none; /* hidden on desktop */
+  display: none; /* off on desktop */
   flex-shrink: 0;
-  width: 32px;
-  height: 32px;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
-  border: 1px solid rgba(0, 240, 255, 0.5);
-  background: rgba(0, 240, 255, 0.08);
+  border: 1.5px solid rgba(0, 240, 255, 0.4);
+  background: rgba(0, 240, 255, 0.06);
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
   color: #00f0ff;
@@ -3389,32 +3383,34 @@ h1, h2, h3, h4, h5, h6 {
   align-items: center;
   justify-content: center;
   z-index: 2;
-  transition: background 0.25s ease, box-shadow 0.25s ease;
-  animation: arrow-pulse 2.4s ease-in-out infinite;
+  transition: background 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
   outline: none;
   padding: 0;
-  line-height: 1;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.ps-filter-arrow.visible {
+  opacity: 1;
+  pointer-events: auto;
+  animation: arrow-pulse 2.4s ease-in-out infinite;
 }
 
 .ps-filter-arrow:hover {
-  background: rgba(0, 240, 255, 0.2);
-  box-shadow: 0 0 14px rgba(0, 240, 255, 0.45);
+  background: rgba(0, 240, 255, 0.18);
+  box-shadow: 0 0 12px rgba(0, 240, 255, 0.4);
   animation: none;
 }
 
-.ps-filter-arrow-left {
-  margin-right: 6px;
-}
-
-.ps-filter-arrow-right {
-  margin-left: 6px;
-}
+.ps-filter-arrow-left  { margin-right: 4px; }
+.ps-filter-arrow-right { margin-left:  4px; }
 
 @keyframes arrow-pulse {
-  0%, 100%  { box-shadow: 0 0 0px rgba(0, 240, 255, 0); }
-  50%       { box-shadow: 0 0 10px rgba(0, 240, 255, 0.4); }
+  0%, 100% { box-shadow: 0 0 0   rgba(0, 240, 255, 0); }
+  50%      { box-shadow: 0 0 10px rgba(0, 240, 255, 0.4); }
 }
 
+/* --- Scrollable pill strip (desktop: wrapping flex) --- */
 .ps-filters {
   display: flex;
   gap: 0.6rem;
@@ -3423,29 +3419,54 @@ h1, h2, h3, h4, h5, h6 {
   min-width: 0;
 }
 
+/* ============ MOBILE OVERRIDES ============ */
 @media (max-width: 768px) {
+  .ps-controls-sticky {
+    top: 60px;
+    padding: 0.6rem 0.75rem;
+  }
+
+  .ps-controls {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.6rem;
+  }
+
+  .ps-filters-nav-wrapper {
+    overflow: visible; /* let arrows sit outside the clip zone */
+    width: 100%;
+  }
+
+  /* Show circular arrow buttons */
   .ps-filter-arrow {
     display: flex;
   }
 
+  /* Scrollable row */
   .ps-filters {
     flex-wrap: nowrap;
     overflow-x: auto;
     scroll-behavior: smooth;
     scrollbar-width: none;
     -ms-overflow-style: none;
-    scroll-snap-type: x mandatory;
-    padding-bottom: 4px;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x proximity;
+    padding-bottom: 2px;
   }
 
-  .ps-filters::-webkit-scrollbar {
-    display: none;
-  }
+  .ps-filters::-webkit-scrollbar { display: none; }
 
   .ps-filters .ps-filter-btn {
     flex-shrink: 0;
     scroll-snap-align: start;
     white-space: nowrap;
+    padding: 0.45rem 0.9rem;
+    font-size: 0.78rem;
+  }
+
+  .ps-search-wrapper {
+    max-width: 100%;
+    width: 100%;
   }
 }
 
@@ -3464,6 +3485,22 @@ h1, h2, h3, h4, h5, h6 {
   letter-spacing: 0.5px;
   position: relative;
   overflow: hidden;
+  white-space: nowrap;
+}
+
+/* Waitlisted domain pill — yellow theme */
+.ps-filter-btn.waitlisted {
+  border-color: rgba(250, 204, 21, 0.4);
+  background: rgba(250, 204, 21, 0.06);
+  color: #fde047;
+}
+
+.ps-filter-btn.waitlisted:hover,
+.ps-filter-btn.waitlisted.active {
+  border-color: #fde047;
+  background: rgba(250, 204, 21, 0.18);
+  color: #fde047;
+  box-shadow: 0 0 14px rgba(250, 204, 21, 0.3);
 }
 
 .ps-filter-btn::before {
