@@ -88,7 +88,7 @@ const shortlistedTeams: ShortlistedTeam[] = [
   { teamName: 'Aura Setters', leader: 'Ganavi KP', domain: 'SOFTWARE', status: 'SHORTLISTED' },
   { teamName: 'Nexa', leader: 'Chandana NM', domain: 'SOFTWARE', status: 'SHORTLISTED' },
   { teamName: 'HacktoWin', leader: 'Hemalatha L', domain: 'SOFTWARE', status: 'SHORTLISTED' },
-  { teamName: 'AlgoRiders', leader: 'Sufiyan Saleem ahmed', domain: 'SOFTWARE', status: 'SHORTLISTED' },
+  { teamName: 'Spark Igniters', leader: 'Pushpa dc', domain: 'SOFTWARE', status: 'SHORTLISTED' },
   { teamName: 'Herb Trace', leader: 'Raksha A R', domain: 'SOFTWARE', status: 'SHORTLISTED' },
   { teamName: 'Codebase', leader: 'Nithin D', domain: 'SOFTWARE', status: 'SHORTLISTED' },
   { teamName: 'GOALDTECH', leader: 'Dhanushiya S', domain: 'SOFTWARE', status: 'SHORTLISTED' },
@@ -121,7 +121,7 @@ const shortlistedTeams: ShortlistedTeam[] = [
   { teamName: 'DebugLeaf', leader: 'Karthik M', domain: 'WAITLISTED', status: 'WAITLISTED' },
   { teamName: 'Rookies', leader: 'Prajwal Goni', domain: 'WAITLISTED', status: 'WAITLISTED' },
   { teamName: 'pink panthers', leader: 'SINDHU H M', domain: 'WAITLISTED', status: 'WAITLISTED' },
-  { teamName: 'Spark Igniters', leader: 'Pushpa dc', domain: 'WAITLISTED', status: 'WAITLISTED' },
+
   { teamName: 'SquadBytes', leader: 'GNANA RAVANDUR PRAKASH', domain: 'WAITLISTED', status: 'WAITLISTED' },
   { teamName: 'Team404', leader: 'Dhanush urs', domain: 'WAITLISTED', status: 'WAITLISTED' },
   { teamName: 'Phoenix A*', leader: 'Madhukeshwar Shripad Hegde', domain: 'WAITLISTED', status: 'WAITLISTED' },
