@@ -441,7 +441,7 @@ const App: React.FC = () => {
 
           <div className="nav-links">
             <a href="#home" className="nav-link">Home</a>
-            <a href="#about" className="nav-link">About</a>
+            <a href="#shortlisted-teams" className="nav-link">Shortlisted Teams</a>
             <div className="nav-dropdown">
               <button className="nav-dropdown-trigger">
                 Problem Statements <span className="nav-dropdown-arrow">▼</span>
@@ -471,7 +471,7 @@ const App: React.FC = () => {
         <div className={`mobile-menu-overlay ${isMobileMenuOpen ? 'open' : ''}`}>
           <div className="mobile-nav-links">
             <a href="#home" className="mobile-nav-link" onClick={() => setIsMobileMenuOpen(false)}>Home</a>
-            <a href="#about" className="mobile-nav-link" onClick={() => setIsMobileMenuOpen(false)}>About</a>
+            <a href="#shortlisted-teams" className="mobile-nav-link" onClick={() => setIsMobileMenuOpen(false)}>Shortlisted Teams</a>
             <div className="mobile-ps-dropdown">
               <button className="mobile-ps-trigger" onClick={() => setMobilePsOpen(!mobilePsOpen)}>
                 Problem Statements <span className="nav-dropdown-arrow" style={{ transform: mobilePsOpen ? 'rotate(180deg)' : 'none' }}>▼</span>
@@ -530,7 +530,7 @@ const App: React.FC = () => {
               <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
                 <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center' }}>
                   <a href="https://unstop.com/p/symbiot-2026-vidyavardhaka-college-of-engineering-mysore-1652707" onClick={handleRegisterClick} target="_blank" rel="noopener noreferrer" className={`btn btn-primary btn-register-heartbeat ${isPrankActive ? 'btn-primary-alert' : ''}`}>Register</a>
-                  <a href="#shortlisted-teams" className="btn btn-secondary">🏆 Shortlisted</a>
+                  <a href="#shortlisted-teams" className="btn btn-secondary">🏆 Shortlisted Teams</a>
                 </div>
                 {isPrankActive && (
                   <div style={{ color: '#ff4444', fontWeight: 'bold', fontSize: '0.95rem', animation: 'pulse-glow 2s infinite alternate', padding: '0.5rem 1rem', background: 'rgba(255, 68, 68, 0.1)', border: '1px solid rgba(255, 68, 68, 0.3)', borderRadius: '8px', textAlign: 'center' }}>
