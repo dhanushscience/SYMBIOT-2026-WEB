@@ -447,11 +447,11 @@ const App: React.FC = () => {
                 Problem Statements <span className="nav-dropdown-arrow">▼</span>
               </button>
               <div className="nav-dropdown-menu">
-                <a href="#problem-statements" className="nav-dropdown-item" onClick={() => setPsFilter('Embedded and IOT')}>Embedded and IOT</a>
-                <a href="#shortlisted-teams" className="nav-dropdown-item" onClick={(e) => { e.stopPropagation(); setTeamFilter('SOFTWARE'); setPsFilter(undefined); }}>Software Domain</a>
-                <a href="#shortlisted-teams" className="nav-dropdown-item" onClick={(e) => { e.stopPropagation(); setTeamFilter('CAMPUS INNOVATION'); setPsFilter(undefined); }}>Campus Innovation</a>
-                <a href="#problem-statements" className="nav-dropdown-item" onClick={() => setPsFilter('VLSI')}>VLSI</a>
-                <a href="#templates" className="nav-dropdown-item" onClick={() => { setPsFilter(undefined); document.getElementById('templates')?.scrollIntoView({ behavior: 'smooth' }); }}>PPTs</a>
+                <a href="#problem-statements" className="nav-dropdown-item" onClick={(e) => { e.preventDefault(); setPsFilter('Embedded and IOT'); document.getElementById('problem-statements')?.scrollIntoView({ behavior: 'smooth' }); }}>Embedded and IOT</a>
+                <a href="#problem-statements" className="nav-dropdown-item" onClick={(e) => { e.preventDefault(); setPsFilter('Software Domain'); document.getElementById('problem-statements')?.scrollIntoView({ behavior: 'smooth' }); }}>Software Domain</a>
+                <a href="#problem-statements" className="nav-dropdown-item" onClick={(e) => { e.preventDefault(); setPsFilter('Campus Innovation'); document.getElementById('problem-statements')?.scrollIntoView({ behavior: 'smooth' }); }}>Campus Innovation</a>
+                <a href="#problem-statements" className="nav-dropdown-item" onClick={(e) => { e.preventDefault(); setPsFilter('VLSI'); document.getElementById('problem-statements')?.scrollIntoView({ behavior: 'smooth' }); }}>VLSI</a>
+                <a href="#templates" className="nav-dropdown-item" onClick={(e) => { e.preventDefault(); setPsFilter(undefined); document.getElementById('templates')?.scrollIntoView({ behavior: 'smooth' }); }}>PPTs</a>
               </div>
             </div>
             <a href="#prizes" className="nav-link">Prizes</a>
@@ -477,11 +477,11 @@ const App: React.FC = () => {
                 Problem Statements <span className="nav-dropdown-arrow" style={{ transform: mobilePsOpen ? 'rotate(180deg)' : 'none' }}>▼</span>
               </button>
               <div className={`mobile-ps-subnav ${mobilePsOpen ? 'open' : ''}`}>
-                <a href="#problem-statements" className="mobile-ps-link" onClick={() => { setPsFilter('Embedded and IOT'); setIsMobileMenuOpen(false); }}>Embedded and IOT</a>
-                <a href="#shortlisted-teams" className="mobile-ps-link" onClick={(e) => { e.stopPropagation(); setTeamFilter('SOFTWARE'); setPsFilter(undefined); setIsMobileMenuOpen(false); }}>Software Domain</a>
-                <a href="#shortlisted-teams" className="mobile-ps-link" onClick={(e) => { e.stopPropagation(); setTeamFilter('CAMPUS INNOVATION'); setPsFilter(undefined); setIsMobileMenuOpen(false); }}>Campus Innovation</a>
-                <a href="#problem-statements" className="mobile-ps-link" onClick={() => { setPsFilter('VLSI'); setIsMobileMenuOpen(false); }}>VLSI</a>
-                <a href="#templates" className="mobile-ps-link" onClick={() => { setPsFilter(undefined); setIsMobileMenuOpen(false); document.getElementById('templates')?.scrollIntoView({ behavior: 'smooth' }); }}>PPTs</a>
+                <a href="#problem-statements" className="mobile-ps-link" onClick={(e) => { e.preventDefault(); setPsFilter('Embedded and IOT'); setIsMobileMenuOpen(false); document.getElementById('problem-statements')?.scrollIntoView({ behavior: 'smooth' }); }}>Embedded and IOT</a>
+                <a href="#problem-statements" className="mobile-ps-link" onClick={(e) => { e.preventDefault(); setPsFilter('Software Domain'); setIsMobileMenuOpen(false); document.getElementById('problem-statements')?.scrollIntoView({ behavior: 'smooth' }); }}>Software Domain</a>
+                <a href="#problem-statements" className="mobile-ps-link" onClick={(e) => { e.preventDefault(); setPsFilter('Campus Innovation'); setIsMobileMenuOpen(false); document.getElementById('problem-statements')?.scrollIntoView({ behavior: 'smooth' }); }}>Campus Innovation</a>
+                <a href="#problem-statements" className="mobile-ps-link" onClick={(e) => { e.preventDefault(); setPsFilter('VLSI'); setIsMobileMenuOpen(false); document.getElementById('problem-statements')?.scrollIntoView({ behavior: 'smooth' }); }}>VLSI</a>
+                <a href="#templates" className="mobile-ps-link" onClick={(e) => { e.preventDefault(); setPsFilter(undefined); setIsMobileMenuOpen(false); document.getElementById('templates')?.scrollIntoView({ behavior: 'smooth' }); }}>PPTs</a>
               </div>
             </div>
             <a href="#prizes" className="mobile-nav-link" onClick={() => setIsMobileMenuOpen(false)}>Prizes</a>
