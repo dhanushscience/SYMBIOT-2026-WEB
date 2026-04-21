@@ -249,7 +249,7 @@ const App: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const [psFilter, setPsFilter] = useState<string | undefined>(undefined);
-  const [teamFilter, setTeamFilter] = useState<string | undefined>(undefined);
+  const [teamFilter] = useState<string | undefined>(undefined);
   const [mobilePsOpen, setMobilePsOpen] = useState(false);
   const [activeTrophy, setActiveTrophy] = useState<string | null>(null);
 
