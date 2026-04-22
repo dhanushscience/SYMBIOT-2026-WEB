@@ -106,7 +106,6 @@ const shortlistedTeams: ShortlistedTeam[] = [
   { teamName: 'TECHNO SQUAD', leader: 'Dhanush R S', domain: 'SOFTWARE', status: 'SHORTLISTED' },
   { teamName: 'Infra Sentinel', leader: 'Chinmay C P CP', domain: 'SOFTWARE', status: 'SHORTLISTED' },
   { teamName: 'JACKCODERS', leader: 'Neil Mascarenhas', domain: 'SOFTWARE', status: 'SHORTLISTED' },
-  { teamName: 'Hashiras', leader: 'Mohamed mansoor khateeb', domain: 'SOFTWARE', status: 'SHORTLISTED' },
   { teamName: 'Genz innovators', leader: 'Rachana P', domain: 'SOFTWARE', status: 'SHORTLISTED' },
   { teamName: 'GEC CHAMARAJAN', leader: 'Ishank Mourya Mourya', domain: 'SOFTWARE', status: 'SHORTLISTED' },
   { teamName: 'Medirush', leader: 'Swati B parshi', domain: 'SOFTWARE', status: 'SHORTLISTED' },
