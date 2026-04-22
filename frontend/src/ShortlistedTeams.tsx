@@ -128,6 +128,7 @@ const shortlistedTeams: ShortlistedTeam[] = [
   { teamName: 'Phoenix A*', leader: 'Madhukeshwar Shripad Hegde', domain: 'WAITLISTED', status: 'WAITLISTED' },
 
   { teamName: 'Herb_Ledger', leader: 'Pranamya R', domain: 'WAITLISTED', status: 'WAITLISTED' },
+  { teamName: 'AlgoRangers', leader: 'Ayush N P', domain: 'SOFTWARE', status: 'SHORTLISTED' },
 
 ];
 
